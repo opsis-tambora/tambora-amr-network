@@ -2,10 +2,9 @@ import { useState } from 'react';
 import { Search, User, CheckCircle2, XCircle } from 'lucide-react';
 
 const StatusKwhMeter = ({ devices, darkMode }) => {
-  const [filter, setFilter] = useState('all'); // 'all', 'online', 'offline'
+  const [filter, setFilter] = useState('all'); 
   const [localSearch, setLocalSearch] = useState('');
 
-  // Filter data berdasarkan text pencarian dan tombol filter status
   const filteredDevices = devices.filter(d => {
     const searchString = localSearch.toLowerCase();
     const matchesSearch = 
@@ -26,7 +25,6 @@ const StatusKwhMeter = ({ devices, darkMode }) => {
         <h2 className="text-lg font-bold tracking-wider uppercase">Daftar Status KWH</h2>
         
         <div className="flex flex-col sm:flex-row items-center gap-4 w-full xl:w-auto">
-          {/* Search Input */}
           <div className="relative w-full sm:w-64">
             <input
               type="text"
@@ -42,7 +40,6 @@ const StatusKwhMeter = ({ devices, darkMode }) => {
             <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
           </div>
 
-          {/* Filter Buttons */}
           <div className={`flex rounded-lg border overflow-hidden ${darkMode ? 'border-slate-700' : 'border-slate-300'}`}>
             <button
               onClick={() => setFilter('all')}
@@ -82,7 +79,7 @@ const StatusKwhMeter = ({ devices, darkMode }) => {
       <div className="overflow-x-auto flex-1 p-5">
         <table className="w-full text-left border-collapse whitespace-nowrap">
           <thead>
-            <tr className={`border-b text-xs font-bold tracking-wider uppercase ${darkMode ? 'border-slate-700 text-slate-400' : 'border-slate-300 text-slate-600 bg-slate-50'}`}>
+            <tr className={`border-b text-[11px] font-bold tracking-wider uppercase ${darkMode ? 'border-slate-700 text-slate-400' : 'border-slate-300 text-slate-500 bg-slate-50'}`}>
               <th className="p-4 rounded-tl-lg">No</th>
               <th className="p-4">Nama KWH</th>
               <th className="p-4">Unit Sistem</th>
@@ -97,13 +94,12 @@ const StatusKwhMeter = ({ devices, darkMode }) => {
             {filteredDevices.length > 0 ? (
               filteredDevices.map((device, index) => (
                 <tr key={device.id || index} className={`transition-colors ${darkMode ? 'hover:bg-slate-800/50' : 'hover:bg-slate-50'}`}>
-                  <td className="p-4 font-mono">{index + 1}</td>
+                  <td className="p-4 text-xs font-medium">{index + 1}</td>
                   <td className="p-4 font-bold">{device.name}</td>
-                  <td className="p-4">{device.site}</td>
-                  <td className="p-4 text-rose-500 font-mono text-xs">{device.serial_number}</td>
-                  <td className="p-4 font-mono text-xs">{device.ip_address}</td>
-                  <td className="p-4 font-mono text-xs text-slate-500">
-                    {/* Catatan: Format jam akan dibuat statis sementara sampai DB memiliki kolom waktu */}
+                  <td className="p-4 text-sm">{device.site}</td>
+                  <td className="p-4 text-rose-500 text-sm font-medium">{device.serial_number}</td>
+                  <td className="p-4 text-sm">{device.ip_address}</td>
+                  <td className="p-4 text-sm text-slate-500">
                     2026-07-28 14:55:49
                   </td>
                   <td className="p-4">
@@ -119,7 +115,11 @@ const StatusKwhMeter = ({ devices, darkMode }) => {
                     </div>
                   </td>
                   <td className="p-4 text-center">
-                    <button className="px-3 py-1.5 rounded-md border border-cyan-500/30 text-cyan-500 bg-cyan-500/10 hover:bg-cyan-500 hover:text-white transition-colors flex items-center gap-1.5 mx-auto text-xs font-semibold">
+                    <button className={`px-4 py-1.5 rounded-md border transition-colors flex items-center gap-2 mx-auto text-xs font-bold ${
+                      darkMode 
+                      ? 'border-cyan-500/50 text-cyan-400 bg-cyan-500/10 hover:bg-cyan-500 hover:text-white' 
+                      : 'border-cyan-500 text-cyan-600 bg-cyan-50 hover:bg-cyan-500 hover:text-white'
+                    }`}>
                       <User className="w-3.5 h-3.5" /> Profile
                     </button>
                   </td>
