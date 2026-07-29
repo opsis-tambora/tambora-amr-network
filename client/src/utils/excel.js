@@ -1,64 +1,89 @@
-import * as XLSX from 'xlsx';
+import * as ExcelJS from 'exceljs';
 
-// 1. Export current database to Excel
-export const exportToExcel = (devices) => {
-    // Map our data to look nice in Excel columns, now including Site and Category
-    const excelData = devices.map(d => ({
-        'Device Name': d.name,
-        'IP Address': d.ip_address,
-        'Site': d.site,
-        'Category': d.category,
-        'Current Status': d.status.toUpperCase()
-    }));
-
-    const worksheet = XLSX.utils.json_to_sheet(excelData);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "AMR Meters");
-    XLSX.writeFile(workbook, "Live_Meter_Status.xlsx");
+// Helper untuk download file tanpa library tambahan
+const downloadFile = (blob, filename) => {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
 };
 
-// 2. Download a blank template for the user to fill out
-export const downloadTemplate = () => {
-    // Updated template with valid site names and categories from your list
-    const templateData = [
-        { 'Device Name': 'Main Trafo Kertasari', 'IP Address': '192.168.1.100', 'Site': 'GI Kertasari', 'Category': 'Trafo' },
-        { 'Device Name': 'Feeder 1 Labuhan', 'IP Address': '192.168.1.101', 'Site': 'GI Labuhan', 'Category': 'Feeder' },
-        { 'Device Name': 'Incoming Woha', 'IP Address': '192.168.1.102', 'Site': 'GI Woha', 'Category': 'Incoming' }
+export const exportToExcel = async (devices) => {
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet("AMR Meters");
+
+    worksheet.columns = [
+        { header: 'Device Name', key: 'name', width: 25 },
+        { header: 'IP Address', key: 'ip_address', width: 20 },
+        { header: 'Site', key: 'site', width: 20 },
+        { header: 'Category', key: 'category', width: 20 },
+        { header: 'Current Status', key: 'status', width: 20 }
     ];
-    
-    const worksheet = XLSX.utils.json_to_sheet(templateData);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Import Template");
-    XLSX.writeFile(workbook, "Meter_Import_Template.xlsx");
+
+    devices.forEach(d => {
+        worksheet.addRow({
+            name: d.name,
+            ip_address: d.ip_address,
+            site: d.site,
+            category: d.category,
+            status: d.status?.toUpperCase() || 'OFFLINE'
+        });
+    });
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    const blob = new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+    downloadFile(blob, "Live_Meter_Status.xlsx");
 };
 
-// 3. Read an uploaded Excel file and format it for our backend
+export const downloadTemplate = async () => {
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet("Import Template");
+
+    worksheet.columns = [
+        { header: 'Device Name', key: 'name', width: 25 },
+        { header: 'IP Address', key: 'ip_address', width: 20 },
+        { header: 'Site', key: 'site', width: 20 },
+        { header: 'Category', key: 'category', width: 20 }
+    ];
+
+    worksheet.addRows([
+        { name: 'Main Trafo Kertasari', ip_address: '192.168.1.100', site: 'GI Kertasari', category: 'Trafo' },
+        { name: 'Feeder 1 Labuhan', ip_address: '192.168.1.101', site: 'GI Labuhan', category: 'Feeder' },
+        { name: 'Incoming Woha', ip_address: '192.168.1.102', site: 'GI Woha', category: 'Incoming' }
+    ]);
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    const blob = new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+    downloadFile(blob, "Meter_Import_Template.xlsx");
+};
+
 export const readExcelFile = (file) => {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
-        
-        reader.onload = (e) => {
+        reader.onload = async (e) => {
             try {
-                const data = e.target.result;
-                const workbook = XLSX.read(data, { type: 'binary' });
-                const sheetName = workbook.SheetNames[0];
-                const rawData = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
-                
-                // Convert Excel column names back to our database format
-                const formattedData = rawData.map(row => ({
-                    name: row['Device Name'],
-                    ip_address: row['IP Address'],
-                    site: row['Site'] || 'GI Sumbawa', // Fallback if left blank
-                    category: row['Category'] || 'Feeder' // Fallback if left blank
-                }));
-                
+                const workbook = new ExcelJS.Workbook();
+                await workbook.xlsx.load(e.target.result);
+                const worksheet = workbook.worksheets[0];
+                const formattedData = [];
+                worksheet.eachRow({ includeEmpty: false }, (row, rowNumber) => {
+                    if (rowNumber > 1) {
+                        formattedData.push({
+                            name: row.getCell(1).value,
+                            ip_address: row.getCell(2).value,
+                            site: row.getCell(3).value || 'GI Sumbawa',
+                            category: row.getCell(4).value || 'Feeder'
+                        });
+                    }
+                });
                 resolve(formattedData);
             } catch (err) {
                 reject("Failed to parse Excel file.");
             }
         };
-        
         reader.onerror = () => reject("Failed to read file.");
-        reader.readAsBinaryString(file);
+        reader.readAsArrayBuffer(file);
     });
 };

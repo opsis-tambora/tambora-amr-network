@@ -1,0 +1,920 @@
+[
+  {
+    "Unit":"PT PLN (PERSERO",
+    "Peralatan":"LAPORAN PEMELIHARAAN TRANSMISI",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"UNIT INDUK WILAYAH NTB",
+    "Peralatan":"S,D NOVEMBER 2026",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"UP2B NTB",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"Unit",
+    "Peralatan":"Peralatan",
+    "Tanggal":"Tanggal Selesai",
+    "Keterangan":"Uraian Kegiatan"
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Plampang -  Labuhan",
+    "Tanggal":"9 Januari 2026",
+    "Keterangan":"PEKERJAAN PENGGANTIAN RELAY LCD BAY LINE LABUHAN-PLAMPANG"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bima -  Woha",
+    "Tanggal":"15 Januari 2026",
+    "Keterangan":"Penggantian GSW menjadi OPGW Line Bima - Woha"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Empang -  Plampang",
+    "Tanggal":"10 Januari 2026",
+    "Keterangan":"PEKERJAAN PENGGANTIAN RELAY LCD BAY LINE PLAMPANG-EMPANG"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Alas -  Labuhan 1",
+    "Tanggal":"23 Januari 2026",
+    "Keterangan":"Pemasangan TLA SUTT 70 kV Bay Line Alas - Labuhan 1"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Kopel 70 kV",
+    "Tanggal":"13 Januari 2026",
+    "Keterangan":"Pemeliharaan Rutin 2 Tahunan Bay Kopel GI Bima"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Kopel 70 kV",
+    "Tanggal":"13 Januari 2026",
+    "Keterangan":"Pemeliharaan Rutin 2 Tahunan Rele Proteksi Bay Kopel GI Bima"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Kopel 150 kV",
+    "Tanggal":"14 Januari 2026",
+    "Keterangan":"Shutdown Measurement Bay Kopel 150kV GI Labuhan"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Tidak Padam",
+    "Tanggal":"15 Januari 2026",
+    "Keterangan":"Pengujian Kapasitas Baterai GI Woha"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bima -  Woha",
+    "Tanggal":"22 Januari 2026",
+    "Keterangan":"Penggantian GSW Menjadi OPGW SUTT 70 kV LIne Bima - Woha"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Trafo TFT 2  Bonto 30 MVA",
+    "Tanggal":"19 Januari 2026",
+    "Keterangan":"Pengujian Hot Collar Bushing Trafo 2 GI Bonto"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Taliwang -  Kertasari 1",
+    "Tanggal":"24 Januari 2026",
+    "Keterangan":"Penggantian Isolator Korosi T.2, T.3, T.4, T.5, T.6, T.9, T.11, T.12, T.13 SUTT 70 kV PLTU - Taliwang 1 & 2 (Padam Bergantian)"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bima -  Woha",
+    "Tanggal":"20 Januari 2026",
+    "Keterangan":"Pemeliharaan Rutin 2 Tahunan Rele Proteksi Bay Line Bima GI Woha"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bima -  Woha",
+    "Tanggal":"20 Januari 2026",
+    "Keterangan":"Pemeliharaan Rutin 2 Tahunan Bay Line Bima GI Woha"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Trafo TFT 2  Bima 30 MVA",
+    "Tanggal":"22 Januari 2026",
+    "Keterangan":"Pemeliharaan Rutin 2 Tahunan Rele Proteksi Bay Trafo 2 GI Bima"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Trafo TFT 2  Bima 30 MVA",
+    "Tanggal":"22 Januari 2026",
+    "Keterangan":"Pemeliharaan Rutin 2 Tahunan Bay Trafo 2 GI Bima"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bima -  Woha",
+    "Tanggal":"25 Januari 2026",
+    "Keterangan":"Penggantian GSW menjadi OPGW Line Bima - Woha"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Trafo TFT 2  Bima 30 MVA",
+    "Tanggal":"23 Januari 2026",
+    "Keterangan":"Lanjutan Pemeliharaan Rutin 2 Tahunan Bay Trafo 2 GI Bima"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Woha -  Dompu",
+    "Tanggal":"29 Januari 2026",
+    "Keterangan":"Penggantian GSW Menjadi OPGW Line Woha - Dompu"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Tidak Perlu Padam",
+    "Tanggal":"27 Januari 2026",
+    "Keterangan":"Pengujian Kapasitas Baterai 110 VDC Bank 1 GI Dompu"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Sumbawa 2 GI Labuhan",
+    "Tanggal":"28 Januari 2026",
+    "Keterangan":"Shutdown Measurement Bay Line Sumbawa 2 GI Labuhan"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Tidak padam",
+    "Tanggal":"29 Januari 2026",
+    "Keterangan":"Pengujian Kapasitas Baterai 110 VDC Bank 2 GI Dompu"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Plampang -  Labuhan",
+    "Tanggal":"29 Januari 2026",
+    "Keterangan":"Shutdown Measurement Bay Line Plampang GI Labuhan"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Sumbawa -  Labuhan 1",
+    "Tanggal":"30 Januari 2026",
+    "Keterangan":"BLACK START PLTMG 2 SUMBAWA"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Woha -  Dompu",
+    "Tanggal":"5 Februari 2026",
+    "Keterangan":"Penggantian GSW menjadi OPGW Line Woha - Dompu"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Trafo TFT 1  Woha 20 MVA",
+    "Tanggal":"2 Februari 2026",
+    "Keterangan":"Penggantian Rele MPU Bay Trafo 1 GI Woha"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Tidak padam",
+    "Tanggal":"4 Februari 2026",
+    "Keterangan":"Pekerjaan Purifier Minyak Maintank Trafo GI Alas (Online)"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Labuhan -  Empang",
+    "Tanggal":"3 Februari 2026",
+    "Keterangan":"Perbaikan Dumper Melorot T.187 dan T.193"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bima -  Sape 2",
+    "Tanggal":"3 Februari 2026",
+    "Keterangan":"Pemeliharaan Rutin 2 Tahunan Bay Line Sape 2 GI Bima"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Tidak padam",
+    "Tanggal":"5 Februari 2026",
+    "Keterangan":"Pekerjaan Purifier Minyak Maintank Trafo GI Kertasari (Online)"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Labuhan -  Empang",
+    "Tanggal":"4 Februari 2026",
+    "Keterangan":"Perbaikan Dumper Melorot T.94 dan T.101 SUTT 150 kV labuhan - Empang dan Labuhan - Plampang (Padam Bergantian)"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Sumbawa -  Labuhan 1",
+    "Tanggal":"5 Februari 2026",
+    "Keterangan":"PENGUJIAN BLACK START & LINE CHARGING #1 PLTMG 2 SUMBAWA"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Trafo TFT  Taliwang 30 MVA",
+    "Tanggal":"6 Februari 2026",
+    "Keterangan":"PEKERJAAN PURIFIER MINYAK MAINTANK TRAFO GI TALIWANG (ONLINE)"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Tidak padam",
+    "Tanggal":"6 Februari 2026",
+    "Keterangan":"Pembebanan Genset GI Bima, GI Bonto, GI Woha, GI Sape, GI Bonto"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bima -  Woha",
+    "Tanggal":"6 Februari 2026",
+    "Keterangan":"Penggantian GSW Menjadi OPGW Line Bima - Woha & Woha - Dompu"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Labuhan -  Empang",
+    "Tanggal":"19 Februari 2026",
+    "Keterangan":"Rekonduktoring GSW to OPGW SUTT 150 kV Labuhan - Empang"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Taliwang -  Alas 2",
+    "Tanggal":"10 Februari 2026",
+    "Keterangan":"SHUTDOWN MAINTENANCE BAY LINE TALIWANG 2 GI ALAS"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Trafo TFT 2  Bima 30 MVA",
+    "Tanggal":"10 Februari 2026",
+    "Keterangan":"Perbaikan Isolator Tumpu LA Bay Trafo 2 GI Bima"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bima -  Sape 1 ",
+    "Tanggal":"10 Februari 2026",
+    "Keterangan":"Perbaikan Titik Hotspot T.23 Line 1 Bima - Sape Phasa S"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Trafo TFT  Taliwang 30 MVA",
+    "Tanggal":"11 Februari 2026",
+    "Keterangan":"SM BAY TRAFO GI TALIWANG"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Labuhan -  Empang",
+    "Tanggal":"13 Februari 2026",
+    "Keterangan":"Rekonduktoring GSW to OPGW SUTT 150 kV Labuhan - Empang"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bima -  Woha",
+    "Tanggal":"13 Februari 2026",
+    "Keterangan":"Tindak Lanjut Pending Pengujian Rele MPU Bay Line Bima GI Woha"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Labuhan -  Empang",
+    "Tanggal":"21 Februari 2026",
+    "Keterangan":"Rekonduktoring GSW to OPGW SUTT 150 kV Labuhan - Empang"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bima -  Woha",
+    "Tanggal":"26 Februari 2026",
+    "Keterangan":"Lanjutan Pekerjaan Penggantian GSW Menjadi OPGW"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Trafo TFT  Labuhan 60 MVA",
+    "Tanggal":"24 Februari 2026",
+    "Keterangan":"Pengujian AVR Bay Trafo 150\/20 kV GI Labuhan"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Trafo TFT  Sumbawa 30 MVA",
+    "Tanggal":"25 Februari 2026",
+    "Keterangan":"Pengujian AVR Bay Trafo 150\/20 kV GI Sumbawa"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bima -  Dompu",
+    "Tanggal":"25 Februari 2026",
+    "Keterangan":"Penggantian Isolator Phasa R T.108 Line 1 Bima - Dompu"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Trafo TFT 2  Woha 30 MVA",
+    "Tanggal":"26 Februari 2026",
+    "Keterangan":"Penyesuaian Hardwire Tegangan AVR Trafo 2 Woha dan AVR Trafo 2 Dompu"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Trafo (TFT) 1  Sape 20 MVA",
+    "Tanggal":"26 Februari 2026",
+    "Keterangan":"Pemasangan Anti Binatang PMS Bus 1 dan 2 Bay Trafo GI Sape"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Busbar 1 70 kV",
+    "Tanggal":"10 Maret 2026",
+    "Keterangan":"Pemeliharaan Busbar 1 GI Bonto dan Trafo PS"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Trafo TFT  Plampang 10 MVA",
+    "Tanggal":"12 Maret 2026",
+    "Keterangan":"PERGANTIAN KONTAKTOR SUPERVISI INDIKATOR FAIL MOTOR SUPPLY CHARGE SPRING PADA PANEL KONTROL PMT BAY TRAFO DAN PERGANTIAN MCB UTAMA SUPPLY DC PANEL KONTROL PMT BAY TRAFO"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Busbar 2 70 kV",
+    "Tanggal":"12 Maret 2026",
+    "Keterangan":"Pemeliharaan Busbar 2 GI Bonto"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Trafo TFT  Sumbawa 30 MVA",
+    "Tanggal":"2 April 2026",
+    "Keterangan":"Shutdown Measurement Bay Trafo GI Sumbawa"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Empang -  Plampang",
+    "Tanggal":"2 April 2026",
+    "Keterangan":"PERBAIKAN DUMPER MELOROT T.199 & T.200 PLAMPANG-EMPANG"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bonto -  Bima 2",
+    "Tanggal":"7 April 2026",
+    "Keterangan":"Pemeliharaan Rutin 2 Tahunan Bay Line Bonto 2"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Sumbawa -  Labuhan 2",
+    "Tanggal":"8 April 2026",
+    "Keterangan":"Shutdown Measurement Bay Line Labuhan 2 & Bus 2 GI Sumbawa"
+  },
+  {
+    "Unit":"UP2D NTB",
+    "Peralatan":"Tidak padam",
+    "Tanggal":"12 April 2026",
+    "Keterangan":"Pemasangan kWh Meter Utama pada site Sewa ND Niu"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bima -  Woha",
+    "Tanggal":"9 April 2026",
+    "Keterangan":"Perbaikan Armour Rod Mekar T.50 Line 2 Bima - Woha"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Taliwang -  Kertasari 1",
+    "Tanggal":"14 April 2026",
+    "Keterangan":"Penggantian Isolator Korosi T.03 SUTT 70 kV Kertasari-Taliwang"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Tidak padam",
+    "Tanggal":"15 April 2026",
+    "Keterangan":"Pengujian Kapasitas Baterai 110 VDC dan Pembebanan Genset"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Trafo TFT 1  Bima 30 MVA",
+    "Tanggal":"14 April 2026",
+    "Keterangan":"Perbaikan Hotspot Clamp Junction Bus 1 Fasa T dan Perbaikan Gas Sampling Rembes Bay Trafo 1 GI Bima"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bonto -  Bima 1",
+    "Tanggal":"16 April 2026",
+    "Keterangan":"Pembersihan Isolator Dead End dan Bus pada Bay Line Bonto 1 GI Bima"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Gt 2 PLTMG  Sumbawa",
+    "Tanggal":"22 April 2026",
+    "Keterangan":"Purifier GT 2"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Gt 2 PLTMG  Sumbawa",
+    "Tanggal":"20 April 2026",
+    "Keterangan":"Shutdown Measurement Bay GT 2 & DS Bus 2 GI Sumbawa"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bima -  Sape 1 ",
+    "Tanggal":"20 April 2026",
+    "Keterangan":"Pembersihan isolator T.35, T.37, T.38 SUTT 70 kV Bima - Sape 1 & 2 (Padam Bergantian)"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Labuhan -  Empang",
+    "Tanggal":"21 April 2026",
+    "Keterangan":"Perbaikan Dumper Melorot"
+  },
+  {
+    "Unit":"UP2D NTB",
+    "Peralatan":"Tidak padam",
+    "Tanggal":"22 April 2026",
+    "Keterangan":"Pemeliharaan Kubikel dan Proteksi Sewa IPS dan Sewa ND GI Bonto"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Tidak padam",
+    "Tanggal":"23 April 2026",
+    "Keterangan":"Pengujian Kapasitas Baterai 110 VDC dan Pembebanan Genset"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bonto -  Bima 2",
+    "Tanggal":"23 April 2026",
+    "Keterangan":"Pemeliharaan Rutin 2 Tahunan Bay Line Bima 2 GI Bonto"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Alas -  Labuhan 1",
+    "Tanggal":"27 April 2026",
+    "Keterangan":"PENGUJIAN DAN TROUBLESHOTING RELAY DIFFERENTIAL LINE ALAS 1 GI LABUHAN"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Trafo TFT 1  Woha 20 MVA",
+    "Tanggal":"29 April 2026",
+    "Keterangan":"Purifier Minyak Maintank Trafo 1 GI Woha"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Trafo TFT 2  Bima 30 MVA",
+    "Tanggal":"29 April 2026",
+    "Keterangan":"Energize Trafo 2 GI Bima Pasca Pengujian (Tidak Berbeban)"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Trafo TFT 1  Woha 20 MVA",
+    "Tanggal":"30 April 2026",
+    "Keterangan":"Lanjutan Purifier Minyak Maintank Trafo 1 GI Woha"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Trafo Ibt  Labuhan 60 MVA",
+    "Tanggal":"3 Mei 2026",
+    "Keterangan":"PEMELIHARAAN RUTIN 2 TAHUNAN BAY TRAFO IBT GI LABUHAN"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Trafo (TFT) 2  Dompu 60 MVA",
+    "Tanggal":"5 Mei 2026",
+    "Keterangan":"Pemeliharaan Rutin 2 Tahunan Bay Trafo 2 GI Dompu"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Trafo (TFT) 2  Dompu 60 MVA",
+    "Tanggal":"5 Mei 2026",
+    "Keterangan":"Padam Bergantian Busbar 1 dan 2 Bay Trafo 2 GI Dompu"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Tidak padam",
+    "Tanggal":"6 Mei 2026",
+    "Keterangan":"Penggantian Relay P5F30 Penyulang Bus Section dan Spare II GI Bima"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Tidak padam",
+    "Tanggal":"7 Mei 2026",
+    "Keterangan":"Pengujian Kapasitas Baterai 110 VDC dan Pembebanan Genset GI Alas"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Tidak padam",
+    "Tanggal":"7 Mei 2026",
+    "Keterangan":"Uji Pembebanan Mesin Genset Semua GI ULTG BIMA"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Alas -  Labuhan 2",
+    "Tanggal":"12 Mei 2026",
+    "Keterangan":"SM BAY LINE LABUHAN 2 GI ALAS"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Kopel 150 kV",
+    "Tanggal":"14 Mei 2026",
+    "Keterangan":"Tindak Lanjut Kejadian Open PMT Bay IBT 150 kV Menggunakan Simulasi Bay Kopel 150 kV"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Alas -  Labuhan 1",
+    "Tanggal":"20 Mei 2026",
+    "Keterangan":"Pekerjaan Pengujian Sinkron Bay Line Alas 1 dan 2 GI Labuhan (Bergantian)"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Gt 1 PLTMG  Bonto",
+    "Tanggal":"19 Mei 2026",
+    "Keterangan":"PEKERJAAN PENGISIAN GAS SF6 BAY GT 1 GI SUMBAWA"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Trafo TFT 2  Bonto 30 MVA",
+    "Tanggal":"20 Mei 2026",
+    "Keterangan":"Pemeliharaan Rutin 2 Tahunan Bay Trafo 2 GI Bonto"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Kopel 150 kV",
+    "Tanggal":"20 Mei 2026",
+    "Keterangan":"Shutdown Measurement Bay Kopel GI Sumbawa"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Dompu -  Empang 1",
+    "Tanggal":"25 Mei 2026",
+    "Keterangan":"Line Up Re-Route Stringing Konduktor Line 1 T.96N T.97A T.97C T.98N Line Empang-Dompu"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Trafo TFT 1  Woha 20 MVA",
+    "Tanggal":"21 Mei 2026",
+    "Keterangan":"Penambahan Minyak OLTC Trafo 1 GI Woha"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Sumbawa -  Labuhan 2",
+    "Tanggal":"25 Mei 2026",
+    "Keterangan":"PENGANTIAN ISOLATOR PECAH PADA SUTT 150 KV PLTMG-LABUHAN 2"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Dompu -  Empang 2",
+    "Tanggal":"30 Mei 2026",
+    "Keterangan":"Line Up OPGW T.95 dan T.99 Empang-Dompu #2"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Dompu -  Empang 2",
+    "Tanggal":"2 Juni 2026",
+    "Keterangan":"Pemeliharaan Rutin Bay Line Empang 2 GI Dompu dan Padem Bus Bergantian"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Taliwang -  Kertasari 2",
+    "Tanggal":"2 Juni 2026",
+    "Keterangan":"Penebangan Pohon Span 07 - 08 Ruas Kertasari - Taliwang 2"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Dompu -  Empang 2",
+    "Tanggal":"5 Juni 2026",
+    "Keterangan":"AKTIVASI THREE POLE AUTORECLOSE LINE EMPANG - DOMPU 2"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Dompu -  Empang 1",
+    "Tanggal":"5 Juni 2026",
+    "Keterangan":"AKTIVASI THREE POLE AUTORECLOSE LINE EMPANG - DOMPU 1"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Tidak Padam",
+    "Tanggal":"8 Juni 2026",
+    "Keterangan":"Uji Pembebanan Mesin Genset Semua GI ULTG Bima"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Alas -  Labuhan 2",
+    "Tanggal":"9 Juni 2026",
+    "Keterangan":"Shutdown Measurement Bay Line Alas 2 GI Labuhan (Safety Online)"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Kopel 70 kV",
+    "Tanggal":"9 Juni 2026",
+    "Keterangan":"Pemeliharaan Rutin 2 Tahunan Bay Kopel GI Bonto"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Alas -  Labuhan 1",
+    "Tanggal":"14 Juni 2026",
+    "Keterangan":"Cleaning Isolator T.18 - T.42 SUTT 70 kV Taliwang - Alas 1 & 2 (Padam Bergantian) Tidak Padam Menginap"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Tidak padam",
+    "Tanggal":"11 Juni 2026",
+    "Keterangan":"Penyambungan Kabel Hydrant GI Alas"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bima -  Sape 1 ",
+    "Tanggal":"11 Juni 2026",
+    "Keterangan":"Perbaikkan Kawat Rantas Span T.57-T.58 Phasa T Line Bima-Sape #1"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Trafo TFT  Empang 20 MVA",
+    "Tanggal":"13 Juni 2026",
+    "Keterangan":"Shutdown Measurement Bay Trafo GI Empang"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Trafo (TFT) 2  Dompu 60 MVA",
+    "Tanggal":"14 Juni 2026",
+    "Keterangan":"Pemeliharaan Rutin 2 Tahunan Bay Trafo 2 GI Dompu"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Taliwang -  Kertasari 1",
+    "Tanggal":"18 Juni 2026",
+    "Keterangan":"Aktivasi 3P STPAR Bay Line Taliwang-Kertasari 1&2"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Kopel 70 kV",
+    "Tanggal":"18 Juni 2026",
+    "Keterangan":"Pemeliharaan Rutin 2 Tahunan Bay Kopel GI Sape"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Alas -  Labuhan 2",
+    "Tanggal":"19 Juni 2026",
+    "Keterangan":"Penebangan 6 Pohon Kelapa Span T.189 - T.190 Ruas Alas - Labuhan 2 ( Padam Emergency )"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Gt 2 PLTMG  Sumbawa",
+    "Tanggal":"20 Juni 2026",
+    "Keterangan":"Pekerjaan Upgrade Pemasangan Hardwire dan Logic pada GT #2 Engine PLTMG #3 Sumbawa 1"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Gt 1 PLTMG  Sumbawa",
+    "Tanggal":"21 Juni 2026",
+    "Keterangan":"Pekerjaan Upgrade Pemasangan Hardwire dan Logic pada GT #1 Engine PLTMG #1 dan #2 Sumbawa 1"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bima -  Woha",
+    "Tanggal":"22 Juni 2026",
+    "Keterangan":"Perbaikan kawat Rantas Span T.107-108 Phasa S Line Bima-Woha"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bima -  Sape 2",
+    "Tanggal":"23 Juni 2026",
+    "Keterangan":"Pengantian isolator pecah 1 keping T.55 Phasa T Line Bima - Sape #2 dan T.52 Phasa S Line Bima - Sape #1 (Padam Bergantian)"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bima -  Sape 1 ",
+    "Tanggal":"23 Juni 2026",
+    "Keterangan":"Rewiring Control Close & Lockout Bay Bima 1 & 2 (Padam Bergantian) GI Sape"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Tidak padam",
+    "Tanggal":"25 Juni 2026",
+    "Keterangan":"Emergency Pekerjaan Penggantian Aux Relay Bus Selection Bay Line Taliwang 1 & 2 GI Kertasari (Tanpa Padam)"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bima -  Dompu",
+    "Tanggal":"25 Juni 2026",
+    "Keterangan":"Pemeliharaan Rutin 2 Tahunan Bay Line Dompu GI Bima"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Sumbawa -  Labuhan 1",
+    "Tanggal":"29 Juni 2026",
+    "Keterangan":"AKTIVASI THREE POLE AUTORECLOSE LINE LABUHAN - SUMBAWA 1&2"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Trafo TFT 1  Bima 30 MVA",
+    "Tanggal":"30 Juni 2026",
+    "Keterangan":"Penggantian Minyak Trafo 1 GI Bima"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Taliwang -  Kertasari 1",
+    "Tanggal":"1 Juli 2026",
+    "Keterangan":"Pekerjaan Emergency Penggantian Isolator Korosi T.01 SUTT 70 kV PLTU - Taliwang 1"
+  },
+  {
+    "Unit":"UP2B NTB",
+    "Peralatan":"Bay Gt 1  PLTU  Sumbawa 12,5 MVA",
+    "Tanggal":"2 Juli 2026",
+    "Keterangan":"Pengujian Error kWh GT 1 dan 2 PLTU di GI Kertasari"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Trafo TFT  Sumbawa 30 MVA",
+    "Tanggal":"2 Juli 2026",
+    "Keterangan":"PERBAIKAN ANOMALI DAN RESETTING AVR DAN RELAY INCOMING GI SUMBAWA (bersamaan dengan pekerjaan UP2D)"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Woha -  Dompu",
+    "Tanggal":"2 Juli 2026",
+    "Keterangan":"Pemeliharaan Rutin 2 Tahunan Bay Line Woha GI Dompu"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Tidak padam",
+    "Tanggal":"7 Juli 2026",
+    "Keterangan":"Uji Pembebanan Mesin Genset Semua GI ULTG BIMA"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Labuhan -  Empang",
+    "Tanggal":"8 Juli 2026",
+    "Keterangan":"PENGUJIAN STPAR 3 FASA BAY LINE LABUHAN-EMPANG DAN LABUHAN-PLAMPANG (Bergantian)"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Empang -  Plampang",
+    "Tanggal":"9 Juli 2026",
+    "Keterangan":"PENGUJIAN STPAR 3 FASA BAY LINE EMPANG-PLAMPANG"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Kopel 70 kV",
+    "Tanggal":"9 Juli 2026",
+    "Keterangan":"Pengujian Ulang Ratio dan Tan Delta CVT BUS 1 dan BUS 2 Bay Kopel GI Sape"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Line Alas -  Labuhan 1",
+    "Tanggal":"10 Juli 2026",
+    "Keterangan":"Pengujian STPAR 3 Fasa Bay Line Labuhan-Alas 1"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Bay Kopel 70 kV",
+    "Tanggal":"14 Juli 2026",
+    "Keterangan":"SM Bay Kopel (Padam Bus 1 & Bus 2 Bergantian) & Pengambilan Sarang Burung Pada DS Line BL Plampang GI Labuhan"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Tidak padam",
+    "Tanggal":"15 Juli 2026",
+    "Keterangan":"Pemasangan DC Monitoring GI Sumbawa"
+  },
+  {
+    "Unit":"ULTG Sumbawa",
+    "Peralatan":"Tidak padam",
+    "Tanggal":"15 Juli 2026",
+    "Keterangan":"Pekerjaan Penyambungan Kabel Power Supply ACDB Hydrant GI Empang"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Kopel 70 kV",
+    "Tanggal":"15 Juli 2026",
+    "Keterangan":"Pemeliharaan Rutin 2 Tahunan Bay Kopel 70 kV GI Dompu"
+  },
+  {
+    "Unit":"ULTG Bima",
+    "Peralatan":"Bay Line Bonto -  Bima 1",
+    "Tanggal":"16 Juli 2026",
+    "Keterangan":"Aktivasi STPAR Bay Line Bima-Bonto 1 dan 2"
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  },
+  {
+    "Unit":"",
+    "Peralatan":"",
+    "Tanggal":"",
+    "Keterangan":""
+  }
+]

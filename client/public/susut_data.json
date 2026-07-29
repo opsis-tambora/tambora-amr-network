@@ -1,0 +1,2725 @@
+[
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"GT PLTU 1 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.119",
+    "kWh Delivery":1308910.0,
+    "kWh Received":3126349.0
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"GT PLTU 2 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.118",
+    "kWh Delivery":2361451.0,
+    "kWh Received":4241298.0
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"GT PLTMG SBW 1 MAIN",
+    "IP kWh Meter":"10.33.70.109",
+    "kWh Delivery":344393.0,
+    "kWh Received":1324067712.0
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"GT PLTMG SBW 2 MAIN",
+    "IP kWh Meter":"10.33.70.108",
+    "kWh Delivery":1257600.0,
+    "kWh Received":671610176.0
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"GT PLTMG SBW 2 BACKUP",
+    "IP kWh Meter":"10.33.70.133",
+    "kWh Delivery":1225590.0,
+    "kWh Received":632901696.0
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"INC TRAFO 1 LABUHAN",
+    "IP kWh Meter":"10.33.70.127",
+    "kWh Delivery":4463239.0,
+    "kWh Received":1873441.0
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"INC TRAFO 1 EMPANG",
+    "IP kWh Meter":"10.33.70.126",
+    "kWh Delivery":2753666.0,
+    "kWh Received":593.0
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"INC TRAFO 2 DOMPU",
+    "IP kWh Meter":"10.33.70.125",
+    "kWh Delivery":4631860.0,
+    "kWh Received":3558.0
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"INC TRAFO 2 WOHA",
+    "IP kWh Meter":"10.33.70.129",
+    "kWh Delivery":992870.0,
+    "kWh Received":2946.0
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"INC TRAFO 2 BIMA",
+    "IP kWh Meter":"10.33.70.102",
+    "kWh Delivery":142321680.0,
+    "kWh Received":680414.0
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"INC TRAFO 2 BONTO",
+    "IP kWh Meter":"10.33.70.123",
+    "kWh Delivery":2265286.0,
+    "kWh Received":2515090.0
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"GT PLTMG BONTO 1 MAIN",
+    "IP kWh Meter":"10.33.70.104",
+    "kWh Delivery":76541.0,
+    "kWh Received":817328064.0
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"GT PLTMG BONTO 2 MAIN",
+    "IP kWh Meter":"10.33.70.105",
+    "kWh Delivery":481353.0,
+    "kWh Received":539559616.0
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"INC TRAFO 1 SAPE",
+    "IP kWh Meter":"10.33.70.106",
+    "kWh Delivery":335125.0,
+    "kWh Received":0.0
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"GT 3 PLTMG 3",
+    "IP kWh Meter":"10.33.70.121",
+    "kWh Delivery":299040.94,
+    "kWh Received":47930532.0
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"GT 4 PLTMG 2",
+    "IP kWh Meter":"10.33.70.122",
+    "kWh Delivery":112034.68,
+    "kWh Received":20276634.0
+  },
+  {
+    "Time":"2026-07-13 09:30:00",
+    "Bay":"GT PLTU 1 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.119",
+    "kWh Delivery":1308910.0,
+    "kWh Received":3129248.0
+  },
+  {
+    "Time":"2026-07-13 09:30:00",
+    "Bay":"GT PLTU 2 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.118",
+    "kWh Delivery":2361451.0,
+    "kWh Received":4243971.0
+  },
+  {
+    "Time":"2026-07-13 09:30:00",
+    "Bay":"GT PLTMG SBW 1 MAIN",
+    "IP kWh Meter":"10.33.70.109",
+    "kWh Delivery":344393.0,
+    "kWh Received":1324073216.0
+  },
+  {
+    "Time":"2026-07-13 09:30:00",
+    "Bay":"GT PLTMG SBW 2 MAIN",
+    "IP kWh Meter":"10.33.70.108",
+    "kWh Delivery":null,
+    "kWh Received":null
+  },
+  {
+    "Time":"2026-07-13 09:30:00",
+    "Bay":"GT PLTMG SBW 2 BACKUP",
+    "IP kWh Meter":"10.33.70.133",
+    "kWh Delivery":1225590.0,
+    "kWh Received":632907200.0
+  },
+  {
+    "Time":"2026-07-13 09:30:00",
+    "Bay":"INC TRAFO 1 LABUHAN",
+    "IP kWh Meter":"10.33.70.127",
+    "kWh Delivery":4471310.0,
+    "kWh Received":1873441.0
+  },
+  {
+    "Time":"2026-07-13 09:30:00",
+    "Bay":"INC TRAFO 1 EMPANG",
+    "IP kWh Meter":"10.33.70.126",
+    "kWh Delivery":2757908.0,
+    "kWh Received":593.0
+  },
+  {
+    "Time":"2026-07-13 09:30:00",
+    "Bay":"INC TRAFO 2 DOMPU",
+    "IP kWh Meter":"10.33.70.125",
+    "kWh Delivery":4638761.0,
+    "kWh Received":3558.0
+  },
+  {
+    "Time":"2026-07-13 09:30:00",
+    "Bay":"INC TRAFO 2 WOHA",
+    "IP kWh Meter":"10.33.70.129",
+    "kWh Delivery":996580.0,
+    "kWh Received":2946.0
+  },
+  {
+    "Time":"2026-07-13 09:30:00",
+    "Bay":"INC TRAFO 2 BIMA",
+    "IP kWh Meter":"10.33.70.102",
+    "kWh Delivery":142321680.0,
+    "kWh Received":680414.0
+  },
+  {
+    "Time":"2026-07-13 09:30:00",
+    "Bay":"INC TRAFO 2 BONTO",
+    "IP kWh Meter":"10.33.70.123",
+    "kWh Delivery":2265286.0,
+    "kWh Received":2517553.0
+  },
+  {
+    "Time":"2026-07-13 09:30:00",
+    "Bay":"GT PLTMG BONTO 1 MAIN",
+    "IP kWh Meter":"10.33.70.104",
+    "kWh Delivery":76541.0,
+    "kWh Received":817337216.0
+  },
+  {
+    "Time":"2026-07-13 09:30:00",
+    "Bay":"GT PLTMG BONTO 2 MAIN",
+    "IP kWh Meter":"10.33.70.105",
+    "kWh Delivery":481353.0,
+    "kWh Received":539564800.0
+  },
+  {
+    "Time":"2026-07-13 09:30:00",
+    "Bay":"INC TRAFO 1 SAPE",
+    "IP kWh Meter":"10.33.70.106",
+    "kWh Delivery":339610.0,
+    "kWh Received":0.0
+  },
+  {
+    "Time":"2026-07-13 09:30:00",
+    "Bay":"GT 3 PLTMG 3",
+    "IP kWh Meter":"10.33.70.121",
+    "kWh Delivery":299040.94,
+    "kWh Received":47939032.0
+  },
+  {
+    "Time":"2026-07-13 09:30:00",
+    "Bay":"GT 4 PLTMG 2",
+    "IP kWh Meter":"10.33.70.122",
+    "kWh Delivery":112034.68,
+    "kWh Received":20280648.0
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"GT PLTU 1 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.119",
+    "kWh Delivery":1308910.0,
+    "kWh Received":3132146.0
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"GT PLTU 2 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.118",
+    "kWh Delivery":2361451.0,
+    "kWh Received":4246598.0
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"GT PLTMG SBW 1 MAIN",
+    "IP kWh Meter":"10.33.70.109",
+    "kWh Delivery":344393.0,
+    "kWh Received":1324078464.0
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"GT PLTMG SBW 2 MAIN",
+    "IP kWh Meter":"10.33.70.108",
+    "kWh Delivery":1257600.0,
+    "kWh Received":671621056.0
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"GT PLTMG SBW 2 BACKUP",
+    "IP kWh Meter":"10.33.70.133",
+    "kWh Delivery":1225590.0,
+    "kWh Received":632912640.0
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"INC TRAFO 1 LABUHAN",
+    "IP kWh Meter":"10.33.70.127",
+    "kWh Delivery":4479584.0,
+    "kWh Received":1873441.0
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"INC TRAFO 1 EMPANG",
+    "IP kWh Meter":"10.33.70.126",
+    "kWh Delivery":2762140.0,
+    "kWh Received":593.0
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"INC TRAFO 2 DOMPU",
+    "IP kWh Meter":"10.33.70.125",
+    "kWh Delivery":4645770.0,
+    "kWh Received":3558.0
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"INC TRAFO 2 WOHA",
+    "IP kWh Meter":"10.33.70.129",
+    "kWh Delivery":1000347.0,
+    "kWh Received":2946.0
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"INC TRAFO 2 BIMA",
+    "IP kWh Meter":"10.33.70.102",
+    "kWh Delivery":142321680.0,
+    "kWh Received":680414.0
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"INC TRAFO 2 BONTO",
+    "IP kWh Meter":"10.33.70.123",
+    "kWh Delivery":2265286.0,
+    "kWh Received":2519996.0
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"GT PLTMG BONTO 1 MAIN",
+    "IP kWh Meter":"10.33.70.104",
+    "kWh Delivery":76541.0,
+    "kWh Received":817346944.0
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"GT PLTMG BONTO 2 MAIN",
+    "IP kWh Meter":"10.33.70.105",
+    "kWh Delivery":481353.0,
+    "kWh Received":539570560.0
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"INC TRAFO 1 SAPE",
+    "IP kWh Meter":"10.33.70.106",
+    "kWh Delivery":344059.0,
+    "kWh Received":0.0
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"GT 3 PLTMG 3",
+    "IP kWh Meter":"10.33.70.121",
+    "kWh Delivery":299040.94,
+    "kWh Received":47947920.0
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"GT 4 PLTMG 2",
+    "IP kWh Meter":"10.33.70.122",
+    "kWh Delivery":112034.68,
+    "kWh Received":20284644.0
+  },
+  {
+    "Time":"2026-07-13 10:30:00",
+    "Bay":"GT PLTU 1 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.119",
+    "kWh Delivery":1308910.0,
+    "kWh Received":3135042.0
+  },
+  {
+    "Time":"2026-07-13 10:30:00",
+    "Bay":"GT PLTU 2 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.118",
+    "kWh Delivery":2361451.0,
+    "kWh Received":4249188.0
+  },
+  {
+    "Time":"2026-07-13 10:30:00",
+    "Bay":"GT PLTMG SBW 1 MAIN",
+    "IP kWh Meter":"10.33.70.109",
+    "kWh Delivery":344393.0,
+    "kWh Received":1324084096.0
+  },
+  {
+    "Time":"2026-07-13 10:30:00",
+    "Bay":"GT PLTMG SBW 2 MAIN",
+    "IP kWh Meter":"10.33.70.108",
+    "kWh Delivery":1257600.0,
+    "kWh Received":671626816.0
+  },
+  {
+    "Time":"2026-07-13 10:30:00",
+    "Bay":"GT PLTMG SBW 2 BACKUP",
+    "IP kWh Meter":"10.33.70.133",
+    "kWh Delivery":1225590.0,
+    "kWh Received":632918336.0
+  },
+  {
+    "Time":"2026-07-13 10:30:00",
+    "Bay":"INC TRAFO 1 LABUHAN",
+    "IP kWh Meter":"10.33.70.127",
+    "kWh Delivery":4488034.0,
+    "kWh Received":1873441.0
+  },
+  {
+    "Time":"2026-07-13 10:30:00",
+    "Bay":"INC TRAFO 1 EMPANG",
+    "IP kWh Meter":"10.33.70.126",
+    "kWh Delivery":2766338.0,
+    "kWh Received":593.0
+  },
+  {
+    "Time":"2026-07-13 10:30:00",
+    "Bay":"INC TRAFO 2 DOMPU",
+    "IP kWh Meter":"10.33.70.125",
+    "kWh Delivery":4652872.0,
+    "kWh Received":3558.0
+  },
+  {
+    "Time":"2026-07-13 10:30:00",
+    "Bay":"INC TRAFO 2 WOHA",
+    "IP kWh Meter":"10.33.70.129",
+    "kWh Delivery":1004213.0,
+    "kWh Received":2946.0
+  },
+  {
+    "Time":"2026-07-13 10:30:00",
+    "Bay":"INC TRAFO 2 BIMA",
+    "IP kWh Meter":"10.33.70.102",
+    "kWh Delivery":142321680.0,
+    "kWh Received":680414.0
+  },
+  {
+    "Time":"2026-07-13 10:30:00",
+    "Bay":"INC TRAFO 2 BONTO",
+    "IP kWh Meter":"10.33.70.123",
+    "kWh Delivery":2265286.0,
+    "kWh Received":2522424.0
+  },
+  {
+    "Time":"2026-07-13 10:30:00",
+    "Bay":"GT PLTMG BONTO 1 MAIN",
+    "IP kWh Meter":"10.33.70.104",
+    "kWh Delivery":76541.0,
+    "kWh Received":817356672.0
+  },
+  {
+    "Time":"2026-07-13 10:30:00",
+    "Bay":"GT PLTMG BONTO 2 MAIN",
+    "IP kWh Meter":"10.33.70.105",
+    "kWh Delivery":481353.0,
+    "kWh Received":539576320.0
+  },
+  {
+    "Time":"2026-07-13 10:30:00",
+    "Bay":"INC TRAFO 1 SAPE",
+    "IP kWh Meter":"10.33.70.106",
+    "kWh Delivery":348499.0,
+    "kWh Received":0.0
+  },
+  {
+    "Time":"2026-07-13 10:30:00",
+    "Bay":"GT 3 PLTMG 3",
+    "IP kWh Meter":"10.33.70.121",
+    "kWh Delivery":299040.94,
+    "kWh Received":47956816.0
+  },
+  {
+    "Time":"2026-07-13 10:30:00",
+    "Bay":"GT 4 PLTMG 2",
+    "IP kWh Meter":"10.33.70.122",
+    "kWh Delivery":112034.68,
+    "kWh Received":20288626.0
+  },
+  {
+    "Time":"2026-07-13 00:00:00",
+    "Bay":"INC TRAFO 1 KERTASARI",
+    "IP kWh Meter":"252382868",
+    "kWh Delivery":86681065.8672100008,
+    "kWh Received":3342999.8986799996
+  },
+  {
+    "Time":"2026-07-13 01:00:00",
+    "Bay":"INC TRAFO 1 KERTASARI",
+    "IP kWh Meter":"252382868",
+    "kWh Delivery":86681065.8672100008,
+    "kWh Received":3344724.43359
+  },
+  {
+    "Time":"2026-07-13 02:00:00",
+    "Bay":"INC TRAFO 1 KERTASARI",
+    "IP kWh Meter":"252382868",
+    "kWh Delivery":86681065.8672100008,
+    "kWh Received":3346381.3169200001
+  },
+  {
+    "Time":"2026-07-13 03:00:00",
+    "Bay":"INC TRAFO 1 KERTASARI",
+    "IP kWh Meter":"252382868",
+    "kWh Delivery":86681065.8672100008,
+    "kWh Received":3347986.5261200001
+  },
+  {
+    "Time":"2026-07-13 04:00:00",
+    "Bay":"INC TRAFO 1 KERTASARI",
+    "IP kWh Meter":"252382868",
+    "kWh Delivery":86681065.8672100008,
+    "kWh Received":3349555.2215399998
+  },
+  {
+    "Time":"2026-07-13 05:00:00",
+    "Bay":"INC TRAFO 1 KERTASARI",
+    "IP kWh Meter":"252382868",
+    "kWh Delivery":86681065.8672100008,
+    "kWh Received":3351138.0880900002
+  },
+  {
+    "Time":"2026-07-13 06:00:00",
+    "Bay":"INC TRAFO 1 KERTASARI",
+    "IP kWh Meter":"252382868",
+    "kWh Delivery":86681065.8672100008,
+    "kWh Received":3352908.1469699997
+  },
+  {
+    "Time":"2026-07-13 07:00:00",
+    "Bay":"INC TRAFO 1 KERTASARI",
+    "IP kWh Meter":"252382868",
+    "kWh Delivery":86681065.8672100008,
+    "kWh Received":3354704.4622499999
+  },
+  {
+    "Time":"2026-07-13 08:00:00",
+    "Bay":"INC TRAFO 1 KERTASARI",
+    "IP kWh Meter":"252382868",
+    "kWh Delivery":86681065.8672100008,
+    "kWh Received":3356226.4724699999
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"INC TRAFO 1 KERTASARI",
+    "IP kWh Meter":"252382868",
+    "kWh Delivery":86681065.8672100008,
+    "kWh Received":3357762.8903800002
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"INC TRAFO 1 KERTASARI",
+    "IP kWh Meter":"252382868",
+    "kWh Delivery":86681065.8672100008,
+    "kWh Received":3359398.8718099999
+  },
+  {
+    "Time":"2026-07-13 00:00:00",
+    "Bay":"INC TRAFO 1 ALAS",
+    "IP kWh Meter":"253661152",
+    "kWh Delivery":0.0,
+    "kWh Received":61942708.9437900037
+  },
+  {
+    "Time":"2026-07-13 01:00:00",
+    "Bay":"INC TRAFO 1 ALAS",
+    "IP kWh Meter":"253661152",
+    "kWh Delivery":0.0,
+    "kWh Received":61953131.1257200018
+  },
+  {
+    "Time":"2026-07-13 02:00:00",
+    "Bay":"INC TRAFO 1 ALAS",
+    "IP kWh Meter":"253661152",
+    "kWh Delivery":0.0,
+    "kWh Received":61963347.1380500048
+  },
+  {
+    "Time":"2026-07-13 03:00:00",
+    "Bay":"INC TRAFO 1 ALAS",
+    "IP kWh Meter":"253661152",
+    "kWh Delivery":0.0,
+    "kWh Received":61973421.4928000048
+  },
+  {
+    "Time":"2026-07-13 04:00:00",
+    "Bay":"INC TRAFO 1 ALAS",
+    "IP kWh Meter":"253661152",
+    "kWh Delivery":0.0,
+    "kWh Received":61983410.1003399938
+  },
+  {
+    "Time":"2026-07-13 05:00:00",
+    "Bay":"INC TRAFO 1 ALAS",
+    "IP kWh Meter":"253661152",
+    "kWh Delivery":0.0,
+    "kWh Received":61993426.6630899981
+  },
+  {
+    "Time":"2026-07-13 06:00:00",
+    "Bay":"INC TRAFO 1 ALAS",
+    "IP kWh Meter":"253661152",
+    "kWh Delivery":0.0,
+    "kWh Received":62004158.5025999993
+  },
+  {
+    "Time":"2026-07-13 07:00:00",
+    "Bay":"INC TRAFO 1 ALAS",
+    "IP kWh Meter":"253661152",
+    "kWh Delivery":0.0,
+    "kWh Received":62014722.0733200014
+  },
+  {
+    "Time":"2026-07-13 08:00:00",
+    "Bay":"INC TRAFO 1 ALAS",
+    "IP kWh Meter":"253661152",
+    "kWh Delivery":0.0,
+    "kWh Received":62024264.2040899992
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"INC TRAFO 1 ALAS",
+    "IP kWh Meter":"253661152",
+    "kWh Delivery":0.0,
+    "kWh Received":62033837.7844499946
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"INC TRAFO 1 ALAS",
+    "IP kWh Meter":"253661152",
+    "kWh Delivery":0.0,
+    "kWh Received":62043558.129610002
+  },
+  {
+    "Time":"2026-07-13 00:00:00",
+    "Bay":"INC TRAFO 1 TALIWANG",
+    "IP kWh Meter":"219153622",
+    "kWh Delivery":376401487.4035399556,
+    "kWh Received":4231.1934
+  },
+  {
+    "Time":"2026-07-13 01:00:00",
+    "Bay":"INC TRAFO 1 TALIWANG",
+    "IP kWh Meter":"219153622",
+    "kWh Delivery":376407747.8346500397,
+    "kWh Received":4231.1934
+  },
+  {
+    "Time":"2026-07-13 02:00:00",
+    "Bay":"INC TRAFO 1 TALIWANG",
+    "IP kWh Meter":"219153622",
+    "kWh Delivery":376413588.1700999737,
+    "kWh Received":4231.1934
+  },
+  {
+    "Time":"2026-07-13 03:00:00",
+    "Bay":"INC TRAFO 1 TALIWANG",
+    "IP kWh Meter":"219153622",
+    "kWh Delivery":376419170.0640499592,
+    "kWh Received":4231.1934
+  },
+  {
+    "Time":"2026-07-13 04:00:00",
+    "Bay":"INC TRAFO 1 TALIWANG",
+    "IP kWh Meter":"219153622",
+    "kWh Delivery":376424582.0849999785,
+    "kWh Received":4231.1934
+  },
+  {
+    "Time":"2026-07-13 05:00:00",
+    "Bay":"INC TRAFO 1 TALIWANG",
+    "IP kWh Meter":"219153622",
+    "kWh Delivery":376430158.6567100286,
+    "kWh Received":4231.1934
+  },
+  {
+    "Time":"2026-07-13 06:00:00",
+    "Bay":"INC TRAFO 1 TALIWANG",
+    "IP kWh Meter":"219153622",
+    "kWh Delivery":376435754.9432800412,
+    "kWh Received":4231.1934
+  },
+  {
+    "Time":"2026-07-13 07:00:00",
+    "Bay":"INC TRAFO 1 TALIWANG",
+    "IP kWh Meter":"219153622",
+    "kWh Delivery":376440010.0512700081,
+    "kWh Received":4231.1934
+  },
+  {
+    "Time":"2026-07-13 08:00:00",
+    "Bay":"INC TRAFO 1 TALIWANG",
+    "IP kWh Meter":"219153622",
+    "kWh Delivery":376443074.1065499783,
+    "kWh Received":4231.1934
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"INC TRAFO 1 TALIWANG",
+    "IP kWh Meter":"219153622",
+    "kWh Delivery":376446432.2462100387,
+    "kWh Received":4231.1934
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"INC TRAFO 1 TALIWANG",
+    "IP kWh Meter":"219153622",
+    "kWh Delivery":376450214.9909200072,
+    "kWh Received":4231.1934
+  },
+  {
+    "Time":"2026-07-13 00:00:00",
+    "Bay":"INC TRAFO 1 SUMBAWA",
+    "IP kWh Meter":"252382881",
+    "kWh Delivery":117825735.2160000056,
+    "kWh Received":1526.784
+  },
+  {
+    "Time":"2026-07-13 01:00:00",
+    "Bay":"INC TRAFO 1 SUMBAWA",
+    "IP kWh Meter":"252382881",
+    "kWh Delivery":117831095.423999995,
+    "kWh Received":1526.784
+  },
+  {
+    "Time":"2026-07-13 02:00:00",
+    "Bay":"INC TRAFO 1 SUMBAWA",
+    "IP kWh Meter":"252382881",
+    "kWh Delivery":117836326.2719999999,
+    "kWh Received":1526.784
+  },
+  {
+    "Time":"2026-07-13 03:00:00",
+    "Bay":"INC TRAFO 1 SUMBAWA",
+    "IP kWh Meter":"252382881",
+    "kWh Delivery":117841454.3040000051,
+    "kWh Received":1526.784
+  },
+  {
+    "Time":"2026-07-13 04:00:00",
+    "Bay":"INC TRAFO 1 SUMBAWA",
+    "IP kWh Meter":"252382881",
+    "kWh Delivery":117846511.1040000021,
+    "kWh Received":1526.784
+  },
+  {
+    "Time":"2026-07-13 05:00:00",
+    "Bay":"INC TRAFO 1 SUMBAWA",
+    "IP kWh Meter":"252382881",
+    "kWh Delivery":117851641.1519999951,
+    "kWh Received":1526.784
+  },
+  {
+    "Time":"2026-07-13 06:00:00",
+    "Bay":"INC TRAFO 1 SUMBAWA",
+    "IP kWh Meter":"252382881",
+    "kWh Delivery":117857281.9200000018,
+    "kWh Received":1526.784
+  },
+  {
+    "Time":"2026-07-13 07:00:00",
+    "Bay":"INC TRAFO 1 SUMBAWA",
+    "IP kWh Meter":"252382881",
+    "kWh Delivery":117863140.4159999937,
+    "kWh Received":1526.784
+  },
+  {
+    "Time":"2026-07-13 08:00:00",
+    "Bay":"INC TRAFO 1 SUMBAWA",
+    "IP kWh Meter":"252382881",
+    "kWh Delivery":117868389.4080000073,
+    "kWh Received":1526.784
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"INC TRAFO 1 SUMBAWA",
+    "IP kWh Meter":"252382881",
+    "kWh Delivery":117873828.576000005,
+    "kWh Received":1526.784
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"INC TRAFO 1 SUMBAWA",
+    "IP kWh Meter":"252382881",
+    "kWh Delivery":117879592.6560000032,
+    "kWh Received":1526.784
+  },
+  {
+    "Time":"2026-07-13 00:00:00",
+    "Bay":"INC TRAFO 1 BIMA",
+    "IP kWh Meter":"218504897",
+    "kWh Delivery":178056883.0705600083,
+    "kWh Received":11425959.2490200009
+  },
+  {
+    "Time":"2026-07-13 01:00:00",
+    "Bay":"INC TRAFO 1 BIMA",
+    "IP kWh Meter":"218504897",
+    "kWh Delivery":178057350.9438299835,
+    "kWh Received":11425959.2490200009
+  },
+  {
+    "Time":"2026-07-13 02:00:00",
+    "Bay":"INC TRAFO 1 BIMA",
+    "IP kWh Meter":"218504897",
+    "kWh Delivery":178057440.7767800093,
+    "kWh Received":11425981.7744599991
+  },
+  {
+    "Time":"2026-07-13 03:00:00",
+    "Bay":"INC TRAFO 1 BIMA",
+    "IP kWh Meter":"218504897",
+    "kWh Delivery":178057440.8305400014,
+    "kWh Received":11426181.7616600003
+  },
+  {
+    "Time":"2026-07-13 04:00:00",
+    "Bay":"INC TRAFO 1 BIMA",
+    "IP kWh Meter":"218504897",
+    "kWh Delivery":178057440.8305400014,
+    "kWh Received":11426516.3638899997
+  },
+  {
+    "Time":"2026-07-13 05:00:00",
+    "Bay":"INC TRAFO 1 BIMA",
+    "IP kWh Meter":"218504897",
+    "kWh Delivery":178057573.7790199816,
+    "kWh Received":11426648.7747600004
+  },
+  {
+    "Time":"2026-07-13 06:00:00",
+    "Bay":"INC TRAFO 1 BIMA",
+    "IP kWh Meter":"218504897",
+    "kWh Delivery":178059745.3603900075,
+    "kWh Received":11426648.7747600004
+  },
+  {
+    "Time":"2026-07-13 07:00:00",
+    "Bay":"INC TRAFO 1 BIMA",
+    "IP kWh Meter":"218504897",
+    "kWh Delivery":178062782.8003000021,
+    "kWh Received":11426648.7747600004
+  },
+  {
+    "Time":"2026-07-13 08:00:00",
+    "Bay":"INC TRAFO 1 BIMA",
+    "IP kWh Meter":"218504897",
+    "kWh Delivery":178065310.6491799951,
+    "kWh Received":11426648.7747600004
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"INC TRAFO 1 BIMA",
+    "IP kWh Meter":"218504897",
+    "kWh Delivery":178070811.4259699881,
+    "kWh Received":11426648.7747600004
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"INC TRAFO 1 BIMA",
+    "IP kWh Meter":"218504897",
+    "kWh Delivery":178080487.6880599856,
+    "kWh Received":11426648.7747600004
+  },
+  {
+    "Time":"2026-07-13 00:00:00",
+    "Bay":"NPS WOHA SEWA",
+    "IP kWh Meter":"218247068",
+    "kWh Delivery":40204406.2936200052,
+    "kWh Received":1.33325
+  },
+  {
+    "Time":"2026-07-13 01:00:00",
+    "Bay":"NPS WOHA SEWA",
+    "IP kWh Meter":"218247068",
+    "kWh Delivery":40208723.479989998,
+    "kWh Received":1.33325
+  },
+  {
+    "Time":"2026-07-13 02:00:00",
+    "Bay":"NPS WOHA SEWA",
+    "IP kWh Meter":"218247068",
+    "kWh Delivery":40211377.5038700029,
+    "kWh Received":1.33325
+  },
+  {
+    "Time":"2026-07-13 03:00:00",
+    "Bay":"NPS WOHA SEWA",
+    "IP kWh Meter":"218247068",
+    "kWh Delivery":40212986.5192900002,
+    "kWh Received":1.33325
+  },
+  {
+    "Time":"2026-07-13 04:00:00",
+    "Bay":"NPS WOHA SEWA",
+    "IP kWh Meter":"218247068",
+    "kWh Delivery":40214596.0938099995,
+    "kWh Received":1.33325
+  },
+  {
+    "Time":"2026-07-13 05:00:00",
+    "Bay":"NPS WOHA SEWA",
+    "IP kWh Meter":"218247068",
+    "kWh Delivery":40216376.5391299948,
+    "kWh Received":1.33325
+  },
+  {
+    "Time":"2026-07-13 06:00:00",
+    "Bay":"NPS WOHA SEWA",
+    "IP kWh Meter":"218247068",
+    "kWh Delivery":40219596.9354000017,
+    "kWh Received":1.33325
+  },
+  {
+    "Time":"2026-07-13 07:00:00",
+    "Bay":"NPS WOHA SEWA",
+    "IP kWh Meter":"218247068",
+    "kWh Delivery":40222816.9446099997,
+    "kWh Received":1.33325
+  },
+  {
+    "Time":"2026-07-13 08:00:00",
+    "Bay":"NPS WOHA SEWA",
+    "IP kWh Meter":"218247068",
+    "kWh Delivery":40226037.1688499972,
+    "kWh Received":1.33325
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"NPS WOHA SEWA",
+    "IP kWh Meter":"218247068",
+    "kWh Delivery":40229693.8383099958,
+    "kWh Received":1.33325
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"NPS WOHA SEWA",
+    "IP kWh Meter":"218247068",
+    "kWh Delivery":40234511.9818999991,
+    "kWh Received":1.33325
+  },
+  {
+    "Time":"2026-07-13 00:00:00",
+    "Bay":"ND NIU SEWA 1",
+    "IP kWh Meter":"253661325",
+    "kWh Delivery":12128883.3237999994,
+    "kWh Received":38.64269
+  },
+  {
+    "Time":"2026-07-13 01:00:00",
+    "Bay":"ND NIU SEWA 1",
+    "IP kWh Meter":"253661325",
+    "kWh Delivery":12134764.7972599994,
+    "kWh Received":38.64269
+  },
+  {
+    "Time":"2026-07-13 02:00:00",
+    "Bay":"ND NIU SEWA 1",
+    "IP kWh Meter":"253661325",
+    "kWh Delivery":12140646.3997600004,
+    "kWh Received":38.64269
+  },
+  {
+    "Time":"2026-07-13 03:00:00",
+    "Bay":"ND NIU SEWA 1",
+    "IP kWh Meter":"253661325",
+    "kWh Delivery":12146522.7767700013,
+    "kWh Received":38.64269
+  },
+  {
+    "Time":"2026-07-13 04:00:00",
+    "Bay":"ND NIU SEWA 1",
+    "IP kWh Meter":"253661325",
+    "kWh Delivery":12152405.6264999993,
+    "kWh Received":38.64269
+  },
+  {
+    "Time":"2026-07-13 05:00:00",
+    "Bay":"ND NIU SEWA 1",
+    "IP kWh Meter":"253661325",
+    "kWh Delivery":12158285.8312299997,
+    "kWh Received":38.64269
+  },
+  {
+    "Time":"2026-07-13 06:00:00",
+    "Bay":"ND NIU SEWA 1",
+    "IP kWh Meter":"253661325",
+    "kWh Delivery":12164140.4677000009,
+    "kWh Received":38.64269
+  },
+  {
+    "Time":"2026-07-13 07:00:00",
+    "Bay":"ND NIU SEWA 1",
+    "IP kWh Meter":"253661325",
+    "kWh Delivery":12169994.7171,
+    "kWh Received":38.64269
+  },
+  {
+    "Time":"2026-07-13 08:00:00",
+    "Bay":"ND NIU SEWA 1",
+    "IP kWh Meter":"253661325",
+    "kWh Delivery":12174985.4087999985,
+    "kWh Received":38.64269
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"ND NIU SEWA 1",
+    "IP kWh Meter":"253661325",
+    "kWh Delivery":12178077.0176100004,
+    "kWh Received":38.64269
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"ND NIU SEWA 1",
+    "IP kWh Meter":"253661325",
+    "kWh Delivery":12178451.4237799998,
+    "kWh Received":38.87923
+  },
+  {
+    "Time":"2026-07-13 00:00:00",
+    "Bay":"IPS BOAK SEWA",
+    "IP kWh Meter":"214162548",
+    "kWh Delivery":794177351.4718899727,
+    "kWh Received":319582.66801
+  },
+  {
+    "Time":"2026-07-13 01:00:00",
+    "Bay":"IPS BOAK SEWA",
+    "IP kWh Meter":"214162548",
+    "kWh Delivery":794184962.7148199081,
+    "kWh Received":319582.66801
+  },
+  {
+    "Time":"2026-07-13 02:00:00",
+    "Bay":"IPS BOAK SEWA",
+    "IP kWh Meter":"214162548",
+    "kWh Delivery":794192590.8677099943,
+    "kWh Received":319582.66801
+  },
+  {
+    "Time":"2026-07-13 03:00:00",
+    "Bay":"IPS BOAK SEWA",
+    "IP kWh Meter":"214162548",
+    "kWh Delivery":794200186.8623399734,
+    "kWh Received":319582.66801
+  },
+  {
+    "Time":"2026-07-13 04:00:00",
+    "Bay":"IPS BOAK SEWA",
+    "IP kWh Meter":"214162548",
+    "kWh Delivery":794207790.2856299877,
+    "kWh Received":319582.66801
+  },
+  {
+    "Time":"2026-07-13 05:00:00",
+    "Bay":"IPS BOAK SEWA",
+    "IP kWh Meter":"214162548",
+    "kWh Delivery":794215383.9343700409,
+    "kWh Received":319582.66801
+  },
+  {
+    "Time":"2026-07-13 06:00:00",
+    "Bay":"IPS BOAK SEWA",
+    "IP kWh Meter":"214162548",
+    "kWh Delivery":794222935.8458100557,
+    "kWh Received":319582.66801
+  },
+  {
+    "Time":"2026-07-13 07:00:00",
+    "Bay":"IPS BOAK SEWA",
+    "IP kWh Meter":"214162548",
+    "kWh Delivery":794229105.8320300579,
+    "kWh Received":319616.87892
+  },
+  {
+    "Time":"2026-07-13 08:00:00",
+    "Bay":"IPS BOAK SEWA",
+    "IP kWh Meter":"214162548",
+    "kWh Delivery":794229105.8320300579,
+    "kWh Received":319723.91019
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"IPS BOAK SEWA",
+    "IP kWh Meter":"214162548",
+    "kWh Delivery":794229105.8320300579,
+    "kWh Received":319791.94103
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"IPS BOAK SEWA",
+    "IP kWh Meter":"214162548",
+    "kWh Delivery":794229105.8320300579,
+    "kWh Received":319862.31775
+  },
+  {
+    "Time":"2026-07-13 00:00:00",
+    "Bay":"IPS BONTO SEWA",
+    "IP kWh Meter":"215471273",
+    "kWh Delivery":0.27418,
+    "kWh Received":21375727.1129500009
+  },
+  {
+    "Time":"2026-07-13 01:00:00",
+    "Bay":"IPS BONTO SEWA",
+    "IP kWh Meter":"215471273",
+    "kWh Delivery":0.27418,
+    "kWh Received":21378144.0066899993
+  },
+  {
+    "Time":"2026-07-13 02:00:00",
+    "Bay":"IPS BONTO SEWA",
+    "IP kWh Meter":"215471273",
+    "kWh Delivery":0.27418,
+    "kWh Received":21380562.6422500014
+  },
+  {
+    "Time":"2026-07-13 03:00:00",
+    "Bay":"IPS BONTO SEWA",
+    "IP kWh Meter":"215471273",
+    "kWh Delivery":0.27418,
+    "kWh Received":21382980.3262599967
+  },
+  {
+    "Time":"2026-07-13 04:00:00",
+    "Bay":"IPS BONTO SEWA",
+    "IP kWh Meter":"215471273",
+    "kWh Delivery":0.27418,
+    "kWh Received":21385400.2843100019
+  },
+  {
+    "Time":"2026-07-13 05:00:00",
+    "Bay":"IPS BONTO SEWA",
+    "IP kWh Meter":"215471273",
+    "kWh Delivery":0.27418,
+    "kWh Received":21387820.0327000022
+  },
+  {
+    "Time":"2026-07-13 06:00:00",
+    "Bay":"IPS BONTO SEWA",
+    "IP kWh Meter":"215471273",
+    "kWh Delivery":0.27418,
+    "kWh Received":21390906.1416799985
+  },
+  {
+    "Time":"2026-07-13 07:00:00",
+    "Bay":"IPS BONTO SEWA",
+    "IP kWh Meter":"215471273",
+    "kWh Delivery":0.27418,
+    "kWh Received":21394142.8539199978
+  },
+  {
+    "Time":"2026-07-13 08:00:00",
+    "Bay":"IPS BONTO SEWA",
+    "IP kWh Meter":"215471273",
+    "kWh Delivery":0.27418,
+    "kWh Received":21397374.8729199991
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"IPS BONTO SEWA",
+    "IP kWh Meter":"215471273",
+    "kWh Delivery":0.27418,
+    "kWh Received":21400720.9168800004
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"IPS BONTO SEWA",
+    "IP kWh Meter":"215471273",
+    "kWh Delivery":0.27418,
+    "kWh Received":21404750.3687200025
+  },
+  {
+    "Time":"2026-07-13 00:00:00",
+    "Bay":"ND LABUHAN PLN",
+    "IP kWh Meter":"217084066",
+    "kWh Delivery":25182.80796,
+    "kWh Received":124362510.8386199921
+  },
+  {
+    "Time":"2026-07-13 01:00:00",
+    "Bay":"ND LABUHAN PLN",
+    "IP kWh Meter":"217084066",
+    "kWh Delivery":25182.80796,
+    "kWh Received":124363497.2271199971
+  },
+  {
+    "Time":"2026-07-13 02:00:00",
+    "Bay":"ND LABUHAN PLN",
+    "IP kWh Meter":"217084066",
+    "kWh Delivery":25182.80796,
+    "kWh Received":124364480.0351999998
+  },
+  {
+    "Time":"2026-07-13 03:00:00",
+    "Bay":"ND LABUHAN PLN",
+    "IP kWh Meter":"217084066",
+    "kWh Delivery":25182.80796,
+    "kWh Received":124365460.5853600055
+  },
+  {
+    "Time":"2026-07-13 04:00:00",
+    "Bay":"ND LABUHAN PLN",
+    "IP kWh Meter":"217084066",
+    "kWh Delivery":25182.80796,
+    "kWh Received":124366445.715869993
+  },
+  {
+    "Time":"2026-07-13 05:00:00",
+    "Bay":"ND LABUHAN PLN",
+    "IP kWh Meter":"217084066",
+    "kWh Delivery":25182.80796,
+    "kWh Received":124367552.548270002
+  },
+  {
+    "Time":"2026-07-13 06:00:00",
+    "Bay":"ND LABUHAN PLN",
+    "IP kWh Meter":"217084066",
+    "kWh Delivery":25182.80796,
+    "kWh Received":124369171.734980002
+  },
+  {
+    "Time":"2026-07-13 07:00:00",
+    "Bay":"ND LABUHAN PLN",
+    "IP kWh Meter":"217084066",
+    "kWh Delivery":25182.80796,
+    "kWh Received":124371259.9884600043
+  },
+  {
+    "Time":"2026-07-13 08:00:00",
+    "Bay":"ND LABUHAN PLN",
+    "IP kWh Meter":"217084066",
+    "kWh Delivery":25182.80796,
+    "kWh Received":124373377.1433099955
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"ND LABUHAN PLN",
+    "IP kWh Meter":"217084066",
+    "kWh Delivery":25182.80796,
+    "kWh Received":124375779.1831499934
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"ND LABUHAN PLN",
+    "IP kWh Meter":"217084066",
+    "kWh Delivery":25182.80796,
+    "kWh Received":124379073.4239799976
+  },
+  {
+    "Time":"2026-07-13 00:00:00",
+    "Bay":"IPS DOMPU SEWA",
+    "IP kWh Meter":"219946710",
+    "kWh Delivery":140.03406,
+    "kWh Received":55721503.3783099949
+  },
+  {
+    "Time":"2026-07-13 01:00:00",
+    "Bay":"IPS DOMPU SEWA",
+    "IP kWh Meter":"219946710",
+    "kWh Delivery":140.03406,
+    "kWh Received":55728615.5473000035
+  },
+  {
+    "Time":"2026-07-13 02:00:00",
+    "Bay":"IPS DOMPU SEWA",
+    "IP kWh Meter":"219946710",
+    "kWh Delivery":140.03406,
+    "kWh Received":55733857.9863499999
+  },
+  {
+    "Time":"2026-07-13 03:00:00",
+    "Bay":"IPS DOMPU SEWA",
+    "IP kWh Meter":"219946710",
+    "kWh Delivery":140.03406,
+    "kWh Received":55737078.0815699995
+  },
+  {
+    "Time":"2026-07-13 04:00:00",
+    "Bay":"IPS DOMPU SEWA",
+    "IP kWh Meter":"219946710",
+    "kWh Delivery":140.03406,
+    "kWh Received":55740298.2413000017
+  },
+  {
+    "Time":"2026-07-13 05:00:00",
+    "Bay":"IPS DOMPU SEWA",
+    "IP kWh Meter":"219946710",
+    "kWh Delivery":140.03406,
+    "kWh Received":55743518.530050002
+  },
+  {
+    "Time":"2026-07-13 06:00:00",
+    "Bay":"IPS DOMPU SEWA",
+    "IP kWh Meter":"219946710",
+    "kWh Delivery":140.03406,
+    "kWh Received":55748671.7059900016
+  },
+  {
+    "Time":"2026-07-13 07:00:00",
+    "Bay":"IPS DOMPU SEWA",
+    "IP kWh Meter":"219946710",
+    "kWh Delivery":140.03406,
+    "kWh Received":55754285.9922399968
+  },
+  {
+    "Time":"2026-07-13 08:00:00",
+    "Bay":"IPS DOMPU SEWA",
+    "IP kWh Meter":"219946710",
+    "kWh Delivery":140.03406,
+    "kWh Received":55759899.8484000042
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"IPS DOMPU SEWA",
+    "IP kWh Meter":"219946710",
+    "kWh Delivery":140.03406,
+    "kWh Received":55766189.5538399965
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"IPS DOMPU SEWA",
+    "IP kWh Meter":"219946710",
+    "kWh Delivery":140.03406,
+    "kWh Received":55774228.0722000003
+  },
+  {
+    "Time":"2026-07-13 00:00:00",
+    "Bay":"ND NIU SEWA 2",
+    "IP kWh Meter":"253661326",
+    "kWh Delivery":6055531.5863500005,
+    "kWh Received":17.43975
+  },
+  {
+    "Time":"2026-07-13 01:00:00",
+    "Bay":"ND NIU SEWA 2",
+    "IP kWh Meter":"253661326",
+    "kWh Delivery":6059760.4127799999,
+    "kWh Received":17.43975
+  },
+  {
+    "Time":"2026-07-13 02:00:00",
+    "Bay":"ND NIU SEWA 2",
+    "IP kWh Meter":"253661326",
+    "kWh Delivery":6063993.0884300005,
+    "kWh Received":17.43975
+  },
+  {
+    "Time":"2026-07-13 03:00:00",
+    "Bay":"ND NIU SEWA 2",
+    "IP kWh Meter":"253661326",
+    "kWh Delivery":6068224.2157799993,
+    "kWh Received":17.43975
+  },
+  {
+    "Time":"2026-07-13 04:00:00",
+    "Bay":"ND NIU SEWA 2",
+    "IP kWh Meter":"253661326",
+    "kWh Delivery":6072452.5476200003,
+    "kWh Received":17.43975
+  },
+  {
+    "Time":"2026-07-13 05:00:00",
+    "Bay":"ND NIU SEWA 2",
+    "IP kWh Meter":"253661326",
+    "kWh Delivery":6076682.7288000006,
+    "kWh Received":17.43975
+  },
+  {
+    "Time":"2026-07-13 06:00:00",
+    "Bay":"ND NIU SEWA 2",
+    "IP kWh Meter":"253661326",
+    "kWh Delivery":6080912.5874300003,
+    "kWh Received":17.43975
+  },
+  {
+    "Time":"2026-07-13 07:00:00",
+    "Bay":"ND NIU SEWA 2",
+    "IP kWh Meter":"253661326",
+    "kWh Delivery":6085140.8762600003,
+    "kWh Received":17.43975
+  },
+  {
+    "Time":"2026-07-13 08:00:00",
+    "Bay":"ND NIU SEWA 2",
+    "IP kWh Meter":"253661326",
+    "kWh Delivery":6088914.5920000002,
+    "kWh Received":17.43975
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"ND NIU SEWA 2",
+    "IP kWh Meter":"253661326",
+    "kWh Delivery":6091627.1927800002,
+    "kWh Received":17.43975
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"ND NIU SEWA 2",
+    "IP kWh Meter":"253661326",
+    "kWh Delivery":6092115.4411300002,
+    "kWh Received":17.54727
+  },
+  {
+    "Time":"2026-07-13 00:00:00",
+    "Bay":"NPS TALIWANG SEWA",
+    "IP kWh Meter":"253170949",
+    "kWh Delivery":1653.07712,
+    "kWh Received":24438943.0006799996
+  },
+  {
+    "Time":"2026-07-13 01:00:00",
+    "Bay":"NPS TALIWANG SEWA",
+    "IP kWh Meter":"253170949",
+    "kWh Delivery":1653.07712,
+    "kWh Received":24440951.7969900034
+  },
+  {
+    "Time":"2026-07-13 02:00:00",
+    "Bay":"NPS TALIWANG SEWA",
+    "IP kWh Meter":"253170949",
+    "kWh Delivery":1653.07712,
+    "kWh Received":24442960.3782599978
+  },
+  {
+    "Time":"2026-07-13 03:00:00",
+    "Bay":"NPS TALIWANG SEWA",
+    "IP kWh Meter":"253170949",
+    "kWh Delivery":1653.07712,
+    "kWh Received":24444969.1530699991
+  },
+  {
+    "Time":"2026-07-13 04:00:00",
+    "Bay":"NPS TALIWANG SEWA",
+    "IP kWh Meter":"253170949",
+    "kWh Delivery":1653.07712,
+    "kWh Received":24446977.7773499973
+  },
+  {
+    "Time":"2026-07-13 05:00:00",
+    "Bay":"NPS TALIWANG SEWA",
+    "IP kWh Meter":"253170949",
+    "kWh Delivery":1653.07712,
+    "kWh Received":24448986.4231300019
+  },
+  {
+    "Time":"2026-07-13 06:00:00",
+    "Bay":"NPS TALIWANG SEWA",
+    "IP kWh Meter":"253170949",
+    "kWh Delivery":1653.07712,
+    "kWh Received":24451801.0173899978
+  },
+  {
+    "Time":"2026-07-13 07:00:00",
+    "Bay":"NPS TALIWANG SEWA",
+    "IP kWh Meter":"253170949",
+    "kWh Delivery":1653.07712,
+    "kWh Received":24455830.8672900014
+  },
+  {
+    "Time":"2026-07-13 08:00:00",
+    "Bay":"NPS TALIWANG SEWA",
+    "IP kWh Meter":"253170949",
+    "kWh Delivery":1653.07712,
+    "kWh Received":24459860.3301299997
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"NPS TALIWANG SEWA",
+    "IP kWh Meter":"253170949",
+    "kWh Delivery":1653.07712,
+    "kWh Received":24463890.2660400011
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"NPS TALIWANG SEWA",
+    "IP kWh Meter":"253170949",
+    "kWh Delivery":1653.07712,
+    "kWh Received":24467919.599849999
+  },
+  {
+    "Time":"2026-07-13 00:00:00",
+    "Bay":"ND BONTO SEWA",
+    "IP kWh Meter":"253170888",
+    "kWh Delivery":462.45428,
+    "kWh Received":55873090.8726699948
+  },
+  {
+    "Time":"2026-07-13 01:00:00",
+    "Bay":"ND BONTO SEWA",
+    "IP kWh Meter":"253170888",
+    "kWh Delivery":462.45428,
+    "kWh Received":55874098.4049699977
+  },
+  {
+    "Time":"2026-07-13 02:00:00",
+    "Bay":"ND BONTO SEWA",
+    "IP kWh Meter":"253170888",
+    "kWh Delivery":462.45428,
+    "kWh Received":55875105.7598700002
+  },
+  {
+    "Time":"2026-07-13 03:00:00",
+    "Bay":"ND BONTO SEWA",
+    "IP kWh Meter":"253170888",
+    "kWh Delivery":462.45428,
+    "kWh Received":55876113.1953999996
+  },
+  {
+    "Time":"2026-07-13 04:00:00",
+    "Bay":"ND BONTO SEWA",
+    "IP kWh Meter":"253170888",
+    "kWh Delivery":462.45428,
+    "kWh Received":55877120.4051500037
+  },
+  {
+    "Time":"2026-07-13 05:00:00",
+    "Bay":"ND BONTO SEWA",
+    "IP kWh Meter":"253170888",
+    "kWh Delivery":462.45428,
+    "kWh Received":55878127.6632799953
+  },
+  {
+    "Time":"2026-07-13 06:00:00",
+    "Bay":"ND BONTO SEWA",
+    "IP kWh Meter":"253170888",
+    "kWh Delivery":462.45428,
+    "kWh Received":55880121.2131299973
+  },
+  {
+    "Time":"2026-07-13 07:00:00",
+    "Bay":"ND BONTO SEWA",
+    "IP kWh Meter":"253170888",
+    "kWh Delivery":462.45428,
+    "kWh Received":55883154.3093700036
+  },
+  {
+    "Time":"2026-07-13 08:00:00",
+    "Bay":"ND BONTO SEWA",
+    "IP kWh Meter":"253170888",
+    "kWh Delivery":462.45428,
+    "kWh Received":55886187.2765899971
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"ND BONTO SEWA",
+    "IP kWh Meter":"253170888",
+    "kWh Delivery":462.45428,
+    "kWh Received":55889379.701349996
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"ND BONTO SEWA",
+    "IP kWh Meter":"253170888",
+    "kWh Delivery":462.45428,
+    "kWh Received":55894435.4746100008
+  },
+  {
+    "Time":"2026-07-13 00:00:00",
+    "Bay":"INC TRAFO 1 WOHA",
+    "IP kWh Meter":"219153624",
+    "kWh Delivery":1956.74576,
+    "kWh Received":100766800.5521699935
+  },
+  {
+    "Time":"2026-07-13 01:00:00",
+    "Bay":"INC TRAFO 1 WOHA",
+    "IP kWh Meter":"219153624",
+    "kWh Delivery":1956.74576,
+    "kWh Received":100766800.5521699935
+  },
+  {
+    "Time":"2026-07-13 02:00:00",
+    "Bay":"INC TRAFO 1 WOHA",
+    "IP kWh Meter":"219153624",
+    "kWh Delivery":1956.74576,
+    "kWh Received":100766800.5521699935
+  },
+  {
+    "Time":"2026-07-13 03:00:00",
+    "Bay":"INC TRAFO 1 WOHA",
+    "IP kWh Meter":"219153624",
+    "kWh Delivery":1956.74576,
+    "kWh Received":100766800.5521699935
+  },
+  {
+    "Time":"2026-07-13 04:00:00",
+    "Bay":"INC TRAFO 1 WOHA",
+    "IP kWh Meter":"219153624",
+    "kWh Delivery":1956.74576,
+    "kWh Received":100766800.5521699935
+  },
+  {
+    "Time":"2026-07-13 05:00:00",
+    "Bay":"INC TRAFO 1 WOHA",
+    "IP kWh Meter":"219153624",
+    "kWh Delivery":1956.74576,
+    "kWh Received":100766800.5521699935
+  },
+  {
+    "Time":"2026-07-13 06:00:00",
+    "Bay":"INC TRAFO 1 WOHA",
+    "IP kWh Meter":"219153624",
+    "kWh Delivery":1956.74576,
+    "kWh Received":100766800.5521699935
+  },
+  {
+    "Time":"2026-07-13 07:00:00",
+    "Bay":"INC TRAFO 1 WOHA",
+    "IP kWh Meter":"219153624",
+    "kWh Delivery":1956.74576,
+    "kWh Received":100766800.5521699935
+  },
+  {
+    "Time":"2026-07-13 08:00:00",
+    "Bay":"INC TRAFO 1 WOHA",
+    "IP kWh Meter":"219153624",
+    "kWh Delivery":1956.74576,
+    "kWh Received":100766800.5521699935
+  },
+  {
+    "Time":"2026-07-13 09:00:00",
+    "Bay":"INC TRAFO 1 WOHA",
+    "IP kWh Meter":"219153624",
+    "kWh Delivery":1956.74576,
+    "kWh Received":100766800.5521699935
+  },
+  {
+    "Time":"2026-07-13 10:00:00",
+    "Bay":"INC TRAFO 1 WOHA",
+    "IP kWh Meter":"219153624",
+    "kWh Delivery":1956.74576,
+    "kWh Received":100766800.5521699935
+  },
+  {
+    "Time":"2026-07-13 11:00:00",
+    "Bay":"GT PLTU 1 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.119",
+    "kWh Delivery":1308910.0,
+    "kWh Received":3137938.0
+  },
+  {
+    "Time":"2026-07-13 11:00:00",
+    "Bay":"GT PLTU 2 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.118",
+    "kWh Delivery":2361451.0,
+    "kWh Received":4251693.0
+  },
+  {
+    "Time":"2026-07-13 11:00:00",
+    "Bay":"GT PLTMG SBW 1 MAIN",
+    "IP kWh Meter":"10.33.70.109",
+    "kWh Delivery":344393.0,
+    "kWh Received":1324089728.0
+  },
+  {
+    "Time":"2026-07-13 11:00:00",
+    "Bay":"GT PLTMG SBW 2 MAIN",
+    "IP kWh Meter":"10.33.70.108",
+    "kWh Delivery":1257600.0,
+    "kWh Received":671632512.0
+  },
+  {
+    "Time":"2026-07-13 11:00:00",
+    "Bay":"GT PLTMG SBW 2 BACKUP",
+    "IP kWh Meter":"10.33.70.133",
+    "kWh Delivery":1225590.0,
+    "kWh Received":632924096.0
+  },
+  {
+    "Time":"2026-07-13 11:00:00",
+    "Bay":"INC TRAFO 1 LABUHAN",
+    "IP kWh Meter":"10.33.70.127",
+    "kWh Delivery":4496760.0,
+    "kWh Received":1873441.0
+  },
+  {
+    "Time":"2026-07-13 11:00:00",
+    "Bay":"INC TRAFO 1 EMPANG",
+    "IP kWh Meter":"10.33.70.126",
+    "kWh Delivery":2770549.0,
+    "kWh Received":593.0
+  },
+  {
+    "Time":"2026-07-13 11:00:00",
+    "Bay":"INC TRAFO 2 DOMPU",
+    "IP kWh Meter":"10.33.70.125",
+    "kWh Delivery":4660163.0,
+    "kWh Received":3558.0
+  },
+  {
+    "Time":"2026-07-13 11:00:00",
+    "Bay":"INC TRAFO 2 WOHA",
+    "IP kWh Meter":"10.33.70.129",
+    "kWh Delivery":1007932.0,
+    "kWh Received":2946.0
+  },
+  {
+    "Time":"2026-07-13 11:00:00",
+    "Bay":"INC TRAFO 2 BIMA",
+    "IP kWh Meter":"10.33.70.102",
+    "kWh Delivery":142321680.0,
+    "kWh Received":680414.0
+  },
+  {
+    "Time":"2026-07-13 11:00:00",
+    "Bay":"INC TRAFO 2 BONTO",
+    "IP kWh Meter":"10.33.70.123",
+    "kWh Delivery":2265286.0,
+    "kWh Received":2524840.0
+  },
+  {
+    "Time":"2026-07-13 11:00:00",
+    "Bay":"GT PLTMG BONTO 1 MAIN",
+    "IP kWh Meter":"10.33.70.104",
+    "kWh Delivery":76541.0,
+    "kWh Received":817366848.0
+  },
+  {
+    "Time":"2026-07-13 11:00:00",
+    "Bay":"GT PLTMG BONTO 2 MAIN",
+    "IP kWh Meter":"10.33.70.105",
+    "kWh Delivery":481353.0,
+    "kWh Received":539582464.0
+  },
+  {
+    "Time":"2026-07-13 11:00:00",
+    "Bay":"INC TRAFO 1 SAPE",
+    "IP kWh Meter":"10.33.70.106",
+    "kWh Delivery":352922.0,
+    "kWh Received":0.0
+  },
+  {
+    "Time":"2026-07-13 11:00:00",
+    "Bay":"GT 3 PLTMG 3",
+    "IP kWh Meter":"10.33.70.121",
+    "kWh Delivery":299040.94,
+    "kWh Received":47965712.0
+  },
+  {
+    "Time":"2026-07-13 11:00:00",
+    "Bay":"GT 4 PLTMG 2",
+    "IP kWh Meter":"10.33.70.122",
+    "kWh Delivery":112034.68,
+    "kWh Received":20292608.0
+  },
+  {
+    "Time":"2026-07-13 11:30:00",
+    "Bay":"GT PLTU 1 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.119",
+    "kWh Delivery":1308910.0,
+    "kWh Received":3140759.0
+  },
+  {
+    "Time":"2026-07-13 11:30:00",
+    "Bay":"GT PLTU 2 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.118",
+    "kWh Delivery":2361451.0,
+    "kWh Received":4254358.0
+  },
+  {
+    "Time":"2026-07-13 11:30:00",
+    "Bay":"GT PLTMG SBW 1 MAIN",
+    "IP kWh Meter":"10.33.70.109",
+    "kWh Delivery":344393.0,
+    "kWh Received":1324095104.0
+  },
+  {
+    "Time":"2026-07-13 11:30:00",
+    "Bay":"GT PLTMG SBW 2 MAIN",
+    "IP kWh Meter":"10.33.70.108",
+    "kWh Delivery":1257600.0,
+    "kWh Received":671638016.0
+  },
+  {
+    "Time":"2026-07-13 11:30:00",
+    "Bay":"GT PLTMG SBW 2 BACKUP",
+    "IP kWh Meter":"10.33.70.133",
+    "kWh Delivery":1225590.0,
+    "kWh Received":632929536.0
+  },
+  {
+    "Time":"2026-07-13 11:30:00",
+    "Bay":"INC TRAFO 1 LABUHAN",
+    "IP kWh Meter":"10.33.70.127",
+    "kWh Delivery":4505533.0,
+    "kWh Received":1873441.0
+  },
+  {
+    "Time":"2026-07-13 11:30:00",
+    "Bay":"INC TRAFO 1 EMPANG",
+    "IP kWh Meter":"10.33.70.126",
+    "kWh Delivery":2774829.0,
+    "kWh Received":593.0
+  },
+  {
+    "Time":"2026-07-13 11:30:00",
+    "Bay":"INC TRAFO 2 DOMPU",
+    "IP kWh Meter":"10.33.70.125",
+    "kWh Delivery":4666828.0,
+    "kWh Received":3558.0
+  },
+  {
+    "Time":"2026-07-13 11:30:00",
+    "Bay":"INC TRAFO 2 WOHA",
+    "IP kWh Meter":"10.33.70.129",
+    "kWh Delivery":1011488.0,
+    "kWh Received":2946.0
+  },
+  {
+    "Time":"2026-07-13 11:30:00",
+    "Bay":"INC TRAFO 2 BIMA",
+    "IP kWh Meter":"10.33.70.102",
+    "kWh Delivery":142321680.0,
+    "kWh Received":680414.0
+  },
+  {
+    "Time":"2026-07-13 11:30:00",
+    "Bay":"INC TRAFO 2 BONTO",
+    "IP kWh Meter":"10.33.70.123",
+    "kWh Delivery":2265286.0,
+    "kWh Received":2527221.0
+  },
+  {
+    "Time":"2026-07-13 11:30:00",
+    "Bay":"GT PLTMG BONTO 1 MAIN",
+    "IP kWh Meter":"10.33.70.104",
+    "kWh Delivery":76541.0,
+    "kWh Received":817377024.0
+  },
+  {
+    "Time":"2026-07-13 11:30:00",
+    "Bay":"GT PLTMG BONTO 2 MAIN",
+    "IP kWh Meter":"10.33.70.105",
+    "kWh Delivery":481353.0,
+    "kWh Received":539588608.0
+  },
+  {
+    "Time":"2026-07-13 11:30:00",
+    "Bay":"INC TRAFO 1 SAPE",
+    "IP kWh Meter":"10.33.70.106",
+    "kWh Delivery":357324.0,
+    "kWh Received":0.0
+  },
+  {
+    "Time":"2026-07-13 11:30:00",
+    "Bay":"GT 3 PLTMG 3",
+    "IP kWh Meter":"10.33.70.121",
+    "kWh Delivery":299040.94,
+    "kWh Received":47974628.0
+  },
+  {
+    "Time":"2026-07-13 11:30:00",
+    "Bay":"GT 4 PLTMG 2",
+    "IP kWh Meter":"10.33.70.122",
+    "kWh Delivery":112034.68,
+    "kWh Received":20296598.0
+  },
+  {
+    "Time":"2026-07-13 12:00:00",
+    "Bay":"GT PLTU 1 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.119",
+    "kWh Delivery":1308910.0,
+    "kWh Received":3143582.0
+  },
+  {
+    "Time":"2026-07-13 12:00:00",
+    "Bay":"GT PLTU 2 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.118",
+    "kWh Delivery":2361451.0,
+    "kWh Received":4257044.0
+  },
+  {
+    "Time":"2026-07-13 12:00:00",
+    "Bay":"GT PLTMG SBW 1 MAIN",
+    "IP kWh Meter":"10.33.70.109",
+    "kWh Delivery":344393.0,
+    "kWh Received":1324099968.0
+  },
+  {
+    "Time":"2026-07-13 12:00:00",
+    "Bay":"GT PLTMG SBW 2 MAIN",
+    "IP kWh Meter":"10.33.70.108",
+    "kWh Delivery":1257600.0,
+    "kWh Received":671642944.0
+  },
+  {
+    "Time":"2026-07-13 12:00:00",
+    "Bay":"GT PLTMG SBW 2 BACKUP",
+    "IP kWh Meter":"10.33.70.133",
+    "kWh Delivery":1225590.0,
+    "kWh Received":632934464.0
+  },
+  {
+    "Time":"2026-07-13 12:00:00",
+    "Bay":"INC TRAFO 1 LABUHAN",
+    "IP kWh Meter":"10.33.70.127",
+    "kWh Delivery":4511285.0,
+    "kWh Received":1873441.0
+  },
+  {
+    "Time":"2026-07-13 12:00:00",
+    "Bay":"INC TRAFO 1 EMPANG",
+    "IP kWh Meter":"10.33.70.126",
+    "kWh Delivery":2779075.0,
+    "kWh Received":593.0
+  },
+  {
+    "Time":"2026-07-13 12:00:00",
+    "Bay":"INC TRAFO 2 DOMPU",
+    "IP kWh Meter":"10.33.70.125",
+    "kWh Delivery":4674488.0,
+    "kWh Received":3558.0
+  },
+  {
+    "Time":"2026-07-13 12:00:00",
+    "Bay":"INC TRAFO 2 WOHA",
+    "IP kWh Meter":"10.33.70.129",
+    "kWh Delivery":1015072.0,
+    "kWh Received":2946.0
+  },
+  {
+    "Time":"2026-07-13 12:00:00",
+    "Bay":"INC TRAFO 2 BIMA",
+    "IP kWh Meter":"10.33.70.102",
+    "kWh Delivery":142321680.0,
+    "kWh Received":680414.0
+  },
+  {
+    "Time":"2026-07-13 12:00:00",
+    "Bay":"INC TRAFO 2 BONTO",
+    "IP kWh Meter":"10.33.70.123",
+    "kWh Delivery":2265286.0,
+    "kWh Received":2529537.0
+  },
+  {
+    "Time":"2026-07-13 12:00:00",
+    "Bay":"GT PLTMG BONTO 1 MAIN",
+    "IP kWh Meter":"10.33.70.104",
+    "kWh Delivery":76541.0,
+    "kWh Received":817386880.0
+  },
+  {
+    "Time":"2026-07-13 12:00:00",
+    "Bay":"GT PLTMG BONTO 2 MAIN",
+    "IP kWh Meter":"10.33.70.105",
+    "kWh Delivery":481353.0,
+    "kWh Received":539594432.0
+  },
+  {
+    "Time":"2026-07-13 12:00:00",
+    "Bay":"INC TRAFO 1 SAPE",
+    "IP kWh Meter":"10.33.70.106",
+    "kWh Delivery":361675.0,
+    "kWh Received":0.0
+  },
+  {
+    "Time":"2026-07-13 12:00:00",
+    "Bay":"GT 3 PLTMG 3",
+    "IP kWh Meter":"10.33.70.121",
+    "kWh Delivery":299040.94,
+    "kWh Received":47982676.0
+  },
+  {
+    "Time":"2026-07-13 12:00:00",
+    "Bay":"GT 4 PLTMG 2",
+    "IP kWh Meter":"10.33.70.122",
+    "kWh Delivery":112034.68,
+    "kWh Received":20300590.0
+  },
+  {
+    "Time":"2026-07-13 12:30:00",
+    "Bay":"GT PLTU 1 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.119",
+    "kWh Delivery":1308910.0,
+    "kWh Received":3146461.0
+  },
+  {
+    "Time":"2026-07-13 12:30:00",
+    "Bay":"GT PLTU 2 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.118",
+    "kWh Delivery":2361451.0,
+    "kWh Received":4259730.0
+  },
+  {
+    "Time":"2026-07-13 12:30:00",
+    "Bay":"GT PLTMG SBW 1 MAIN",
+    "IP kWh Meter":"10.33.70.109",
+    "kWh Delivery":344393.0,
+    "kWh Received":1324105344.0
+  },
+  {
+    "Time":"2026-07-13 12:30:00",
+    "Bay":"GT PLTMG SBW 2 MAIN",
+    "IP kWh Meter":"10.33.70.108",
+    "kWh Delivery":1257600.0,
+    "kWh Received":671648448.0
+  },
+  {
+    "Time":"2026-07-13 12:30:00",
+    "Bay":"GT PLTMG SBW 2 BACKUP",
+    "IP kWh Meter":"10.33.70.133",
+    "kWh Delivery":1225590.0,
+    "kWh Received":632939968.0
+  },
+  {
+    "Time":"2026-07-13 12:30:00",
+    "Bay":"INC TRAFO 1 LABUHAN",
+    "IP kWh Meter":"10.33.70.127",
+    "kWh Delivery":4515924.0,
+    "kWh Received":1873441.0
+  },
+  {
+    "Time":"2026-07-13 12:30:00",
+    "Bay":"INC TRAFO 1 EMPANG",
+    "IP kWh Meter":"10.33.70.126",
+    "kWh Delivery":2783294.0,
+    "kWh Received":593.0
+  },
+  {
+    "Time":"2026-07-13 12:30:00",
+    "Bay":"INC TRAFO 2 DOMPU",
+    "IP kWh Meter":"10.33.70.125",
+    "kWh Delivery":4682612.0,
+    "kWh Received":3558.0
+  },
+  {
+    "Time":"2026-07-13 12:30:00",
+    "Bay":"INC TRAFO 2 WOHA",
+    "IP kWh Meter":"10.33.70.129",
+    "kWh Delivery":1018799.0,
+    "kWh Received":2946.0
+  },
+  {
+    "Time":"2026-07-13 12:30:00",
+    "Bay":"INC TRAFO 2 BIMA",
+    "IP kWh Meter":"10.33.70.102",
+    "kWh Delivery":142321680.0,
+    "kWh Received":680414.0
+  },
+  {
+    "Time":"2026-07-13 12:30:00",
+    "Bay":"INC TRAFO 2 BONTO",
+    "IP kWh Meter":"10.33.70.123",
+    "kWh Delivery":2265286.0,
+    "kWh Received":2531789.0
+  },
+  {
+    "Time":"2026-07-13 12:30:00",
+    "Bay":"GT PLTMG BONTO 1 MAIN",
+    "IP kWh Meter":"10.33.70.104",
+    "kWh Delivery":76541.0,
+    "kWh Received":817395648.0
+  },
+  {
+    "Time":"2026-07-13 12:30:00",
+    "Bay":"GT PLTMG BONTO 2 MAIN",
+    "IP kWh Meter":"10.33.70.105",
+    "kWh Delivery":481353.0,
+    "kWh Received":539599232.0
+  },
+  {
+    "Time":"2026-07-13 12:30:00",
+    "Bay":"INC TRAFO 1 SAPE",
+    "IP kWh Meter":"10.33.70.106",
+    "kWh Delivery":366060.0,
+    "kWh Received":0.0
+  },
+  {
+    "Time":"2026-07-13 12:30:00",
+    "Bay":"GT 3 PLTMG 3",
+    "IP kWh Meter":"10.33.70.121",
+    "kWh Delivery":299040.94,
+    "kWh Received":47990584.0
+  },
+  {
+    "Time":"2026-07-13 12:30:00",
+    "Bay":"GT 4 PLTMG 2",
+    "IP kWh Meter":"10.33.70.122",
+    "kWh Delivery":112034.68,
+    "kWh Received":20304580.0
+  },
+  {
+    "Time":"2026-07-13 13:00:00",
+    "Bay":"GT PLTU 1 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.119",
+    "kWh Delivery":1308910.0,
+    "kWh Received":3149235.0
+  },
+  {
+    "Time":"2026-07-13 13:00:00",
+    "Bay":"GT PLTU 2 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.118",
+    "kWh Delivery":2361451.0,
+    "kWh Received":4262416.0
+  },
+  {
+    "Time":"2026-07-13 13:00:00",
+    "Bay":"GT PLTMG SBW 1 MAIN",
+    "IP kWh Meter":"10.33.70.109",
+    "kWh Delivery":344393.0,
+    "kWh Received":1324110720.0
+  },
+  {
+    "Time":"2026-07-13 13:00:00",
+    "Bay":"GT PLTMG SBW 2 MAIN",
+    "IP kWh Meter":"10.33.70.108",
+    "kWh Delivery":1257600.0,
+    "kWh Received":671653824.0
+  },
+  {
+    "Time":"2026-07-13 13:00:00",
+    "Bay":"GT PLTMG SBW 2 BACKUP",
+    "IP kWh Meter":"10.33.70.133",
+    "kWh Delivery":1225590.0,
+    "kWh Received":632945344.0
+  },
+  {
+    "Time":"2026-07-13 13:00:00",
+    "Bay":"INC TRAFO 1 LABUHAN",
+    "IP kWh Meter":"10.33.70.127",
+    "kWh Delivery":4520747.0,
+    "kWh Received":1873441.0
+  },
+  {
+    "Time":"2026-07-13 13:00:00",
+    "Bay":"INC TRAFO 1 EMPANG",
+    "IP kWh Meter":"10.33.70.126",
+    "kWh Delivery":2787458.0,
+    "kWh Received":593.0
+  },
+  {
+    "Time":"2026-07-13 13:00:00",
+    "Bay":"INC TRAFO 2 DOMPU",
+    "IP kWh Meter":"10.33.70.125",
+    "kWh Delivery":4690879.0,
+    "kWh Received":3558.0
+  },
+  {
+    "Time":"2026-07-13 13:00:00",
+    "Bay":"INC TRAFO 2 WOHA",
+    "IP kWh Meter":"10.33.70.129",
+    "kWh Delivery":1022578.0,
+    "kWh Received":2946.0
+  },
+  {
+    "Time":"2026-07-13 13:00:00",
+    "Bay":"INC TRAFO 2 BIMA",
+    "IP kWh Meter":"10.33.70.102",
+    "kWh Delivery":142321680.0,
+    "kWh Received":680414.0
+  },
+  {
+    "Time":"2026-07-13 13:00:00",
+    "Bay":"INC TRAFO 2 BONTO",
+    "IP kWh Meter":"10.33.70.123",
+    "kWh Delivery":2265286.0,
+    "kWh Received":2534013.0
+  },
+  {
+    "Time":"2026-07-13 13:00:00",
+    "Bay":"GT PLTMG BONTO 1 MAIN",
+    "IP kWh Meter":"10.33.70.104",
+    "kWh Delivery":76541.0,
+    "kWh Received":817404416.0
+  },
+  {
+    "Time":"2026-07-13 13:00:00",
+    "Bay":"GT PLTMG BONTO 2 MAIN",
+    "IP kWh Meter":"10.33.70.105",
+    "kWh Delivery":481353.0,
+    "kWh Received":539604032.0
+  },
+  {
+    "Time":"2026-07-13 13:00:00",
+    "Bay":"INC TRAFO 1 SAPE",
+    "IP kWh Meter":"10.33.70.106",
+    "kWh Delivery":370428.0,
+    "kWh Received":0.0
+  },
+  {
+    "Time":"2026-07-13 13:00:00",
+    "Bay":"GT 3 PLTMG 3",
+    "IP kWh Meter":"10.33.70.121",
+    "kWh Delivery":299040.94,
+    "kWh Received":47998488.0
+  },
+  {
+    "Time":"2026-07-13 13:00:00",
+    "Bay":"GT 4 PLTMG 2",
+    "IP kWh Meter":"10.33.70.122",
+    "kWh Delivery":112034.68,
+    "kWh Received":20308562.0
+  },
+  {
+    "Time":"2026-07-13 13:30:00",
+    "Bay":"GT PLTU 1 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.119",
+    "kWh Delivery":1308910.0,
+    "kWh Received":3151930.0
+  },
+  {
+    "Time":"2026-07-13 13:30:00",
+    "Bay":"GT PLTU 2 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.118",
+    "kWh Delivery":2361451.0,
+    "kWh Received":4265003.0
+  },
+  {
+    "Time":"2026-07-13 13:30:00",
+    "Bay":"GT PLTMG SBW 1 MAIN",
+    "IP kWh Meter":"10.33.70.109",
+    "kWh Delivery":344393.0,
+    "kWh Received":1324115968.0
+  },
+  {
+    "Time":"2026-07-13 13:30:00",
+    "Bay":"GT PLTMG SBW 2 MAIN",
+    "IP kWh Meter":"10.33.70.108",
+    "kWh Delivery":1257600.0,
+    "kWh Received":671659200.0
+  },
+  {
+    "Time":"2026-07-13 13:30:00",
+    "Bay":"GT PLTMG SBW 2 BACKUP",
+    "IP kWh Meter":"10.33.70.133",
+    "kWh Delivery":1225590.0,
+    "kWh Received":632950784.0
+  },
+  {
+    "Time":"2026-07-13 13:30:00",
+    "Bay":"INC TRAFO 1 LABUHAN",
+    "IP kWh Meter":"10.33.70.127",
+    "kWh Delivery":4526192.0,
+    "kWh Received":1873441.0
+  },
+  {
+    "Time":"2026-07-13 13:30:00",
+    "Bay":"INC TRAFO 1 EMPANG",
+    "IP kWh Meter":"10.33.70.126",
+    "kWh Delivery":2791595.0,
+    "kWh Received":593.0
+  },
+  {
+    "Time":"2026-07-13 13:30:00",
+    "Bay":"INC TRAFO 2 DOMPU",
+    "IP kWh Meter":"10.33.70.125",
+    "kWh Delivery":4699117.0,
+    "kWh Received":3558.0
+  },
+  {
+    "Time":"2026-07-13 13:30:00",
+    "Bay":"INC TRAFO 2 WOHA",
+    "IP kWh Meter":"10.33.70.129",
+    "kWh Delivery":1026291.0,
+    "kWh Received":2946.0
+  },
+  {
+    "Time":"2026-07-13 13:30:00",
+    "Bay":"INC TRAFO 2 BIMA",
+    "IP kWh Meter":"10.33.70.102",
+    "kWh Delivery":142321680.0,
+    "kWh Received":680414.0
+  },
+  {
+    "Time":"2026-07-13 13:30:00",
+    "Bay":"INC TRAFO 2 BONTO",
+    "IP kWh Meter":"10.33.70.123",
+    "kWh Delivery":2265286.0,
+    "kWh Received":2536229.0
+  },
+  {
+    "Time":"2026-07-13 13:30:00",
+    "Bay":"GT PLTMG BONTO 1 MAIN",
+    "IP kWh Meter":"10.33.70.104",
+    "kWh Delivery":76541.0,
+    "kWh Received":817413568.0
+  },
+  {
+    "Time":"2026-07-13 13:30:00",
+    "Bay":"GT PLTMG BONTO 2 MAIN",
+    "IP kWh Meter":"10.33.70.105",
+    "kWh Delivery":481353.0,
+    "kWh Received":539609152.0
+  },
+  {
+    "Time":"2026-07-13 13:30:00",
+    "Bay":"INC TRAFO 1 SAPE",
+    "IP kWh Meter":"10.33.70.106",
+    "kWh Delivery":374769.0,
+    "kWh Received":0.0
+  },
+  {
+    "Time":"2026-07-13 13:30:00",
+    "Bay":"GT 3 PLTMG 3",
+    "IP kWh Meter":"10.33.70.121",
+    "kWh Delivery":299040.94,
+    "kWh Received":48006388.0
+  },
+  {
+    "Time":"2026-07-13 13:30:00",
+    "Bay":"GT 4 PLTMG 2",
+    "IP kWh Meter":"10.33.70.122",
+    "kWh Delivery":112034.68,
+    "kWh Received":20312550.0
+  },
+  {
+    "Time":"2026-07-13 14:00:00",
+    "Bay":"GT PLTU 1 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.119",
+    "kWh Delivery":1308910.0,
+    "kWh Received":3154580.0
+  },
+  {
+    "Time":"2026-07-13 14:00:00",
+    "Bay":"GT PLTU 2 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.118",
+    "kWh Delivery":2361451.0,
+    "kWh Received":4267443.0
+  },
+  {
+    "Time":"2026-07-13 14:00:00",
+    "Bay":"GT PLTMG SBW 1 MAIN",
+    "IP kWh Meter":"10.33.70.109",
+    "kWh Delivery":344393.0,
+    "kWh Received":1324120960.0
+  },
+  {
+    "Time":"2026-07-13 14:00:00",
+    "Bay":"GT PLTMG SBW 2 MAIN",
+    "IP kWh Meter":"10.33.70.108",
+    "kWh Delivery":1257600.0,
+    "kWh Received":671664256.0
+  },
+  {
+    "Time":"2026-07-13 14:00:00",
+    "Bay":"GT PLTMG SBW 2 BACKUP",
+    "IP kWh Meter":"10.33.70.133",
+    "kWh Delivery":1225590.0,
+    "kWh Received":632955776.0
+  },
+  {
+    "Time":"2026-07-13 14:00:00",
+    "Bay":"INC TRAFO 1 LABUHAN",
+    "IP kWh Meter":"10.33.70.127",
+    "kWh Delivery":4531993.0,
+    "kWh Received":1873441.0
+  },
+  {
+    "Time":"2026-07-13 14:00:00",
+    "Bay":"INC TRAFO 1 EMPANG",
+    "IP kWh Meter":"10.33.70.126",
+    "kWh Delivery":2795748.0,
+    "kWh Received":593.0
+  },
+  {
+    "Time":"2026-07-13 14:00:00",
+    "Bay":"INC TRAFO 2 DOMPU",
+    "IP kWh Meter":"10.33.70.125",
+    "kWh Delivery":4707238.0,
+    "kWh Received":3558.0
+  },
+  {
+    "Time":"2026-07-13 14:00:00",
+    "Bay":"INC TRAFO 2 WOHA",
+    "IP kWh Meter":"10.33.70.129",
+    "kWh Delivery":1029953.0,
+    "kWh Received":2946.0
+  },
+  {
+    "Time":"2026-07-13 14:00:00",
+    "Bay":"INC TRAFO 2 BIMA",
+    "IP kWh Meter":"10.33.70.102",
+    "kWh Delivery":142321680.0,
+    "kWh Received":680414.0
+  },
+  {
+    "Time":"2026-07-13 14:00:00",
+    "Bay":"INC TRAFO 2 BONTO",
+    "IP kWh Meter":"10.33.70.123",
+    "kWh Delivery":2265286.0,
+    "kWh Received":2538429.0
+  },
+  {
+    "Time":"2026-07-13 14:00:00",
+    "Bay":"GT PLTMG BONTO 1 MAIN",
+    "IP kWh Meter":"10.33.70.104",
+    "kWh Delivery":76541.0,
+    "kWh Received":817423296.0
+  },
+  {
+    "Time":"2026-07-13 14:00:00",
+    "Bay":"GT PLTMG BONTO 2 MAIN",
+    "IP kWh Meter":"10.33.70.105",
+    "kWh Delivery":481353.0,
+    "kWh Received":539614912.0
+  },
+  {
+    "Time":"2026-07-13 14:00:00",
+    "Bay":"INC TRAFO 1 SAPE",
+    "IP kWh Meter":"10.33.70.106",
+    "kWh Delivery":379071.0,
+    "kWh Received":0.0
+  },
+  {
+    "Time":"2026-07-13 14:00:00",
+    "Bay":"GT 3 PLTMG 3",
+    "IP kWh Meter":"10.33.70.121",
+    "kWh Delivery":null,
+    "kWh Received":null
+  },
+  {
+    "Time":"2026-07-13 14:00:00",
+    "Bay":"GT 4 PLTMG 2",
+    "IP kWh Meter":"10.33.70.122",
+    "kWh Delivery":112034.68,
+    "kWh Received":20316544.0
+  },
+  {
+    "Time":"2026-07-13 14:30:00",
+    "Bay":"GT PLTU 1 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.119",
+    "kWh Delivery":1308910.0,
+    "kWh Received":3157180.0
+  },
+  {
+    "Time":"2026-07-13 14:30:00",
+    "Bay":"GT PLTU 2 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.118",
+    "kWh Delivery":2361451.0,
+    "kWh Received":4269771.0
+  },
+  {
+    "Time":"2026-07-13 14:30:00",
+    "Bay":"GT PLTMG SBW 1 MAIN",
+    "IP kWh Meter":"10.33.70.109",
+    "kWh Delivery":344393.0,
+    "kWh Received":1324126464.0
+  },
+  {
+    "Time":"2026-07-13 14:30:00",
+    "Bay":"GT PLTMG SBW 2 MAIN",
+    "IP kWh Meter":"10.33.70.108",
+    "kWh Delivery":1257600.0,
+    "kWh Received":671669952.0
+  },
+  {
+    "Time":"2026-07-13 14:30:00",
+    "Bay":"GT PLTMG SBW 2 BACKUP",
+    "IP kWh Meter":"10.33.70.133",
+    "kWh Delivery":1225590.0,
+    "kWh Received":632961472.0
+  },
+  {
+    "Time":"2026-07-13 14:30:00",
+    "Bay":"INC TRAFO 1 LABUHAN",
+    "IP kWh Meter":"10.33.70.127",
+    "kWh Delivery":4537919.0,
+    "kWh Received":1873441.0
+  },
+  {
+    "Time":"2026-07-13 14:30:00",
+    "Bay":"INC TRAFO 1 EMPANG",
+    "IP kWh Meter":"10.33.70.126",
+    "kWh Delivery":2799850.0,
+    "kWh Received":593.0
+  },
+  {
+    "Time":"2026-07-13 14:30:00",
+    "Bay":"INC TRAFO 2 DOMPU",
+    "IP kWh Meter":"10.33.70.125",
+    "kWh Delivery":4717505.0,
+    "kWh Received":3558.0
+  },
+  {
+    "Time":"2026-07-13 14:30:00",
+    "Bay":"INC TRAFO 2 WOHA",
+    "IP kWh Meter":"10.33.70.129",
+    "kWh Delivery":1033537.0,
+    "kWh Received":2946.0
+  },
+  {
+    "Time":"2026-07-13 14:30:00",
+    "Bay":"INC TRAFO 2 BIMA",
+    "IP kWh Meter":"10.33.70.102",
+    "kWh Delivery":142321680.0,
+    "kWh Received":680414.0
+  },
+  {
+    "Time":"2026-07-13 14:30:00",
+    "Bay":"INC TRAFO 2 BONTO",
+    "IP kWh Meter":"10.33.70.123",
+    "kWh Delivery":2265286.0,
+    "kWh Received":2540620.0
+  },
+  {
+    "Time":"2026-07-13 14:30:00",
+    "Bay":"GT PLTMG BONTO 1 MAIN",
+    "IP kWh Meter":"10.33.70.104",
+    "kWh Delivery":76541.0,
+    "kWh Received":817433280.0
+  },
+  {
+    "Time":"2026-07-13 14:30:00",
+    "Bay":"GT PLTMG BONTO 2 MAIN",
+    "IP kWh Meter":"10.33.70.105",
+    "kWh Delivery":481353.0,
+    "kWh Received":539620864.0
+  },
+  {
+    "Time":"2026-07-13 14:30:00",
+    "Bay":"INC TRAFO 1 SAPE",
+    "IP kWh Meter":"10.33.70.106",
+    "kWh Delivery":383375.0,
+    "kWh Received":0.0
+  },
+  {
+    "Time":"2026-07-13 14:30:00",
+    "Bay":"GT 3 PLTMG 3",
+    "IP kWh Meter":"10.33.70.121",
+    "kWh Delivery":299040.94,
+    "kWh Received":48022844.0
+  },
+  {
+    "Time":"2026-07-13 14:30:00",
+    "Bay":"GT 4 PLTMG 2",
+    "IP kWh Meter":"10.33.70.122",
+    "kWh Delivery":112034.68,
+    "kWh Received":20320526.0
+  },
+  {
+    "Time":"2026-07-13 15:00:00",
+    "Bay":"GT PLTU 1 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.119",
+    "kWh Delivery":1308910.0,
+    "kWh Received":3159646.0
+  },
+  {
+    "Time":"2026-07-13 15:00:00",
+    "Bay":"GT PLTU 2 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.118",
+    "kWh Delivery":2361451.0,
+    "kWh Received":4271991.0
+  },
+  {
+    "Time":"2026-07-13 15:00:00",
+    "Bay":"GT PLTMG SBW 1 MAIN",
+    "IP kWh Meter":"10.33.70.109",
+    "kWh Delivery":344393.0,
+    "kWh Received":1324132096.0
+  },
+  {
+    "Time":"2026-07-13 15:00:00",
+    "Bay":"GT PLTMG SBW 2 MAIN",
+    "IP kWh Meter":"10.33.70.108",
+    "kWh Delivery":1257600.0,
+    "kWh Received":671675584.0
+  },
+  {
+    "Time":"2026-07-13 15:00:00",
+    "Bay":"GT PLTMG SBW 2 BACKUP",
+    "IP kWh Meter":"10.33.70.133",
+    "kWh Delivery":1225590.0,
+    "kWh Received":632967168.0
+  },
+  {
+    "Time":"2026-07-13 15:00:00",
+    "Bay":"INC TRAFO 1 LABUHAN",
+    "IP kWh Meter":"10.33.70.127",
+    "kWh Delivery":4543921.0,
+    "kWh Received":1873441.0
+  },
+  {
+    "Time":"2026-07-13 15:00:00",
+    "Bay":"INC TRAFO 1 EMPANG",
+    "IP kWh Meter":"10.33.70.126",
+    "kWh Delivery":2803989.0,
+    "kWh Received":593.0
+  },
+  {
+    "Time":"2026-07-13 15:00:00",
+    "Bay":"INC TRAFO 2 DOMPU",
+    "IP kWh Meter":"10.33.70.125",
+    "kWh Delivery":4728861.0,
+    "kWh Received":3558.0
+  },
+  {
+    "Time":"2026-07-13 15:00:00",
+    "Bay":"INC TRAFO 2 WOHA",
+    "IP kWh Meter":"10.33.70.129",
+    "kWh Delivery":1036952.0,
+    "kWh Received":2946.0
+  },
+  {
+    "Time":"2026-07-13 15:00:00",
+    "Bay":"INC TRAFO 2 BIMA",
+    "IP kWh Meter":"10.33.70.102",
+    "kWh Delivery":142321680.0,
+    "kWh Received":680414.0
+  },
+  {
+    "Time":"2026-07-13 15:00:00",
+    "Bay":"INC TRAFO 2 BONTO",
+    "IP kWh Meter":"10.33.70.123",
+    "kWh Delivery":2265286.0,
+    "kWh Received":2542809.0
+  },
+  {
+    "Time":"2026-07-13 15:00:00",
+    "Bay":"GT PLTMG BONTO 1 MAIN",
+    "IP kWh Meter":"10.33.70.104",
+    "kWh Delivery":76541.0,
+    "kWh Received":817443520.0
+  },
+  {
+    "Time":"2026-07-13 15:00:00",
+    "Bay":"GT PLTMG BONTO 2 MAIN",
+    "IP kWh Meter":"10.33.70.105",
+    "kWh Delivery":481353.0,
+    "kWh Received":539627072.0
+  },
+  {
+    "Time":"2026-07-13 15:00:00",
+    "Bay":"INC TRAFO 1 SAPE",
+    "IP kWh Meter":"10.33.70.106",
+    "kWh Delivery":387684.0,
+    "kWh Received":0.0
+  },
+  {
+    "Time":"2026-07-13 15:00:00",
+    "Bay":"GT 3 PLTMG 3",
+    "IP kWh Meter":"10.33.70.121",
+    "kWh Delivery":299040.94,
+    "kWh Received":48032360.0
+  },
+  {
+    "Time":"2026-07-13 15:00:00",
+    "Bay":"GT 4 PLTMG 2",
+    "IP kWh Meter":"10.33.70.122",
+    "kWh Delivery":null,
+    "kWh Received":null
+  },
+  {
+    "Time":"2026-07-13 15:30:00",
+    "Bay":"GT PLTU 1 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.119",
+    "kWh Delivery":1308910.0,
+    "kWh Received":3162026.0
+  },
+  {
+    "Time":"2026-07-13 15:30:00",
+    "Bay":"GT PLTU 2 PLTU MAIN",
+    "IP kWh Meter":"10.33.70.118",
+    "kWh Delivery":2361451.0,
+    "kWh Received":4274173.0
+  },
+  {
+    "Time":"2026-07-13 15:30:00",
+    "Bay":"GT PLTMG SBW 1 MAIN",
+    "IP kWh Meter":"10.33.70.109",
+    "kWh Delivery":344393.0,
+    "kWh Received":1324137728.0
+  },
+  {
+    "Time":"2026-07-13 15:30:00",
+    "Bay":"GT PLTMG SBW 2 MAIN",
+    "IP kWh Meter":"10.33.70.108",
+    "kWh Delivery":1257600.0,
+    "kWh Received":671681344.0
+  },
+  {
+    "Time":"2026-07-13 15:30:00",
+    "Bay":"GT PLTMG SBW 2 BACKUP",
+    "IP kWh Meter":"10.33.70.133",
+    "kWh Delivery":1225590.0,
+    "kWh Received":632972864.0
+  },
+  {
+    "Time":"2026-07-13 15:30:00",
+    "Bay":"INC TRAFO 1 LABUHAN",
+    "IP kWh Meter":"10.33.70.127",
+    "kWh Delivery":4549964.0,
+    "kWh Received":1873441.0
+  },
+  {
+    "Time":"2026-07-13 15:30:00",
+    "Bay":"INC TRAFO 1 EMPANG",
+    "IP kWh Meter":"10.33.70.126",
+    "kWh Delivery":2808109.0,
+    "kWh Received":593.0
+  },
+  {
+    "Time":"2026-07-13 15:30:00",
+    "Bay":"INC TRAFO 2 DOMPU",
+    "IP kWh Meter":"10.33.70.125",
+    "kWh Delivery":4740267.0,
+    "kWh Received":3558.0
+  },
+  {
+    "Time":"2026-07-13 15:30:00",
+    "Bay":"INC TRAFO 2 WOHA",
+    "IP kWh Meter":"10.33.70.129",
+    "kWh Delivery":1040039.0,
+    "kWh Received":2946.0
+  },
+  {
+    "Time":"2026-07-13 15:30:00",
+    "Bay":"INC TRAFO 2 BIMA",
+    "IP kWh Meter":"10.33.70.102",
+    "kWh Delivery":142321680.0,
+    "kWh Received":680414.0
+  },
+  {
+    "Time":"2026-07-13 15:30:00",
+    "Bay":"INC TRAFO 2 BONTO",
+    "IP kWh Meter":"10.33.70.123",
+    "kWh Delivery":2265286.0,
+    "kWh Received":2544977.0
+  },
+  {
+    "Time":"2026-07-13 15:30:00",
+    "Bay":"GT PLTMG BONTO 1 MAIN",
+    "IP kWh Meter":"10.33.70.104",
+    "kWh Delivery":76541.0,
+    "kWh Received":817453696.0
+  },
+  {
+    "Time":"2026-07-13 15:30:00",
+    "Bay":"GT PLTMG BONTO 2 MAIN",
+    "IP kWh Meter":"10.33.70.105",
+    "kWh Delivery":481353.0,
+    "kWh Received":539633280.0
+  },
+  {
+    "Time":"2026-07-13 15:30:00",
+    "Bay":"INC TRAFO 1 SAPE",
+    "IP kWh Meter":"10.33.70.106",
+    "kWh Delivery":392005.0,
+    "kWh Received":0.0
+  },
+  {
+    "Time":"2026-07-13 15:30:00",
+    "Bay":"GT 3 PLTMG 3",
+    "IP kWh Meter":"10.33.70.121",
+    "kWh Delivery":299040.94,
+    "kWh Received":48042004.0
+  },
+  {
+    "Time":"2026-07-13 15:30:00",
+    "Bay":"GT 4 PLTMG 2",
+    "IP kWh Meter":"10.33.70.122",
+    "kWh Delivery":112034.68,
+    "kWh Received":20329548.0
+  }
+]

@@ -44,6 +44,7 @@ const NetworkTopology = ({ devices }) => {
     'GI Taliwang': { x: 200, y: 450 },
     'GI Alas': { x: 220, y: 350 },
     'GI Labuhan': { x: 400, y: 350 },
+    'PLTD Boak': { x: 430, y: 420 },
     'GI Sumbawa': { x: 330, y: 290 },
     'GI Plampang': { x: 530, y: 410 },
     'GI Empang': { x: 700, y: 350 },
@@ -66,6 +67,8 @@ const NetworkTopology = ({ devices }) => {
     { from: 'GI Alas', to: 'GI Labuhan', type: 'double' },
     { from: 'GI Labuhan', to: 'GI Sumbawa', type: 'double' },
     { from: 'GI Labuhan', to: 'GI Empang', type: 'single' },
+    { from: 'GI Labuhan', to: 'PLTD Boak', type: 'single' },
+    { from: 'GI Sumbawa', to: 'PLTD Labuhan', type: 'single' },
     { from: 'GI Labuhan', to: 'GI Plampang', type: 'single' },
     { from: 'GI Plampang', to: 'GI Empang', type: 'single' },
     { from: 'GI Empang', to: 'GI Dompu', type: 'double' },
@@ -123,7 +126,7 @@ const NetworkTopology = ({ devices }) => {
 
   return (
     // The container now fills 100% of available space perfectly
-    <div ref={containerRef} className="w-full h-full bg-slate-950 overflow-hidden select-none">
+    <div ref={containerRef} className="w-full h-full bg-slate-900 overflow-hidden select-none rounded-xl border border-slate-700 shadow-inner">
       
       {/* viewBox dynamically updates to the exact pixel width/height of the container */}
       <svg 
