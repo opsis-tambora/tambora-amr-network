@@ -5,16 +5,15 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
+    host: true, // Mengizinkan akses dari network (IP 0.0.0.0)
     allowedHosts: [
-      'network.up2bkanar.online',
-      'network.up2bntb.site'
+      'network.up2bntb.site' // Mendaftarkan domain publik Anda agar tidak diblokir Vite
     ],
-    // NEW: Proxy API requests to the Node.js backend
     proxy: {
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'http://127.0.0.1:5000', // Proxy ke backend Node.js
         changeOrigin: true,
-        secure: false
+        secure: false,
       }
     }
   }

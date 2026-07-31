@@ -27569,64 +27569,64 @@
     "Pembangkit":"PLTD NI'U #1 (MAK 1)",
     "TglAwal":"7\/30\/2026",
     "TglAkhir":"7\/30\/2026",
-    "Status":"",
+    "Status":"FD1",
     "Keterangan":"Pemeliharaan P1"
   },
   {
     "Pembangkit":"PLTD SEWA IPS DOMPU",
     "TglAwal":"7\/30\/2026",
     "TglAkhir":"7\/30\/2026",
-    "Status":"",
+    "Status":"FD1",
     "Keterangan":" HM 600, Penggantian Oli Mesin"
   },
   {
     "Pembangkit":"PLTD SEWA ND LABUHAN",
     "TglAwal":"7\/30\/2026",
     "TglAkhir":"7\/30\/2026",
-    "Status":"",
+    "Status":"FD1",
     "Keterangan":"Clean Core Radiator + PM500"
   },
   {
     "Pembangkit":"PLTD SEWA NIU",
     "TglAwal":"7\/30\/2026",
     "TglAkhir":"",
-    "Status":"",
-    "Keterangan":"High Water Temp"
+    "Status":"FD1",
+    "Keterangan":"#8 High Water Temp"
   },
   {
-    "Pembangkit":"",
-    "TglAwal":"",
-    "TglAkhir":"",
-    "Status":"",
-    "Keterangan":""
+    "Pembangkit":"PLTD SEWA ND BONTO",
+    "TglAwal":"7\/30\/2026",
+    "TglAkhir":"7\/30\/2026",
+    "Status":"FD1",
+    "Keterangan":"#2 Engine Coolant Temp"
   },
   {
-    "Pembangkit":"",
-    "TglAwal":"",
-    "TglAkhir":"",
-    "Status":"",
-    "Keterangan":""
+    "Pembangkit":"PLTD SEWA ND BONTO",
+    "TglAwal":"7\/30\/2026",
+    "TglAkhir":"7\/30\/2026",
+    "Status":"FD1",
+    "Keterangan":"#6 Engine Coolant Temp"
   },
   {
-    "Pembangkit":"",
-    "TglAwal":"",
-    "TglAkhir":"",
-    "Status":"",
-    "Keterangan":""
+    "Pembangkit":"PLTD SEWA IPS DOMPU",
+    "TglAwal":"7\/30\/2026",
+    "TglAkhir":"7\/30\/2026",
+    "Status":"FD1",
+    "Keterangan":"#4 gangguan baterai"
   },
   {
-    "Pembangkit":"",
-    "TglAwal":"",
-    "TglAkhir":"",
-    "Status":"",
-    "Keterangan":""
+    "Pembangkit":"PLTD SEWA IPS DOMPU",
+    "TglAwal":"7\/30\/2026",
+    "TglAkhir":"7\/30\/2026",
+    "Status":"FD1",
+    "Keterangan":"#6 Beban Hunting"
   },
   {
-    "Pembangkit":"",
-    "TglAwal":"",
+    "Pembangkit":"PLTD SEWA NIU",
+    "TglAwal":"7\/31\/2026",
     "TglAkhir":"",
     "Status":"",
-    "Keterangan":""
+    "Keterangan":"#11 PM 500"
   },
   {
     "Pembangkit":"",

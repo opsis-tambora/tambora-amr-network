@@ -1,27 +1,25 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import axios from 'axios';
-import { Activity, Zap, Cpu, Settings, Clock, ArrowRight, Menu, ChevronLeft, Search, Sun, Moon, ChevronDown, Lock, Mail, LogOut, List, BarChart3, ArrowUpDown, ArrowUp, ArrowDown, CalendarDays } from 'lucide-react';
+import { Activity, Zap, Cpu, Settings, Clock, ArrowRight, Menu, ChevronLeft, Search, Sun, Moon, ChevronDown, Lock, Mail, LogOut, List, BarChart3, ArrowUpDown, ArrowUp, ArrowDown, CalendarDays, Receipt, FileText } from 'lucide-react';
 import SusutTambora from './components/SusutTambora';
 import IpMeterView from './components/IpMeterView';
 import SettingsPage from './components/Settings';
 import StatusKwhMeter from './components/StatusKwhMeter';
 import SusutSubSistem from './components/SusutSubSistem';
-import SusutBulanan from './components/SusutBulanan'; // Import Komponen Baru
+import SusutBulanan from './components/SusutBulanan';
+import BillingKwh from './components/BillingKwh'; // Komponen baru
 
-// Komponen Utama yang dibungkus oleh Router
 function MainApp() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // --- STATE AUTENTIKASI ---
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState(''); 
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [currentUser, setCurrentUser] = useState({ name: 'Guest', role: 'User' });
 
-  // --- STATE DASHBOARD UTAMA ---
   const [devices, setDevices] = useState([]);
   const [logs, setLogs] = useState([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -29,17 +27,27 @@ function MainApp() {
   const [darkMode, setDarkMode] = useState(true);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
-  // --- STATE TABLE EVENT HISTORY ---
+  // MENU STATES
+  const [isSusutMenuOpen, setIsSusutMenuOpen] = useState(true);
+  const [isKwhMenuOpen, setIsKwhMenuOpen] = useState(true);
+  const [isBillingMenuOpen, setIsBillingMenuOpen] = useState(true);
+
+  // TABLE EVENT HISTORY STATES
   const [currentPage, setCurrentPage] = useState(1);
   const [logsPerPage, setLogsPerPage] = useState(10);
   const [logSearchQuery, setLogSearchQuery] = useState('');
   const [logSortConfig, setLogSortConfig] = useState({ key: 'raw_timestamp', direction: 'desc' });
 
-  // --- LOGIKA METER HEALTH ---
   const activeMeters = devices.filter(d => d.status === 'online').length;
   const totalMeters = devices.length;
   const offlineMeters = totalMeters - activeMeters;
   const healthPercentage = totalMeters > 0 ? Math.round((activeMeters / totalMeters) * 100) : 0;
+
+  useEffect(() => {
+    if (location.pathname.includes('/Susut')) setIsSusutMenuOpen(true);
+    if (location.pathname.includes('/kWh') || location.pathname.includes('/Status')) setIsKwhMenuOpen(true);
+    if (location.pathname.includes('/Billing')) setIsBillingMenuOpen(true);
+  }, [location.pathname]);
 
   useEffect(() => {
     const savedUser = localStorage.getItem('currentUser');
@@ -49,7 +57,6 @@ function MainApp() {
     }
   }, []);
 
-  // --- METODE RECURSIVE POLLING ---
   useEffect(() => {
     let isMounted = true; 
     let timerId;
@@ -153,20 +160,14 @@ function MainApp() {
   }
 
   processedLogs.sort((a, b) => {
-    if (a[logSortConfig.key] < b[logSortConfig.key]) {
-      return logSortConfig.direction === 'asc' ? -1 : 1;
-    }
-    if (a[logSortConfig.key] > b[logSortConfig.key]) {
-      return logSortConfig.direction === 'asc' ? 1 : -1;
-    }
+    if (a[logSortConfig.key] < b[logSortConfig.key]) return logSortConfig.direction === 'asc' ? -1 : 1;
+    if (a[logSortConfig.key] > b[logSortConfig.key]) return logSortConfig.direction === 'asc' ? 1 : -1;
     return 0;
   });
 
   const handleSort = (key) => {
     let direction = 'asc';
-    if (logSortConfig.key === key && logSortConfig.direction === 'asc') {
-      direction = 'desc';
-    }
+    if (logSortConfig.key === key && logSortConfig.direction === 'asc') direction = 'desc';
     setLogSortConfig({ key, direction });
   };
 
@@ -178,8 +179,18 @@ function MainApp() {
   const indexOfLastLog = currentPage * logsPerPage;
   const indexOfFirstLog = indexOfLastLog - logsPerPage;
   const currentLogs = processedLogs.slice(indexOfFirstLog, indexOfLastLog);
+  const totalLogPages = Math.ceil(processedLogs.length / logsPerPage);
+  const safeCurrentPage = Math.min(currentPage, totalLogPages === 0 ? 1 : totalLogPages);
 
   const checkActiveMenu = (path) => location.pathname === path;
+
+  const getSubMenuClass = (path) => {
+    const isActive = checkActiveMenu(path);
+    if (isActive) {
+      return `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all bg-blue-600 text-white shadow-md ml-2`;
+    }
+    return `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ml-2 ${darkMode ? 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`;
+  };
 
   if (!isLoggedIn) {
     return (
@@ -234,32 +245,59 @@ function MainApp() {
           </button>
         </div>
 
-        <div className="flex-1 p-4 flex flex-col gap-1">
-          <p className="text-[10px] font-bold text-slate-500 px-3 mb-2 uppercase tracking-widest">Main Menu</p>
+        <div className="flex-1 p-4 flex flex-col gap-2 overflow-y-auto">
+          <p className="text-[10px] font-bold text-slate-500 px-3 mb-1 uppercase tracking-widest">Main Menu</p>
           
-          <button onClick={() => navigate('/Susut-Harian')} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${checkActiveMenu('/Susut-Harian') ? 'bg-blue-600 text-white shadow-md' : darkMode ? 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`}>
-            <Activity className="w-4 h-4" /> Susut Harian
-          </button>
+          {/* MENU 1: SUSUT SISTEM */}
+          <div className="flex flex-col gap-1">
+            <button onClick={() => setIsSusutMenuOpen(!isSusutMenuOpen)} className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${darkMode ? 'text-slate-300 hover:bg-slate-800/60' : 'text-slate-700 hover:bg-slate-100'}`}>
+              <div className="flex items-center gap-3"><Activity className="w-4 h-4" /><span>Susut Sistem</span></div>
+              <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isSusutMenuOpen ? 'rotate-180' : ''}`} />
+            </button>
+            <div className={`overflow-hidden transition-all duration-300 flex flex-col gap-1 ${isSusutMenuOpen ? 'max-h-60 opacity-100 mt-1' : 'max-h-0 opacity-0'}`}>
+              <div className={`border-l-2 ml-4 flex flex-col gap-1 ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
+                <button onClick={() => navigate('/Susut-Harian')} className={getSubMenuClass('/Susut-Harian')}><Activity className="w-4 h-4" /> Susut Harian</button>
+                <button onClick={() => navigate('/Susut-Sub-Sistem')} className={getSubMenuClass('/Susut-Sub-Sistem')}><BarChart3 className="w-4 h-4" /> Susut Sub Sistem</button>
+                <button onClick={() => navigate('/Susut-Bulanan')} className={getSubMenuClass('/Susut-Bulanan')}><CalendarDays className="w-4 h-4" /> Susut Bulanan</button>
+              </div>
+            </div>
+          </div>
 
-          <button onClick={() => navigate('/Susut-Sub-Sistem')} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${checkActiveMenu('/Susut-Sub-Sistem') ? 'bg-blue-600 text-white shadow-md' : darkMode ? 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`}>
-            <BarChart3 className="w-4 h-4" /> Susut Sub Sistem
-          </button>
+          {/* MENU 2: KWH METER */}
+          <div className="flex flex-col gap-1 mt-1">
+            <button onClick={() => setIsKwhMenuOpen(!isKwhMenuOpen)} className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${darkMode ? 'text-slate-300 hover:bg-slate-800/60' : 'text-slate-700 hover:bg-slate-100'}`}>
+              <div className="flex items-center gap-3"><Cpu className="w-4 h-4" /><span>kWh Meter</span></div>
+              <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isKwhMenuOpen ? 'rotate-180' : ''}`} />
+            </button>
+            <div className={`overflow-hidden transition-all duration-300 flex flex-col gap-1 ${isKwhMenuOpen ? 'max-h-60 opacity-100 mt-1' : 'max-h-0 opacity-0'}`}>
+              <div className={`border-l-2 ml-4 flex flex-col gap-1 ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
+                <button onClick={() => navigate('/kWh-Meter')} className={getSubMenuClass('/kWh-Meter')}><Cpu className="w-4 h-4" /> kWh Meter</button>
+                <button onClick={() => navigate('/Status-kWh')} className={getSubMenuClass('/Status-kWh')}><List className="w-4 h-4" /> Status kWh</button>
+              </div>
+            </div>
+          </div>
 
-          <button onClick={() => navigate('/Susut-Bulanan')} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${checkActiveMenu('/Susut-Bulanan') ? 'bg-blue-600 text-white shadow-md' : darkMode ? 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`}>
-            <CalendarDays className="w-4 h-4" /> Susut Bulanan
-          </button>
+          {/* MENU 3: BILLING KWH */}
+          <div className="flex flex-col gap-1 mt-1">
+            <button onClick={() => setIsBillingMenuOpen(!isBillingMenuOpen)} className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${darkMode ? 'text-slate-300 hover:bg-slate-800/60' : 'text-slate-700 hover:bg-slate-100'}`}>
+              <div className="flex items-center gap-3"><Receipt className="w-4 h-4" /><span>Billing kWh</span></div>
+              <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isBillingMenuOpen ? 'rotate-180' : ''}`} />
+            </button>
+            <div className={`overflow-hidden transition-all duration-300 flex flex-col gap-1 ${isBillingMenuOpen ? 'max-h-60 opacity-100 mt-1' : 'max-h-0 opacity-0'}`}>
+              <div className={`border-l-2 ml-4 flex flex-col gap-1 ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
+                <button onClick={() => navigate('/Billing/01')} className={getSubMenuClass('/Billing/01')}><FileText className="w-4 h-4" /> Billing Tanggal 1</button>
+                <button onClick={() => navigate('/Billing/25')} className={getSubMenuClass('/Billing/25')}><FileText className="w-4 h-4" /> Billing Tanggal 25</button>
+              </div>
+            </div>
+          </div>
           
-          <button onClick={() => navigate('/kWh-Meter')} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${checkActiveMenu('/kWh-Meter') ? 'bg-blue-600 text-white shadow-md' : darkMode ? 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`}>
-            <Cpu className="w-4 h-4" /> kWh Meter
-          </button>
-          
-          <button onClick={() => navigate('/Status-kWh')} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${checkActiveMenu('/Status-kWh') ? 'bg-blue-600 text-white shadow-md' : darkMode ? 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`}>
-            <List className="w-4 h-4" /> Status kWh
-          </button>
-          
-          <button onClick={() => navigate('/Settings')} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${checkActiveMenu('/Settings') ? 'bg-blue-600 text-white shadow-md' : darkMode ? 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`}>
-            <Settings className="w-4 h-4" /> Settings
-          </button>
+          {/* MENU 4: SETTINGS */}
+          <div className="mt-1">
+            <button onClick={() => navigate('/Settings')} className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${checkActiveMenu('/Settings') ? 'bg-blue-600 text-white shadow-md' : darkMode ? 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`}>
+              <Settings className="w-4 h-4" /> Settings
+            </button>
+          </div>
+
         </div>
       </div>
 
@@ -275,9 +313,8 @@ function MainApp() {
               </button>
             )}
             
-            {checkActiveMenu('/Settings') && (
-              <h1 className="text-lg font-bold tracking-wider uppercase hidden lg:block">Settings</h1>
-            )}
+            {checkActiveMenu('/Settings') && <h1 className="text-lg font-bold tracking-wider uppercase hidden lg:block">Settings</h1>}
+            {location.pathname.includes('/Billing') && <h1 className="text-lg font-bold tracking-wider uppercase hidden lg:block">Data Billing kWh</h1>}
 
             <div className="relative max-w-md w-full flex items-center">
               <input type="text" placeholder="Search Data..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className={`w-full pl-4 pr-10 py-2 text-sm rounded-lg border focus:outline-none transition-all ${darkMode ? 'bg-slate-900 border-slate-800 text-white focus:border-slate-700' : 'bg-slate-100 border-slate-200 text-slate-900 focus:border-slate-300'}`} />
@@ -315,27 +352,15 @@ function MainApp() {
             <Route path="/" element={<Navigate to="/kWh-Meter" replace />} />
             
             <Route path="/Susut-Harian" element={<SusutTambora />} />
-            
-            <Route path="/Susut-Sub-Sistem" element={
-              <div className="mt-6 w-full">
-                <SusutSubSistem darkMode={darkMode} />
-              </div>
-            } />
-            
-            {/* Rute Baru Susut Bulanan */}
-            <Route path="/Susut-Bulanan" element={
-              <div className="mt-6 w-full">
-                <SusutBulanan darkMode={darkMode} />
-              </div>
-            } />
+            <Route path="/Susut-Sub-Sistem" element={<div className="mt-6 w-full"><SusutSubSistem darkMode={darkMode} /></div>} />
+            <Route path="/Susut-Bulanan" element={<div className="mt-6 w-full"><SusutBulanan darkMode={darkMode} /></div>} />
 
             <Route path="/Settings" element={<SettingsPage />} />
+            <Route path="/Status-kWh" element={<div className="mt-6 w-full"><StatusKwhMeter devices={devices} darkMode={darkMode} /></div>} />
             
-            <Route path="/Status-kWh" element={
-              <div className="mt-6 w-full">
-                <StatusKwhMeter devices={devices} darkMode={darkMode} />
-              </div>
-            } />
+            {/* RUTE BARU UNTUK BILLING */}
+            <Route path="/Billing/01" element={<div className="mt-6 w-full"><BillingKwh darkMode={darkMode} tanggal="01" /></div>} />
+            <Route path="/Billing/25" element={<div className="mt-6 w-full"><BillingKwh darkMode={darkMode} tanggal="25" /></div>} />
 
             <Route path="/kWh-Meter" element={
               <div className="flex flex-col gap-6 h-full w-full mt-6">
@@ -384,22 +409,14 @@ function MainApp() {
                     </div>
                     
                     <div className="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
-                      
                       <div className={`flex items-center gap-2 text-xs font-medium whitespace-nowrap ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
                         <span>Show</span>
                         <select
                           value={logsPerPage}
-                          onChange={(e) => {
-                            setLogsPerPage(Number(e.target.value));
-                            setCurrentPage(1);
-                          }}
+                          onChange={(e) => { setLogsPerPage(Number(e.target.value)); setCurrentPage(1); }}
                           className={`border rounded-md px-2 py-1.5 focus:outline-none transition-all cursor-pointer ${darkMode ? 'bg-slate-950 border-slate-700 text-white' : 'bg-white border-slate-300 text-slate-900'}`}
                         >
-                          <option value={5}>5</option>
-                          <option value={10}>10</option>
-                          <option value={25}>25</option>
-                          <option value={50}>50</option>
-                          <option value={100}>100</option>
+                          <option value={5}>5</option><option value={10}>10</option><option value={25}>25</option><option value={50}>50</option><option value={100}>100</option>
                         </select>
                         <span>entries</span>
                       </div>
@@ -409,10 +426,7 @@ function MainApp() {
                           type="text"
                           placeholder="Search Device, Site, Status..."
                           value={logSearchQuery}
-                          onChange={(e) => {
-                            setLogSearchQuery(e.target.value);
-                            setCurrentPage(1);
-                          }}
+                          onChange={(e) => { setLogSearchQuery(e.target.value); setCurrentPage(1); }}
                           className={`w-full pl-4 pr-10 py-1.5 text-sm rounded-lg border focus:outline-none transition-all ${darkMode ? 'bg-slate-950 border-slate-700 text-white focus:border-blue-500' : 'bg-slate-50 border-slate-300 text-slate-900 focus:border-blue-500'}`}
                         />
                         <Search className="w-4 h-4 text-slate-400 absolute right-3 top-2 pointer-events-none" />
@@ -424,20 +438,10 @@ function MainApp() {
                     <table className="w-full text-left border-collapse">
                       <thead>
                         <tr className={`border-b text-[11px] font-bold uppercase tracking-wider ${darkMode ? 'border-slate-800 text-slate-400' : 'border-slate-200 text-slate-500'}`}>
-                          
-                          <th className="pb-3 pt-1 cursor-pointer select-none hover:text-blue-500 transition-colors" onClick={() => handleSort('raw_timestamp')}>
-                            <div className="flex items-center gap-1">Timestamp {renderSortIcon('raw_timestamp')}</div>
-                          </th>
-                          <th className="pb-3 pt-1 cursor-pointer select-none hover:text-blue-500 transition-colors" onClick={() => handleSort('name')}>
-                            <div className="flex items-center gap-1">Device {renderSortIcon('name')}</div>
-                          </th>
-                          <th className="pb-3 pt-1 cursor-pointer select-none hover:text-blue-500 transition-colors" onClick={() => handleSort('site')}>
-                            <div className="flex items-center gap-1">Site {renderSortIcon('site')}</div>
-                          </th>
-                          <th className="pb-3 pt-1 cursor-pointer select-none text-center hover:text-blue-500 transition-colors" onClick={() => handleSort('to')}>
-                            <div className="flex items-center justify-center gap-1">Status Change {renderSortIcon('to')}</div>
-                          </th>
-
+                          <th className="pb-3 pt-1 cursor-pointer select-none hover:text-blue-500" onClick={() => handleSort('raw_timestamp')}><div className="flex items-center gap-1">Timestamp {renderSortIcon('raw_timestamp')}</div></th>
+                          <th className="pb-3 pt-1 cursor-pointer select-none hover:text-blue-500" onClick={() => handleSort('name')}><div className="flex items-center gap-1">Device {renderSortIcon('name')}</div></th>
+                          <th className="pb-3 pt-1 cursor-pointer select-none hover:text-blue-500" onClick={() => handleSort('site')}><div className="flex items-center gap-1">Site {renderSortIcon('site')}</div></th>
+                          <th className="pb-3 pt-1 cursor-pointer select-none text-center hover:text-blue-500" onClick={() => handleSort('to')}><div className="flex items-center justify-center gap-1">Status Change {renderSortIcon('to')}</div></th>
                         </tr>
                       </thead>
                       <tbody className={`divide-y text-xs ${darkMode ? 'divide-slate-800/50' : 'divide-slate-200'}`}>
@@ -478,6 +482,12 @@ function MainApp() {
                         )}
                       </tbody>
                     </table>
+                  </div>
+
+                  <div className="flex justify-end items-center gap-1 mt-6 pt-4 border-t border-slate-800/50">
+                    {totalLogPages > 1 && Array.from({ length: totalLogPages }, (_, i) => (
+                      <button key={i} onClick={() => setCurrentPage(i + 1)} className={`px-3 py-1.5 text-[11px] font-semibold border rounded-md transition-all ${safeCurrentPage === i + 1 ? 'bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-500/20' : darkMode ? 'border-slate-800 text-slate-400 hover:bg-slate-800 hover:text-white' : 'border-slate-200 text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`}>{i + 1}</button>
+                    ))}
                   </div>
 
                 </div>

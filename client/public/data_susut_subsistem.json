@@ -2101,13 +2101,13 @@
   },
   {
     "tanggal":"2026-07-30",
-    "susut_harian":0.0,
-    "sub_talas":0.0,
-    "sub_sumbawa":0.0,
-    "sub_bima":0.0,
-    "line_talas":0.0,
-    "line_sumbawa":0.0,
-    "line_bima":0.0
+    "susut_harian":1.35,
+    "sub_talas":0.33,
+    "sub_sumbawa":0.18,
+    "sub_bima":0.84,
+    "line_talas":1.41,
+    "line_sumbawa":0.35,
+    "line_bima":1.92
   },
   {
     "tanggal":"2026-07-31",
