@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import axios from 'axios';
-import { Activity, Zap, Cpu, Settings, Clock, ArrowRight, Menu, ChevronLeft, Search, Sun, Moon, ChevronDown, Lock, Mail, LogOut, List, BarChart3 } from 'lucide-react';
+import { Activity, Zap, Cpu, Settings, Clock, ArrowRight, Menu, ChevronLeft, Search, Sun, Moon, ChevronDown, Lock, Mail, LogOut, List, BarChart3, ArrowUpDown, ArrowUp, ArrowDown, CalendarDays } from 'lucide-react';
 import SusutTambora from './components/SusutTambora';
 import IpMeterView from './components/IpMeterView';
 import SettingsPage from './components/Settings';
 import StatusKwhMeter from './components/StatusKwhMeter';
 import SusutSubSistem from './components/SusutSubSistem';
+import SusutBulanan from './components/SusutBulanan'; // Import Komponen Baru
 
 // Komponen Utama yang dibungkus oleh Router
 function MainApp() {
@@ -20,7 +21,7 @@ function MainApp() {
   const [loginError, setLoginError] = useState('');
   const [currentUser, setCurrentUser] = useState({ name: 'Guest', role: 'User' });
 
-  // --- STATE DASHBOARD ---
+  // --- STATE DASHBOARD UTAMA ---
   const [devices, setDevices] = useState([]);
   const [logs, setLogs] = useState([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -28,9 +29,11 @@ function MainApp() {
   const [darkMode, setDarkMode] = useState(true);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
-  // --- STATE PAGINATION ---
+  // --- STATE TABLE EVENT HISTORY ---
   const [currentPage, setCurrentPage] = useState(1);
-  const logsPerPage = 10;
+  const [logsPerPage, setLogsPerPage] = useState(10);
+  const [logSearchQuery, setLogSearchQuery] = useState('');
+  const [logSortConfig, setLogSortConfig] = useState({ key: 'raw_timestamp', direction: 'desc' });
 
   // --- LOGIKA METER HEALTH ---
   const activeMeters = devices.filter(d => d.status === 'online').length;
@@ -46,54 +49,61 @@ function MainApp() {
     }
   }, []);
 
-  const fetchDevices = () => {
-    axios.get('/api/devices')
-      .then(response => setDevices(response.data))
-      .catch(error => console.error("Error fetching data:", error));
-  };
-
-  const fetchLogs = () => {
-    axios.get('/api/events')
-      .then(response => {
-        const mappedLogs = response.data.map(e => {
-          const utcDate = e.timestamp.endsWith('Z') ? e.timestamp : e.timestamp + 'Z';
-          let formattedOfflineTime = null;
-          if (e.offline_timestamp) {
-            const offlineUtc = e.offline_timestamp.endsWith('Z') ? e.offline_timestamp : e.offline_timestamp + 'Z';
-            formattedOfflineTime = new Date(offlineUtc).toLocaleString('id-ID');
-          }
-          return {
-            timestamp: new Date(utcDate).toLocaleString('id-ID'),
-            name: e.device_name || 'Unknown Device',
-            ip: e.ip_address || '-',
-            site: e.site || '-',
-            from: e.previous_status ? e.previous_status.toUpperCase().trim() : 'UNKNOWN',
-            to: e.current_status ? e.current_status.toUpperCase().trim() : 'UNKNOWN',
-            offline_timestamp: formattedOfflineTime,
-            duration_text: e.duration_text || null
-          };
-        });
-        setLogs(mappedLogs);
-      })
-      .catch(() => {
-        setLogs([
-          { timestamp: '16/7/2026 15.09.29', name: 'SEWA BOAK', ip: '172.20.21.238', site: 'PLTD BOAK', from: 'OFFLINE', to: 'ONLINE', offline_timestamp: '16/7/2026 15.05.00', duration_text: '00.04.29' },
-          { timestamp: '16/7/2026 15.09.23', name: 'SEWA DOMPU', ip: '172.20.21.250', site: 'PLTD DOMPU', from: 'OFFLINE', to: 'ONLINE', offline_timestamp: '16/7/2026 15.04.00', duration_text: '00.05.23' },
-          { timestamp: '16/7/2026 15.09.18', name: 'SEWA LABUHAN', ip: '172.20.21.234', site: 'PLTD LABUHAN', from: 'ONLINE', to: 'OFFLINE' },
-        ]);
-      });
-  };
-
+  // --- METODE RECURSIVE POLLING ---
   useEffect(() => {
+    let isMounted = true; 
+    let timerId;
+
+    const pollData = async () => {
+      if (!isMounted) return;
+
+      try {
+        const [devicesRes, eventsRes] = await Promise.all([
+          axios.get('/api/devices'),
+          axios.get('/api/events')
+        ]);
+
+        if (isMounted) setDevices(devicesRes.data);
+
+        if (isMounted && eventsRes.data) {
+          const mappedLogs = eventsRes.data.map(e => {
+            const utcDate = e.timestamp.endsWith('Z') ? e.timestamp : e.timestamp + 'Z';
+            let formattedOfflineTime = null;
+            if (e.offline_timestamp) {
+              const offlineUtc = e.offline_timestamp.endsWith('Z') ? e.offline_timestamp : e.offline_timestamp + 'Z';
+              formattedOfflineTime = new Date(offlineUtc).toLocaleString('id-ID');
+            }
+            return {
+              raw_timestamp: new Date(utcDate).getTime(),
+              timestamp: new Date(utcDate).toLocaleString('id-ID'),
+              name: e.device_name || 'Unknown Device',
+              ip: e.ip_address || '-',
+              site: e.site || '-',
+              from: e.previous_status ? e.previous_status.toUpperCase().trim() : 'UNKNOWN',
+              to: e.current_status ? e.current_status.toUpperCase().trim() : 'UNKNOWN',
+              offline_timestamp: formattedOfflineTime,
+              duration_text: e.duration_text || null
+            };
+          });
+          setLogs(mappedLogs);
+        }
+      } catch (error) {
+        console.error("Gagal menarik data pemantauan:", error);
+      } finally {
+        if (isMounted) {
+          timerId = setTimeout(pollData, 10000); 
+        }
+      }
+    };
+
     if (isLoggedIn) {
-      fetchDevices();
-      fetchLogs();
-      const interval = setInterval(() => {
-        fetchDevices();
-        fetchLogs();
-      }, 2000);
-      return () => clearInterval(interval);
+      pollData();
     }
+
+    return () => {
+      isMounted = false;
+      if (timerId) clearTimeout(timerId);
+    };
   }, [isLoggedIn]);
 
   const handleLogin = async (e) => {
@@ -131,10 +141,43 @@ function MainApp() {
     d.site.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  let processedLogs = [...logs];
+  if (logSearchQuery) {
+    const q = logSearchQuery.toLowerCase();
+    processedLogs = processedLogs.filter(log =>
+      log.name.toLowerCase().includes(q) ||
+      log.site.toLowerCase().includes(q) ||
+      log.from.toLowerCase().includes(q) ||
+      log.to.toLowerCase().includes(q)
+    );
+  }
+
+  processedLogs.sort((a, b) => {
+    if (a[logSortConfig.key] < b[logSortConfig.key]) {
+      return logSortConfig.direction === 'asc' ? -1 : 1;
+    }
+    if (a[logSortConfig.key] > b[logSortConfig.key]) {
+      return logSortConfig.direction === 'asc' ? 1 : -1;
+    }
+    return 0;
+  });
+
+  const handleSort = (key) => {
+    let direction = 'asc';
+    if (logSortConfig.key === key && logSortConfig.direction === 'asc') {
+      direction = 'desc';
+    }
+    setLogSortConfig({ key, direction });
+  };
+
+  const renderSortIcon = (key) => {
+    if (logSortConfig.key !== key) return <ArrowUpDown className="w-3 h-3 opacity-30" />;
+    return logSortConfig.direction === 'asc' ? <ArrowUp className="w-3 h-3" /> : <ArrowDown className="w-3 h-3" />;
+  };
+
   const indexOfLastLog = currentPage * logsPerPage;
   const indexOfFirstLog = indexOfLastLog - logsPerPage;
-  const currentLogs = logs.slice(indexOfFirstLog, indexOfLastLog);
-  const totalPages = Math.ceil(logs.length / logsPerPage);
+  const currentLogs = processedLogs.slice(indexOfFirstLog, indexOfLastLog);
 
   const checkActiveMenu = (path) => location.pathname === path;
 
@@ -179,7 +222,7 @@ function MainApp() {
   return (
     <div className={`min-h-screen w-full font-sans select-none overflow-x-hidden transition-colors duration-200 ${darkMode ? 'bg-slate-950 text-white' : 'bg-slate-50 text-slate-900'}`} style={{ display: 'flex', flexDirection: 'row' }}>
       
-      {/* SIDEBAR NAVIGATION (KIRI) */}
+      {/* SIDEBAR NAVIGATION */}
       <div className={`border-r flex flex-col transition-all duration-300 ${isSidebarOpen ? 'w-64' : 'w-0 overflow-hidden border-none'} ${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'}`} style={{ minHeight: '100vh', sticky: 'top', position: 'sticky' }}>
         <div className={`p-5 border-b flex items-center justify-between ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
           <div className="flex items-center gap-2.5">
@@ -198,9 +241,12 @@ function MainApp() {
             <Activity className="w-4 h-4" /> Susut Harian
           </button>
 
-          {/* MENU BARU: Susut Sub Sistem */}
           <button onClick={() => navigate('/Susut-Sub-Sistem')} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${checkActiveMenu('/Susut-Sub-Sistem') ? 'bg-blue-600 text-white shadow-md' : darkMode ? 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`}>
             <BarChart3 className="w-4 h-4" /> Susut Sub Sistem
+          </button>
+
+          <button onClick={() => navigate('/Susut-Bulanan')} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${checkActiveMenu('/Susut-Bulanan') ? 'bg-blue-600 text-white shadow-md' : darkMode ? 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`}>
+            <CalendarDays className="w-4 h-4" /> Susut Bulanan
           </button>
           
           <button onClick={() => navigate('/kWh-Meter')} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${checkActiveMenu('/kWh-Meter') ? 'bg-blue-600 text-white shadow-md' : darkMode ? 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`}>
@@ -217,7 +263,7 @@ function MainApp() {
         </div>
       </div>
 
-      {/* DASHBOARD CONTENT CONTAINER (KANAN) */}
+      {/* DASHBOARD CONTENT CONTAINER */}
       <div className="flex-1 flex flex-col min-w-0">
         
         {/* Header Dashboard */}
@@ -234,7 +280,7 @@ function MainApp() {
             )}
 
             <div className="relative max-w-md w-full flex items-center">
-              <input type="text" placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className={`w-full pl-4 pr-10 py-2 text-sm rounded-lg border focus:outline-none transition-all ${darkMode ? 'bg-slate-900 border-slate-800 text-white focus:border-slate-700' : 'bg-slate-100 border-slate-200 text-slate-900 focus:border-slate-300'}`} />
+              <input type="text" placeholder="Search Data..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className={`w-full pl-4 pr-10 py-2 text-sm rounded-lg border focus:outline-none transition-all ${darkMode ? 'bg-slate-900 border-slate-800 text-white focus:border-slate-700' : 'bg-slate-100 border-slate-200 text-slate-900 focus:border-slate-300'}`} />
               <Search className="w-4 h-4 text-slate-400 absolute right-3 pointer-events-none" />
             </div>
           </div>
@@ -263,25 +309,30 @@ function MainApp() {
           </div>
         </div>
 
-        {/* AREA KONTEN (DIATUR OLEH ROUTER) */}
+        {/* AREA KONTEN (ROUTER) */}
         <div className="w-full flex-1 p-4 md:p-8 md:pt-0 pt-0 flex flex-col">
           <Routes>
-            {/* Redirect root ke /kWh-Meter */}
             <Route path="/" element={<Navigate to="/kWh-Meter" replace />} />
             
             <Route path="/Susut-Harian" element={<SusutTambora />} />
             
-            {/* RUTE BARU: Susut Sub Sistem */}
             <Route path="/Susut-Sub-Sistem" element={
-              <div className="h-[85vh] mt-6">
+              <div className="mt-6 w-full">
                 <SusutSubSistem darkMode={darkMode} />
               </div>
             } />
             
+            {/* Rute Baru Susut Bulanan */}
+            <Route path="/Susut-Bulanan" element={
+              <div className="mt-6 w-full">
+                <SusutBulanan darkMode={darkMode} />
+              </div>
+            } />
+
             <Route path="/Settings" element={<SettingsPage />} />
             
             <Route path="/Status-kWh" element={
-              <div className="h-[85vh] mt-6">
+              <div className="mt-6 w-full">
                 <StatusKwhMeter devices={devices} darkMode={darkMode} />
               </div>
             } />
@@ -323,19 +374,70 @@ function MainApp() {
                   </div>
                 </div>
 
+                {/* EVENT HISTORY TABLE */}
                 <div className={`border rounded-xl p-5 shadow-xl flex flex-col ${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'}`}>
-                  <div className="flex items-center gap-2 mb-4">
-                    <Clock className="w-5 h-5 text-blue-400" />
-                    <h2 className="text-base font-bold">System Event History</h2>
+                  
+                  <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-6">
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-5 h-5 text-blue-400" />
+                      <h2 className="text-base font-bold whitespace-nowrap">System Event History</h2>
+                    </div>
+                    
+                    <div className="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
+                      
+                      <div className={`flex items-center gap-2 text-xs font-medium whitespace-nowrap ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
+                        <span>Show</span>
+                        <select
+                          value={logsPerPage}
+                          onChange={(e) => {
+                            setLogsPerPage(Number(e.target.value));
+                            setCurrentPage(1);
+                          }}
+                          className={`border rounded-md px-2 py-1.5 focus:outline-none transition-all cursor-pointer ${darkMode ? 'bg-slate-950 border-slate-700 text-white' : 'bg-white border-slate-300 text-slate-900'}`}
+                        >
+                          <option value={5}>5</option>
+                          <option value={10}>10</option>
+                          <option value={25}>25</option>
+                          <option value={50}>50</option>
+                          <option value={100}>100</option>
+                        </select>
+                        <span>entries</span>
+                      </div>
+
+                      <div className="relative w-full sm:w-64">
+                        <input
+                          type="text"
+                          placeholder="Search Device, Site, Status..."
+                          value={logSearchQuery}
+                          onChange={(e) => {
+                            setLogSearchQuery(e.target.value);
+                            setCurrentPage(1);
+                          }}
+                          className={`w-full pl-4 pr-10 py-1.5 text-sm rounded-lg border focus:outline-none transition-all ${darkMode ? 'bg-slate-950 border-slate-700 text-white focus:border-blue-500' : 'bg-slate-50 border-slate-300 text-slate-900 focus:border-blue-500'}`}
+                        />
+                        <Search className="w-4 h-4 text-slate-400 absolute right-3 top-2 pointer-events-none" />
+                      </div>
+                    </div>
                   </div>
+
                   <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                       <thead>
                         <tr className={`border-b text-[11px] font-bold uppercase tracking-wider ${darkMode ? 'border-slate-800 text-slate-400' : 'border-slate-200 text-slate-500'}`}>
-                          <th className="pb-3 pt-1">Timestamp</th>
-                          <th className="pb-3 pt-1">Device</th>
-                          <th className="pb-3 pt-1">Site</th>
-                          <th className="pb-3 pt-1 text-center">Status Change</th>
+                          
+                          <th className="pb-3 pt-1 cursor-pointer select-none hover:text-blue-500 transition-colors" onClick={() => handleSort('raw_timestamp')}>
+                            <div className="flex items-center gap-1">Timestamp {renderSortIcon('raw_timestamp')}</div>
+                          </th>
+                          <th className="pb-3 pt-1 cursor-pointer select-none hover:text-blue-500 transition-colors" onClick={() => handleSort('name')}>
+                            <div className="flex items-center gap-1">Device {renderSortIcon('name')}</div>
+                          </th>
+                          <th className="pb-3 pt-1 cursor-pointer select-none hover:text-blue-500 transition-colors" onClick={() => handleSort('site')}>
+                            <div className="flex items-center gap-1">Site {renderSortIcon('site')}</div>
+                          </th>
+                          <th className="pb-3 pt-1 cursor-pointer select-none text-center hover:text-blue-500 transition-colors" onClick={() => handleSort('to')}>
+                            <div className="flex items-center justify-center gap-1">Status Change {renderSortIcon('to')}</div>
+                          </th>
+
                         </tr>
                       </thead>
                       <tbody className={`divide-y text-xs ${darkMode ? 'divide-slate-800/50' : 'divide-slate-200'}`}>
@@ -369,18 +471,15 @@ function MainApp() {
                             </tr>
                           );
                         })}
+                        {currentLogs.length === 0 && (
+                          <tr>
+                            <td colSpan="4" className="py-6 text-center text-slate-500 font-medium">Tidak ada data ditemukan.</td>
+                          </tr>
+                        )}
                       </tbody>
                     </table>
                   </div>
-                  {totalPages > 1 && (
-                    <div className="flex justify-center items-center gap-1 mt-6">
-                      <button onClick={() => setCurrentPage(p => Math.max(1, p - 1))} disabled={currentPage === 1} className={`px-3 py-1.5 text-[11px] font-medium border rounded-md transition-all ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : darkMode ? 'border-slate-800' : 'border-slate-200'}`}>Previous</button>
-                      {Array.from({ length: totalPages }, (_, i) => (
-                        <button key={i} onClick={() => setCurrentPage(i + 1)} className={`px-3 py-1.5 text-[11px] font-medium border rounded-md ${currentPage === i + 1 ? 'bg-blue-600 text-white' : darkMode ? 'border-slate-800' : 'border-slate-200'}`}>{i + 1}</button>
-                      ))}
-                      <button onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))} disabled={currentPage === totalPages} className={`px-3 py-1.5 text-[11px] font-medium border rounded-md transition-all ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : darkMode ? 'border-slate-800' : 'border-slate-200'}`}>Next</button>
-                    </div>
-                  )}
+
                 </div>
               </div>
             } />
@@ -391,7 +490,6 @@ function MainApp() {
   );
 }
 
-// Wrapper utama
 export default function App() {
   return (
     <Router>

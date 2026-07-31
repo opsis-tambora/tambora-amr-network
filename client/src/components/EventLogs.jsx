@@ -57,7 +57,7 @@ const EventLogs = () => {
     <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl flex flex-col w-full">
       <div className="flex items-center gap-2 mb-6">
         <Clock className="w-5 h-5 text-blue-400" />
-        <h2 className="text-lg font-bold text-white">System Event History</h2>
+        <h2 className="text-lg font-bold text-white">Event History</h2>
       </div>
 
       <div className="overflow-x-auto w-full">

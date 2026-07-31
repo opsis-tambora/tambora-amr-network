@@ -2091,13 +2091,13 @@
   },
   {
     "tanggal":"2026-07-29",
-    "susut_harian":0.0,
-    "sub_talas":0.0,
-    "sub_sumbawa":0.0,
-    "sub_bima":0.0,
-    "line_talas":0.0,
-    "line_sumbawa":0.0,
-    "line_bima":0.0
+    "susut_harian":1.28,
+    "sub_talas":0.3,
+    "sub_sumbawa":0.15,
+    "sub_bima":0.82,
+    "line_talas":1.34,
+    "line_sumbawa":0.28,
+    "line_bima":1.82
   },
   {
     "tanggal":"2026-07-30",

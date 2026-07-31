@@ -27512,7 +27512,7 @@
   {
     "Pembangkit":"PLTD SEWA NIU",
     "TglAwal":"7\/26\/2026",
-    "TglAkhir":"",
+    "TglAkhir":"7\/29\/2026",
     "Status":"FD1",
     "Keterangan":"#7 Gangguan Cylinder Head"
   },
@@ -27545,53 +27545,53 @@
     "Keterangan":"Har Periodik 3x1000 Jam"
   },
   {
-    "Pembangkit":"",
-    "TglAwal":"",
-    "TglAkhir":"",
-    "Status":"",
-    "Keterangan":""
+    "Pembangkit":"PLTD SEWA NIU",
+    "TglAwal":"7\/29\/2026",
+    "TglAkhir":"7\/29\/2026",
+    "Status":"FD1",
+    "Keterangan":"#13 PM 500"
   },
   {
-    "Pembangkit":"",
-    "TglAwal":"",
+    "Pembangkit":"PLTD SEWA NIU",
+    "TglAwal":"7\/30\/2026",
     "TglAkhir":"",
     "Status":"",
-    "Keterangan":""
+    "Keterangan":"#3 PM 500"
   },
   {
-    "Pembangkit":"",
-    "TglAwal":"",
-    "TglAkhir":"",
+    "Pembangkit":"PLTD BIMA #4 (DAIHATSU)",
+    "TglAwal":"7\/30\/2026",
+    "TglAkhir":"7\/30\/2026",
     "Status":"",
-    "Keterangan":""
+    "Keterangan":"Pemeliharaan P0"
   },
   {
-    "Pembangkit":"",
-    "TglAwal":"",
-    "TglAkhir":"",
+    "Pembangkit":"PLTD NI'U #1 (MAK 1)",
+    "TglAwal":"7\/30\/2026",
+    "TglAkhir":"7\/30\/2026",
     "Status":"",
-    "Keterangan":""
+    "Keterangan":"Pemeliharaan P1"
   },
   {
-    "Pembangkit":"",
-    "TglAwal":"",
-    "TglAkhir":"",
+    "Pembangkit":"PLTD SEWA IPS DOMPU",
+    "TglAwal":"7\/30\/2026",
+    "TglAkhir":"7\/30\/2026",
     "Status":"",
-    "Keterangan":""
+    "Keterangan":" HM 600, Penggantian Oli Mesin"
   },
   {
-    "Pembangkit":"",
-    "TglAwal":"",
-    "TglAkhir":"",
+    "Pembangkit":"PLTD SEWA ND LABUHAN",
+    "TglAwal":"7\/30\/2026",
+    "TglAkhir":"7\/30\/2026",
     "Status":"",
-    "Keterangan":""
+    "Keterangan":"Clean Core Radiator + PM500"
   },
   {
-    "Pembangkit":"",
-    "TglAwal":"",
+    "Pembangkit":"PLTD SEWA NIU",
+    "TglAwal":"7\/30\/2026",
     "TglAkhir":"",
     "Status":"",
-    "Keterangan":""
+    "Keterangan":"High Water Temp"
   },
   {
     "Pembangkit":"",
