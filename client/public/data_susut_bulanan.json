@@ -112,5 +112,24 @@
     "uiw_loko":61195173.0,
     "uiw_siap_salur":60355206.0,
     "uiw_ps_gi":72112.0
+  },
+  {
+    "bulan":"Jul",
+    "up2b_susut":1.42,
+    "up2b_kumulatif":1.42,
+    "up2b_losis":898243.0,
+    "up2b_loko":63336316.0,
+    "up2b_siap_salur":62438073.0,
+    "up2b_ps_gi":67968.0,
+    "up2b_ntb_susut":0.92,
+    "up2b_ntb_kumulatif":0.85,
+    "up2b_ntb_losis":3186055.0,
+    "uiw_susut":0.0,
+    "uiw_kumulatif":1.08,
+    "uiw_losis":0.0,
+    "uiw_netto":0.0,
+    "uiw_loko":0.0,
+    "uiw_siap_salur":0.0,
+    "uiw_ps_gi":0.0
   }
 ]

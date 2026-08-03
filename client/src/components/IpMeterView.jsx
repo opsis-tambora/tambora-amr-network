@@ -50,7 +50,7 @@ const IpMeterView = ({ devices }) => {
         <MapResizer />
 
         {Object.keys(sitePositions).map((siteName, index) => {
-          const siteDevices = devices ? devices.filter(d => d.site === siteName) : [];
+          const siteDevices = devices ? devices.filter(d => (d.site || '').toUpperCase() === siteName.toUpperCase()) : [];
           const activeCount = siteDevices.filter(d => d.status === 'online').length;
           const offlineCount = siteDevices.filter(d => d.status === 'offline').length;
 

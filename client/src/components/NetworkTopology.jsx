@@ -166,7 +166,13 @@ const NetworkTopology = ({ devices }) => {
 
         {/* 2. DRAW LINES: Substations -> Draggable Devices */}
         {localDevices.map(device => {
-          const sitePos = SITE_POSITIONS[device.site] || SITE_POSITIONS['GI Labuhan'];
+          const matchingSiteKey = Object.keys(SITE_POSITIONS).find(
+           key => key.toUpperCase() === (device.site || '').toUpperCase()
+          );
+          const matchingSiteKey = Object.keys(SITE_POSITIONS).find(
+           key => key.toUpperCase() === (device.site || '').toUpperCase()
+          );
+          const sitePos = SITE_POSITIONS[matchingSiteKey] || SITE_POSITIONS['GI Labuhan'];
           const color = getStatusColor(device.status);
           const isOffline = device.status === 'offline';
 

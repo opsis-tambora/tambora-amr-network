@@ -27029,7 +27029,7 @@
   {
     "Pembangkit":"PLTMG SUMBAWA 1 #1",
     "TglAwal":"7\/3\/2026",
-    "TglAkhir":"",
+    "TglAkhir":"8\/2\/2026",
     "Status":"PO",
     "Keterangan":"PMS 36K (3 Juli s.d 7 Agustus 2026)"
   },
@@ -27624,30 +27624,30 @@
   {
     "Pembangkit":"PLTD SEWA NIU",
     "TglAwal":"7\/31\/2026",
-    "TglAkhir":"",
+    "TglAkhir":"7\/31\/2026",
     "Status":"",
     "Keterangan":"#11 PM 500"
   },
   {
-    "Pembangkit":"",
-    "TglAwal":"",
-    "TglAkhir":"",
-    "Status":"",
-    "Keterangan":""
+    "Pembangkit":"PLTMG SUMBAWA 1 #2",
+    "TglAwal":"7\/31\/2026",
+    "TglAkhir":"7\/31\/2026",
+    "Status":"FO1",
+    "Keterangan":"Kebocoran Fleksibel Hose"
   },
   {
-    "Pembangkit":"",
-    "TglAwal":"",
-    "TglAkhir":"",
-    "Status":"",
-    "Keterangan":""
+    "Pembangkit":"PLTD SEWA NIU",
+    "TglAwal":"8\/1\/2026",
+    "TglAkhir":"8\/1\/2026",
+    "Status":"FD1",
+    "Keterangan":"#2 PM500 + PM1000"
   },
   {
-    "Pembangkit":"",
-    "TglAwal":"",
-    "TglAkhir":"",
+    "Pembangkit":"PLTMG SUMBAWA 1 #2",
+    "TglAwal":"8\/2\/2026",
+    "TglAkhir":"8\/2\/2026",
     "Status":"",
-    "Keterangan":""
+    "Keterangan":"Pengujian Upgrade Hard-Wire GT1 dan GT2 GI Sumbawa"
   },
   {
     "Pembangkit":"",
