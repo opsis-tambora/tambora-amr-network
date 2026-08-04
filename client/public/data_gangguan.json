@@ -27650,18 +27650,18 @@
     "Keterangan":"Pengujian Upgrade Hard-Wire GT1 dan GT2 GI Sumbawa"
   },
   {
-    "Pembangkit":"",
-    "TglAwal":"",
+    "Pembangkit":"PLTD SEWA IPS BOAK #3",
+    "TglAwal":"8\/3\/2026",
     "TglAkhir":"",
-    "Status":"",
-    "Keterangan":""
+    "Status":"FD1",
+    "Keterangan":"#3 Gangguan Sparator MFO"
   },
   {
-    "Pembangkit":"",
-    "TglAwal":"",
+    "Pembangkit":"PLTD SEWA IPS BOAK",
+    "TglAwal":"8\/4\/2026",
     "TglAkhir":"",
-    "Status":"",
-    "Keterangan":""
+    "Status":"FO1",
+    "Keterangan":"#2 Pemeliharaan Rutin"
   },
   {
     "Pembangkit":"",

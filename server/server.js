@@ -18,7 +18,6 @@ const db = new sqlite3.Database(path.join(__dirname, 'database.sqlite'), (err) =
   } else {
     console.log('Berhasil terhubung ke database utama SQLite Tambora.');
     
-    // --- KONFIGURASI MENCEGAH DATABASE LOCKED ---
     db.run('PRAGMA busy_timeout = 10000;');
     db.run('PRAGMA journal_mode = DELETE;');
     
@@ -91,8 +90,6 @@ app.get('/api/events', (req, res) => {
 
   db.all(query, [], (err, rows) => {
     if (err) return res.status(500).json({ error: err.message });
-    
-    // Kalkulasi format durasi HH.MM.SS
     const formattedRows = rows.map(row => {
         if (row.downtime_seconds != null) {
             const total = Math.max(0, row.downtime_seconds);
@@ -103,26 +100,22 @@ app.get('/api/events', (req, res) => {
         }
         return row;
     });
-    
     res.json(formattedRows);
   });
 });
 
-// 4. API Billing kWh (Murni tanpa duplikasi + Filter Hari Ini + Filter UNKNOWN)
+// 4. API Billing kWh 
 app.get('/api/billing', (req, res) => {
-  const { tgl } = req.query; // '01', '25', atau 'Harian'
-  
+  const { tgl } = req.query; 
   let timeCondition = "";
   let queryParams = [];
 
   if (tgl === 'Harian') {
-    // Ambil tanggal waktu lokal Indonesia (WITA)
     const tzDate = new Date(new Date().toLocaleString("en-US", {timeZone: "Asia/Makassar"}));
     const yyyy = tzDate.getFullYear();
     const mm = String(tzDate.getMonth() + 1).padStart(2, '0');
     const dd = String(tzDate.getDate()).padStart(2, '0');
     const todayStr = `${yyyy}-${mm}-${dd}`;
-    
     timeCondition = "l.Time LIKE ? OR l.Time LIKE ?";
     queryParams = [`${todayStr}%`, `%/${mm}/${dd}%`];
   } else {
@@ -130,7 +123,6 @@ app.get('/api/billing', (req, res) => {
     queryParams = [`%-${tgl} 10:00:%`, `%/${tgl} 10:00:%`];
   }
 
-  // QUERY TANPA JOIN DUPLIKAT: Menggunakan Murni serial_number atau kecocokan site + name
   const query = `
     SELECT 
       COALESCE(l.site, d.site, '-') AS Site, 
@@ -150,12 +142,41 @@ app.get('/api/billing', (req, res) => {
   `;
 
   db.all(query, queryParams, (err, rows) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json(rows);
+  });
+});
+
+// 5. API Analisa Susut Harian (Mengekstrak data berdasarkan Waktu Awal dan Akhir)
+app.get('/api/analisa-susut', (req, res) => {
+  const { waktu_awal, waktu_akhir } = req.query; // format 'YYYY-MM-DD HH:mm'
+  
+  const targetAwal1 = `${waktu_awal}:%`; 
+  const targetAkhir1 = `${waktu_akhir}:%`;
+  const targetAwal2 = waktu_awal.replace(/-/g, '/') + ':%';
+  const targetAkhir2 = waktu_akhir.replace(/-/g, '/') + ':%';
+
+  const query = `
+    SELECT 
+      COALESCE(l.site, d.site, '-') AS Site, 
+      COALESCE(l.name, d.name, '-') AS Device, 
+      l.Time AS DateTime, 
+      l."kWh Delivery" AS kWhDelivery, 
+      l."kWh Received" AS kWhReceived
+    FROM db2.log_kwh_meter_v2 l
+    LEFT JOIN devices d 
+      ON (l.serial_number = d.serial_number AND l.serial_number IS NOT NULL AND l.serial_number != '')
+      OR (TRIM(UPPER(l.site)) = TRIM(UPPER(d.site)) AND TRIM(UPPER(l.name)) = TRIM(UPPER(d.name)))
+    WHERE (l.Time LIKE ? OR l.Time LIKE ? OR l.Time LIKE ? OR l.Time LIKE ?)
+      AND TRIM(UPPER(COALESCE(l.name, ''))) NOT LIKE '%UNKNOWN%'
+  `;
+
+  db.all(query, [targetAwal1, targetAkhir1, targetAwal2, targetAkhir2], (err, rows) => {
     if (err) {
-      console.error("[ERROR API BILLING]:", err.message);
+      console.error("[ERROR API ANALISA SUSUT]:", err.message);
       return res.status(500).json({ error: err.message });
     }
-    
-    console.log(`[API BILLING] Mode ${tgl} | Data berhasil ditarik: ${rows.length} baris.`);
+    console.log(`[API ANALISA SUSUT] Data ditarik untuk ${waktu_awal} dan ${waktu_akhir}: ${rows.length} baris.`);
     res.json(rows);
   });
 });

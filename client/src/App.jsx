@@ -9,6 +9,7 @@ import StatusKwhMeter from './components/StatusKwhMeter';
 import SusutSubSistem from './components/SusutSubSistem';
 import SusutBulanan from './components/SusutBulanan';
 import BillingKwh from './components/BillingKwh';
+import AnalisaSusutHarian from './components/AnalisaSusutHarian'; 
 
 function MainApp() {
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ function MainApp() {
   const healthPercentage = totalMeters > 0 ? Math.round((activeMeters / totalMeters) * 100) : 0;
 
   useEffect(() => {
-    if (location.pathname.includes('/Susut')) setIsSusutMenuOpen(true);
+    if (location.pathname.includes('/Susut') || location.pathname.includes('/Analisa') || location.pathname.includes('/Rekapan')) setIsSusutMenuOpen(true);
     if (location.pathname.includes('/kWh') || location.pathname.includes('/Status')) setIsKwhMenuOpen(true);
     if (location.pathname.includes('/Billing')) setIsBillingMenuOpen(true);
   }, [location.pathname]);
@@ -63,15 +64,12 @@ function MainApp() {
 
     const pollData = async () => {
       if (!isMounted) return;
-
       try {
         const [devicesRes, eventsRes] = await Promise.all([
           axios.get('/api/devices'),
           axios.get('/api/events')
         ]);
-
         if (isMounted) setDevices(devicesRes.data);
-
         if (isMounted && eventsRes.data) {
           const mappedLogs = eventsRes.data.map(e => {
             const utcDate = e.timestamp.endsWith('Z') ? e.timestamp : e.timestamp + 'Z';
@@ -97,20 +95,11 @@ function MainApp() {
       } catch (error) {
         console.error("Gagal menarik data pemantauan:", error);
       } finally {
-        if (isMounted) {
-          timerId = setTimeout(pollData, 10000); 
-        }
+        if (isMounted) timerId = setTimeout(pollData, 10000); 
       }
     };
-
-    if (isLoggedIn) {
-      pollData();
-    }
-
-    return () => {
-      isMounted = false;
-      if (timerId) clearTimeout(timerId);
-    };
+    if (isLoggedIn) pollData();
+    return () => { isMounted = false; if (timerId) clearTimeout(timerId); };
   }, [isLoggedIn]);
 
   const handleLogin = async (e) => {
@@ -120,10 +109,7 @@ function MainApp() {
       const response = await axios.post('/api/login', { email, password });
       if (response.data.success && response.data.user) {
         setIsLoggedIn(true);
-        setCurrentUser({
-          name: response.data.user.name,
-          role: response.data.user.role
-        });
+        setCurrentUser({ name: response.data.user.name, role: response.data.user.role });
         localStorage.setItem('currentUser', JSON.stringify(response.data.user));
       } else {
         setLoginError('Username atau Password salah!');
@@ -203,7 +189,6 @@ function MainApp() {
             <h2 className="text-2xl font-bold tracking-wider uppercase mt-2">TAMBORA SYSTEM</h2>
             <p className="text-xs text-slate-400">CENTRALIZED METER DASHBOARD MONITOR</p>
           </div>
-
           <form onSubmit={handleLogin} className="flex flex-col gap-4">
             <div className="flex flex-col gap-1.5">
               <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Username</label>
@@ -234,7 +219,7 @@ function MainApp() {
     <div className={`min-h-screen w-full font-sans select-none overflow-x-hidden transition-colors duration-200 ${darkMode ? 'bg-slate-950 text-white' : 'bg-slate-50 text-slate-900'}`} style={{ display: 'flex', flexDirection: 'row' }}>
       
       {/* SIDEBAR NAVIGATION */}
-      <div className={`border-r flex flex-col transition-all duration-300 ${isSidebarOpen ? 'w-64' : 'w-0 overflow-hidden border-none'} ${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'}`} style={{ minHeight: '100vh', sticky: 'top', position: 'sticky' }}>
+      <div className={`border-r flex flex-col transition-all duration-300 print:hidden ${isSidebarOpen ? 'w-64' : 'w-0 overflow-hidden border-none'} ${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'}`} style={{ minHeight: '100vh', sticky: 'top', position: 'sticky' }}>
         <div className={`p-5 border-b flex items-center justify-between ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
           <div className="flex items-center gap-2.5">
             <Zap className="w-6 h-6 text-emerald-400 fill-emerald-400/20" />
@@ -256,9 +241,10 @@ function MainApp() {
             </button>
             <div className={`overflow-hidden transition-all duration-300 flex flex-col gap-1 ${isSusutMenuOpen ? 'max-h-60 opacity-100 mt-1' : 'max-h-0 opacity-0'}`}>
               <div className={`border-l-2 ml-4 flex flex-col gap-1 ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
-                <button onClick={() => navigate('/Susut-Harian')} className={getSubMenuClass('/Susut-Harian')}><Activity className="w-4 h-4" /> Susut Harian</button>
+                <button onClick={() => navigate('/Analisa-Susut/Harian')} className={getSubMenuClass('/Analisa-Susut/Harian')}><FileText className="w-4 h-4" /> Analisa Susut</button>
                 <button onClick={() => navigate('/Susut-Sub-Sistem')} className={getSubMenuClass('/Susut-Sub-Sistem')}><BarChart3 className="w-4 h-4" /> Susut Sub Sistem</button>
                 <button onClick={() => navigate('/Susut-Bulanan')} className={getSubMenuClass('/Susut-Bulanan')}><CalendarDays className="w-4 h-4" /> Susut Bulanan</button>
+                <button onClick={() => navigate('/Rekapan-Susut')} className={getSubMenuClass('/Rekapan-Susut')}><Activity className="w-4 h-4" /> Rekapan Susut</button>
               </div>
             </div>
           </div>
@@ -266,12 +252,12 @@ function MainApp() {
           {/* MENU 2: KWH METER */}
           <div className="flex flex-col gap-1 mt-1">
             <button onClick={() => setIsKwhMenuOpen(!isKwhMenuOpen)} className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${darkMode ? 'text-slate-300 hover:bg-slate-800/60' : 'text-slate-700 hover:bg-slate-100'}`}>
-              <div className="flex items-center gap-3"><Cpu className="w-4 h-4" /><span>kWh Meter</span></div>
+              <div className="flex items-center gap-3"><Cpu className="w-4 h-4" /><span>Monitoring kWh</span></div>
               <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isKwhMenuOpen ? 'rotate-180' : ''}`} />
             </button>
             <div className={`overflow-hidden transition-all duration-300 flex flex-col gap-1 ${isKwhMenuOpen ? 'max-h-60 opacity-100 mt-1' : 'max-h-0 opacity-0'}`}>
               <div className={`border-l-2 ml-4 flex flex-col gap-1 ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
-                <button onClick={() => navigate('/kWh-Meter')} className={getSubMenuClass('/kWh-Meter')}><Cpu className="w-4 h-4" /> kWh Meter</button>
+                <button onClick={() => navigate('/kWh-Meter')} className={getSubMenuClass('/kWh-Meter')}><Cpu className="w-4 h-4" /> Monitoring kWh</button>
                 <button onClick={() => navigate('/Status-kWh')} className={getSubMenuClass('/Status-kWh')}><List className="w-4 h-4" /> Status kWh</button>
               </div>
             </div>
@@ -306,7 +292,7 @@ function MainApp() {
       <div className="flex-1 flex flex-col min-w-0">
         
         {/* Header Dashboard */}
-        <div className={`w-full flex justify-between items-center p-4 md:px-8 border-b sticky top-0 z-30 backdrop-blur-sm ${darkMode ? 'border-slate-900 bg-slate-950/80' : 'border-slate-200 bg-white/80'}`}>
+        <div className={`w-full flex justify-between items-center p-4 md:px-8 border-b sticky top-0 z-30 backdrop-blur-sm print:hidden ${darkMode ? 'border-slate-900 bg-slate-950/80' : 'border-slate-200 bg-white/80'}`}>
           <div className="flex items-center gap-6 flex-1">
             {!isSidebarOpen && (
               <button onClick={() => setIsSidebarOpen(true)} className={`p-2 border rounded-lg transition-all ${darkMode ? 'bg-slate-900 border-slate-800 hover:bg-slate-800 text-white' : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-800'}`}>
@@ -315,7 +301,6 @@ function MainApp() {
             )}
             
             {checkActiveMenu('/Settings') && <h1 className="text-lg font-bold tracking-wider uppercase hidden lg:block">Settings</h1>}
-            {/* TULISAN DATA BILLING KWH DI SINI SUDAH DIHAPUS */}
 
             <div className="relative max-w-md w-full flex items-center">
               <input type="text" placeholder="Search Data..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className={`w-full pl-4 pr-10 py-2 text-sm rounded-lg border focus:outline-none transition-all ${darkMode ? 'bg-slate-900 border-slate-800 text-white focus:border-slate-700' : 'bg-slate-100 border-slate-200 text-slate-900 focus:border-slate-300'}`} />
@@ -352,14 +337,16 @@ function MainApp() {
           <Routes>
             <Route path="/" element={<Navigate to="/kWh-Meter" replace />} />
             
-            <Route path="/Susut-Harian" element={<SusutTambora />} />
+            {/* RUTE TELAH DIPERBAIKI: ANALISA SUSUT vs REKAPAN SUSUT */}
+            <Route path="/Analisa-Susut/Harian" element={<div className="mt-6 w-full"><AnalisaSusutHarian darkMode={darkMode} /></div>} />
+            <Route path="/Rekapan-Susut" element={<SusutTambora />} />
+            
             <Route path="/Susut-Sub-Sistem" element={<div className="mt-6 w-full"><SusutSubSistem darkMode={darkMode} /></div>} />
             <Route path="/Susut-Bulanan" element={<div className="mt-6 w-full"><SusutBulanan darkMode={darkMode} /></div>} />
 
             <Route path="/Settings" element={<SettingsPage />} />
             <Route path="/Status-kWh" element={<div className="mt-6 w-full"><StatusKwhMeter devices={devices} darkMode={darkMode} /></div>} />
             
-            {/* RUTE UNTUK BILLING */}
             <Route path="/Billing/Harian" element={<div className="mt-6 w-full"><BillingKwh darkMode={darkMode} tanggal="Harian" /></div>} />
             <Route path="/Billing/01" element={<div className="mt-6 w-full"><BillingKwh darkMode={darkMode} tanggal="01" /></div>} />
             <Route path="/Billing/25" element={<div className="mt-6 w-full"><BillingKwh darkMode={darkMode} tanggal="25" /></div>} />
@@ -401,15 +388,12 @@ function MainApp() {
                   </div>
                 </div>
 
-                {/* EVENT HISTORY TABLE */}
                 <div className={`border rounded-xl p-5 shadow-xl flex flex-col ${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'}`}>
-                  
                   <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-6">
                     <div className="flex items-center gap-2">
                       <Clock className="w-5 h-5 text-blue-400" />
                       <h2 className="text-base font-bold whitespace-nowrap">System Event History</h2>
                     </div>
-                    
                     <div className="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
                       <div className={`flex items-center gap-2 text-xs font-medium whitespace-nowrap ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
                         <span>Show</span>
@@ -422,7 +406,6 @@ function MainApp() {
                         </select>
                         <span>entries</span>
                       </div>
-
                       <div className="relative w-full sm:w-64">
                         <input
                           type="text"
@@ -478,9 +461,7 @@ function MainApp() {
                           );
                         })}
                         {currentLogs.length === 0 && (
-                          <tr>
-                            <td colSpan="4" className="py-6 text-center text-slate-500 font-medium">Tidak ada data ditemukan.</td>
-                          </tr>
+                          <tr><td colSpan="4" className="py-6 text-center text-slate-500 font-medium">Tidak ada data ditemukan.</td></tr>
                         )}
                       </tbody>
                     </table>
@@ -491,7 +472,6 @@ function MainApp() {
                       <button key={i} onClick={() => setCurrentPage(i + 1)} className={`px-3 py-1.5 text-[11px] font-semibold border rounded-md transition-all ${safeCurrentPage === i + 1 ? 'bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-500/20' : darkMode ? 'border-slate-800 text-slate-400 hover:bg-slate-800 hover:text-white' : 'border-slate-200 text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`}>{i + 1}</button>
                     ))}
                   </div>
-
                 </div>
               </div>
             } />
