@@ -241,9 +241,11 @@ function MainApp() {
             </button>
             <div className={`overflow-hidden transition-all duration-300 flex flex-col gap-1 ${isSusutMenuOpen ? 'max-h-60 opacity-100 mt-1' : 'max-h-0 opacity-0'}`}>
               <div className={`border-l-2 ml-4 flex flex-col gap-1 ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
-                <button onClick={() => navigate('/Analisa-Susut/Harian')} className={getSubMenuClass('/Analisa-Susut/Harian')}><FileText className="w-4 h-4" /> Analisa Susut</button>
+                {/* Analisa Susut -> Menampilkan Dashboard Grafik */}
+                <button onClick={() => navigate('/Analisa-Susut')} className={getSubMenuClass('/Analisa-Susut')}><FileText className="w-4 h-4" /> Analisa Susut</button>
                 <button onClick={() => navigate('/Susut-Sub-Sistem')} className={getSubMenuClass('/Susut-Sub-Sistem')}><BarChart3 className="w-4 h-4" /> Susut Sub Sistem</button>
                 <button onClick={() => navigate('/Susut-Bulanan')} className={getSubMenuClass('/Susut-Bulanan')}><CalendarDays className="w-4 h-4" /> Susut Bulanan</button>
+                {/* Rekapan Susut -> Menampilkan Form Tabel Cetak PDF */}
                 <button onClick={() => navigate('/Rekapan-Susut')} className={getSubMenuClass('/Rekapan-Susut')}><Activity className="w-4 h-4" /> Rekapan Susut</button>
               </div>
             </div>
@@ -337,9 +339,9 @@ function MainApp() {
           <Routes>
             <Route path="/" element={<Navigate to="/kWh-Meter" replace />} />
             
-            {/* RUTE TELAH DIPERBAIKI: ANALISA SUSUT vs REKAPAN SUSUT */}
-            <Route path="/Analisa-Susut/Harian" element={<div className="mt-6 w-full"><AnalisaSusutHarian darkMode={darkMode} /></div>} />
-            <Route path="/Rekapan-Susut" element={<SusutTambora />} />
+            {/* ROUTE DITUKAR AGAR SESUAI DENGAN MENU */}
+            <Route path="/Analisa-Susut" element={<div className="mt-6 w-full"><SusutTambora /></div>} />
+            <Route path="/Rekapan-Susut" element={<div className="mt-6 w-full"><AnalisaSusutHarian darkMode={darkMode} /></div>} />
             
             <Route path="/Susut-Sub-Sistem" element={<div className="mt-6 w-full"><SusutSubSistem darkMode={darkMode} /></div>} />
             <Route path="/Susut-Bulanan" element={<div className="mt-6 w-full"><SusutBulanan darkMode={darkMode} /></div>} />
