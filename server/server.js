@@ -19,7 +19,6 @@ const db = new sqlite3.Database(path.join(__dirname, 'database.sqlite'), (err) =
     console.log('Berhasil terhubung ke database utama SQLite Tambora.');
     
     // --- KONFIGURASI MENCEGAH DATABASE LOCKED ---
-    // Memberikan waktu tunggu (timeout) 10 detik jika DB sedang dipakai oleh script lain
     db.run('PRAGMA busy_timeout = 10000;');
     db.run('PRAGMA journal_mode = DELETE;');
     
@@ -31,8 +30,6 @@ const db = new sqlite3.Database(path.join(__dirname, 'database.sqlite'), (err) =
         console.error('Gagal attach DB_TTLOPS2.db. Pastikan Drive Z: terhubung.', attachErr.message);
       } else {
         console.log('Berhasil attach DB_TTLOPS2.db sebagai db2.');
-        
-        // Terapkan juga mode jurnal DELETE ke database Z: agar seragam dan aman di jaringan
         db.run('PRAGMA db2.journal_mode = DELETE;');
       }
     });
@@ -111,47 +108,54 @@ app.get('/api/events', (req, res) => {
   });
 });
 
-// 4. API Billing kWh (REVISI FINAL: Hapus UNKNOWN & Mapping Khusus NIU/WOHA)
+// 4. API Billing kWh (Murni tanpa duplikasi + Filter Hari Ini + Filter UNKNOWN)
 app.get('/api/billing', (req, res) => {
-  const { tgl } = req.query; 
+  const { tgl } = req.query; // '01', '25', atau 'Harian'
   
+  let timeCondition = "";
+  let queryParams = [];
+
+  if (tgl === 'Harian') {
+    // Ambil tanggal waktu lokal Indonesia (WITA)
+    const tzDate = new Date(new Date().toLocaleString("en-US", {timeZone: "Asia/Makassar"}));
+    const yyyy = tzDate.getFullYear();
+    const mm = String(tzDate.getMonth() + 1).padStart(2, '0');
+    const dd = String(tzDate.getDate()).padStart(2, '0');
+    const todayStr = `${yyyy}-${mm}-${dd}`;
+    
+    timeCondition = "l.Time LIKE ? OR l.Time LIKE ?";
+    queryParams = [`${todayStr}%`, `%/${mm}/${dd}%`];
+  } else {
+    timeCondition = "l.Time LIKE ? OR l.Time LIKE ?";
+    queryParams = [`%-${tgl} 10:00:%`, `%/${tgl} 10:00:%`];
+  }
+
+  // QUERY TANPA JOIN DUPLIKAT: Menggunakan Murni serial_number atau kecocokan site + name
   const query = `
     SELECT 
-      COALESCE(d.site, l.site, '-') AS Site, 
-      COALESCE(d.name, l.name, '-') AS Device, 
-      COALESCE(d.serial_number, l.serial_number, '-') AS SerialNumber, 
+      COALESCE(l.site, d.site, '-') AS Site, 
+      COALESCE(l.name, d.name, '-') AS Device, 
+      COALESCE(l.serial_number, d.serial_number, '-') AS SerialNumber, 
       l.Time AS DateTime, 
       l."kWh Delivery" AS kWhDelivery, 
       l."kWh Received" AS kWhReceived
     FROM db2.log_kwh_meter_v2 l
     LEFT JOIN devices d 
       ON (l.serial_number = d.serial_number AND l.serial_number IS NOT NULL AND l.serial_number != '')
-      OR (TRIM(UPPER(l.name)) = TRIM(UPPER(d.name)))
-      -- Mapping khusus untuk menyambungkan histori nama yang terbalik
-      OR (TRIM(UPPER(l.name)) = 'ND NIU SEWA 1' AND TRIM(UPPER(d.name)) = 'ND NIU 1 SEWA')
-      OR (TRIM(UPPER(l.name)) = 'ND NIU SEWA 2' AND TRIM(UPPER(d.name)) = 'ND NIU 2 SEWA')
-      OR (TRIM(UPPER(l.name)) = 'INC TRAFO 1 WOHA' AND TRIM(UPPER(d.name)) = 'INC TRAFO 1' AND TRIM(UPPER(d.site)) LIKE '%WOHA%')
-      -- Logika standar untuk nama lainnya
-      OR (
-           TRIM(UPPER(l.name)) LIKE TRIM(UPPER(d.name)) || '%' 
-           AND TRIM(UPPER(l.name)) LIKE '%' || REPLACE(REPLACE(TRIM(UPPER(d.site)), 'GI ', ''), 'PLTD ', '') || '%'
-         )
-    WHERE (l.Time LIKE ? OR l.Time LIKE ?)
-      AND TRIM(UPPER(l.name)) NOT LIKE '%UNKNOWN%' -- Perintah untuk membuang data UNKNOWN
+      OR (TRIM(UPPER(l.site)) = TRIM(UPPER(d.site)) AND TRIM(UPPER(l.name)) = TRIM(UPPER(d.name)))
+    WHERE (${timeCondition})
+      AND TRIM(UPPER(COALESCE(l.name, ''))) NOT LIKE '%UNKNOWN%'
     ORDER BY l.Time DESC
     LIMIT 2000
   `;
-  
-  const targetWaktu1 = `%-${tgl} 10:00:%`; 
-  const targetWaktu2 = `%/${tgl} 10:00:%`; 
 
-  db.all(query, [targetWaktu1, targetWaktu2], (err, rows) => {
+  db.all(query, queryParams, (err, rows) => {
     if (err) {
       console.error("[ERROR API BILLING]:", err.message);
       return res.status(500).json({ error: err.message });
     }
     
-    console.log(`[API BILLING] Filter Tgl ${tgl} | Data berhasil ditarik: ${rows.length} baris.`);
+    console.log(`[API BILLING] Mode ${tgl} | Data berhasil ditarik: ${rows.length} baris.`);
     res.json(rows);
   });
 });

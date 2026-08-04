@@ -8,7 +8,7 @@ import SettingsPage from './components/Settings';
 import StatusKwhMeter from './components/StatusKwhMeter';
 import SusutSubSistem from './components/SusutSubSistem';
 import SusutBulanan from './components/SusutBulanan';
-import BillingKwh from './components/BillingKwh'; // Komponen baru
+import BillingKwh from './components/BillingKwh';
 
 function MainApp() {
   const navigate = useNavigate();
@@ -285,6 +285,7 @@ function MainApp() {
             </button>
             <div className={`overflow-hidden transition-all duration-300 flex flex-col gap-1 ${isBillingMenuOpen ? 'max-h-60 opacity-100 mt-1' : 'max-h-0 opacity-0'}`}>
               <div className={`border-l-2 ml-4 flex flex-col gap-1 ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
+                <button onClick={() => navigate('/Billing/Harian')} className={getSubMenuClass('/Billing/Harian')}><FileText className="w-4 h-4" /> Billing Data</button>
                 <button onClick={() => navigate('/Billing/01')} className={getSubMenuClass('/Billing/01')}><FileText className="w-4 h-4" /> Billing Tanggal 1</button>
                 <button onClick={() => navigate('/Billing/25')} className={getSubMenuClass('/Billing/25')}><FileText className="w-4 h-4" /> Billing Tanggal 25</button>
               </div>
@@ -314,7 +315,7 @@ function MainApp() {
             )}
             
             {checkActiveMenu('/Settings') && <h1 className="text-lg font-bold tracking-wider uppercase hidden lg:block">Settings</h1>}
-            {location.pathname.includes('/Billing') && <h1 className="text-lg font-bold tracking-wider uppercase hidden lg:block">Data Billing kWh</h1>}
+            {/* TULISAN DATA BILLING KWH DI SINI SUDAH DIHAPUS */}
 
             <div className="relative max-w-md w-full flex items-center">
               <input type="text" placeholder="Search Data..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className={`w-full pl-4 pr-10 py-2 text-sm rounded-lg border focus:outline-none transition-all ${darkMode ? 'bg-slate-900 border-slate-800 text-white focus:border-slate-700' : 'bg-slate-100 border-slate-200 text-slate-900 focus:border-slate-300'}`} />
@@ -358,7 +359,8 @@ function MainApp() {
             <Route path="/Settings" element={<SettingsPage />} />
             <Route path="/Status-kWh" element={<div className="mt-6 w-full"><StatusKwhMeter devices={devices} darkMode={darkMode} /></div>} />
             
-            {/* RUTE BARU UNTUK BILLING */}
+            {/* RUTE UNTUK BILLING */}
+            <Route path="/Billing/Harian" element={<div className="mt-6 w-full"><BillingKwh darkMode={darkMode} tanggal="Harian" /></div>} />
             <Route path="/Billing/01" element={<div className="mt-6 w-full"><BillingKwh darkMode={darkMode} tanggal="01" /></div>} />
             <Route path="/Billing/25" element={<div className="mt-6 w-full"><BillingKwh darkMode={darkMode} tanggal="25" /></div>} />
 
