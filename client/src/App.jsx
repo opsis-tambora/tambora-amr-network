@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import { Activity, Zap, Cpu, Settings, Clock, ArrowRight, Menu, ChevronLeft, Search, Sun, Moon, ChevronDown, Lock, Mail, LogOut, List, BarChart3, ArrowUpDown, ArrowUp, ArrowDown, CalendarDays, Receipt, FileText } from 'lucide-react';
+
+// IMPORT KOMPONEN
 import SusutTambora from './components/SusutTambora';
 import IpMeterView from './components/IpMeterView';
 import SettingsPage from './components/Settings';
@@ -10,6 +12,7 @@ import SusutSubSistem from './components/SusutSubSistem';
 import SusutBulanan from './components/SusutBulanan';
 import BillingKwh from './components/BillingKwh';
 import AnalisaSusutHarian from './components/AnalisaSusutHarian'; 
+import SusutHarian from './components/SusutHarian'; // <-- TAMBAHAN IMPORT SUSUT HARIAN
 
 function MainApp() {
   const navigate = useNavigate();
@@ -241,12 +244,13 @@ function MainApp() {
             </button>
             <div className={`overflow-hidden transition-all duration-300 flex flex-col gap-1 ${isSusutMenuOpen ? 'max-h-60 opacity-100 mt-1' : 'max-h-0 opacity-0'}`}>
               <div className={`border-l-2 ml-4 flex flex-col gap-1 ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
-                {/* Analisa Susut -> Menampilkan Dashboard Grafik */}
+                {/* TAMBAHAN: Menu Susut Harian */}
+                <button onClick={() => navigate('/Susut-Harian')} className={getSubMenuClass('/Susut-Harian')}><Activity className="w-4 h-4" /> Susut Harian</button>
+                
                 <button onClick={() => navigate('/Analisa-Susut')} className={getSubMenuClass('/Analisa-Susut')}><FileText className="w-4 h-4" /> Analisa Susut</button>
                 <button onClick={() => navigate('/Susut-Sub-Sistem')} className={getSubMenuClass('/Susut-Sub-Sistem')}><BarChart3 className="w-4 h-4" /> Susut Sub Sistem</button>
                 <button onClick={() => navigate('/Susut-Bulanan')} className={getSubMenuClass('/Susut-Bulanan')}><CalendarDays className="w-4 h-4" /> Susut Bulanan</button>
-                {/* Rekapan Susut -> Menampilkan Form Tabel Cetak PDF */}
-                <button onClick={() => navigate('/Rekapan-Susut')} className={getSubMenuClass('/Rekapan-Susut')}><Activity className="w-4 h-4" /> Rekapan Susut</button>
+                <button onClick={() => navigate('/Rekapan-Susut')} className={getSubMenuClass('/Rekapan-Susut')}><List className="w-4 h-4" /> Rekapan Susut</button>
               </div>
             </div>
           </div>
@@ -340,6 +344,10 @@ function MainApp() {
             <Route path="/" element={<Navigate to="/kWh-Meter" replace />} />
             
             {/* ROUTE DITUKAR AGAR SESUAI DENGAN MENU */}
+            
+            {/* TAMBAHAN: Route Susut Harian */}
+            <Route path="/Susut-Harian" element={<div className="mt-6 w-full"><SusutHarian darkMode={darkMode} /></div>} />
+            
             <Route path="/Analisa-Susut" element={<div className="mt-6 w-full"><SusutTambora /></div>} />
             <Route path="/Rekapan-Susut" element={<div className="mt-6 w-full"><AnalisaSusutHarian darkMode={darkMode} /></div>} />
             
