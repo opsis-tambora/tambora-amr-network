@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import axios from 'axios';
 
-// ==========================================
-// 1. TEMPLATE DEVICE LIST & HELPERS
-// ==========================================
 const TEMPLATE_DEVICES = [
   { no: 1, site: 'GI KERTASARI', dbName: 'GT PLTU 1 MAIN', label: 'GT PLTU 1 MAIN' },
   { no: '', site: 'GI KERTASARI', dbName: 'GT PLTU 2 MAIN', label: 'GT PLTU 2 MAIN' },
@@ -43,38 +40,31 @@ const formatRibuan = (num) => {
   return new Intl.NumberFormat('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(num);
 };
 
-// ==========================================
-// 2. CUSTOM TOOLTIP COMPONENT
-// ==========================================
-const CustomTooltip = ({ active, payload, label }) => {
+const CustomTooltip = ({ active, payload, label, darkMode }) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
     return (
-      <div className="bg-slate-900 border border-slate-700 p-3 rounded-xl shadow-2xl text-xs text-white space-y-1.5 min-w-[190px]">
-        <p className="font-bold text-sm text-blue-400 border-b border-slate-800 pb-1">{label}</p>
+      <div className={`p-3 rounded-xl shadow-2xl text-xs space-y-1.5 min-w-[190px] border transition-colors ${darkMode ? 'bg-slate-900 border-slate-700 text-white' : 'bg-white border-slate-200 text-slate-800'}`}>
+        <p className={`font-bold text-sm border-b pb-1 ${darkMode ? 'text-blue-400 border-slate-800' : 'text-blue-600 border-slate-100'}`}>{label}</p>
         
-        {/* Urutan 1: Susut 30 Menit */}
         <p className="flex justify-between gap-4">
-          <span className="text-slate-400">Susut 30 Menit :</span> 
-          <span className="font-mono font-semibold text-emerald-400">{data.susut}%</span>
+          <span className={darkMode ? 'text-slate-400' : 'text-slate-500'}>Susut 30 Menit :</span> 
+          <span className={`font-mono font-semibold ${darkMode ? 'text-emerald-400' : 'text-emerald-600'}`}>{data.susut}%</span>
         </p>
 
-        {/* Urutan 2: Losis 30 Menit */}
         <p className="flex justify-between gap-4">
-          <span className="text-slate-400">Losis 30 Menit :</span> 
-          <span className="font-mono font-semibold text-rose-400">{formatRibuan(data.losis)} kWh</span>
+          <span className={darkMode ? 'text-slate-400' : 'text-slate-500'}>Losis 30 Menit :</span> 
+          <span className={`font-mono font-semibold ${darkMode ? 'text-rose-400' : 'text-rose-600'}`}>{formatRibuan(data.losis)} kWh</span>
         </p>
 
-        {/* Urutan 3: Susut Kumulatif */}
         <p className="flex justify-between gap-4">
-          <span className="text-slate-400">Susut Kumulatif :</span> 
-          <span className="font-mono font-semibold text-amber-400">{data.susutKumulatif}%</span>
+          <span className={darkMode ? 'text-slate-400' : 'text-slate-500'}>Susut Kumulatif :</span> 
+          <span className={`font-mono font-semibold ${darkMode ? 'text-amber-400' : 'text-amber-600'}`}>{data.susutKumulatif}%</span>
         </p>
 
-        {/* Urutan 4: Losis Kumulatif */}
         <p className="flex justify-between gap-4">
-          <span className="text-slate-400">Losis Kumulatif :</span> 
-          <span className="font-mono font-semibold text-violet-400">{formatRibuan(data.losisKumulatif)} kWh</span>
+          <span className={darkMode ? 'text-slate-400' : 'text-slate-500'}>Losis Kumulatif :</span> 
+          <span className={`font-mono font-semibold ${darkMode ? 'text-violet-400' : 'text-violet-600'}`}>{formatRibuan(data.losisKumulatif)} kWh</span>
         </p>
       </div>
     );
@@ -82,15 +72,12 @@ const CustomTooltip = ({ active, payload, label }) => {
   return null;
 };
 
-// ==========================================
-// 3. MAIN COMPONENT
-// ==========================================
 const SusutHarian = ({ darkMode }) => {
     const [data, setData] = useState([]);
     const [lastUpdate, setLastUpdate] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+    const [gangguanHariIni, setGangguanHariIni] = useState([]);
 
-    // Dapatkan tanggal hari ini dengan format "DD Bulan YYYY" (misal: 05 Agustus 2026)
     const todayDateStr = new Intl.DateTimeFormat('id-ID', {
         day: '2-digit',
         month: 'long',
@@ -256,9 +243,60 @@ const SusutHarian = ({ darkMode }) => {
         }
     };
 
+    // PERBAIKAN TOTAL: Pencocokan Tanggal Awal yang sangat toleran terhadap format JSON Spreadsheet
+    useEffect(() => {
+        fetch('/data_gangguan.json')
+            .then(res => res.json())
+            .then(json => {
+                const now = new Date();
+                const todayY = now.getFullYear();
+                const todayM = String(now.getMonth() + 1).padStart(2, '0');
+                const todayD = String(now.getDate()).padStart(2, '0');
+                const todayStrStandard = `${todayY}-${todayM}-${todayD}`;
+
+                const parseToStandardString = (dateStr) => {
+                    if (!dateStr) return null;
+                    const clean = String(dateStr).trim().split(' ')[0];
+                    if (clean.includes('-')) {
+                        const parts = clean.split('-');
+                        if (parts[0].length === 4) return clean; // YYYY-MM-DD
+                        return `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`;
+                    }
+                    if (clean.includes('/')) {
+                        const parts = clean.split('/');
+                        if (parts[0].length === 4) return `${parts[0]}-${parts[1].padStart(2, '0')}-${parts[2].padStart(2, '0')}`;
+                        // Format M/D/YYYY atau D/M/YYYY
+                        let m = parts[0], d = parts[1], y = parts[2];
+                        if (Number(m) > 12) { d = parts[0]; m = parts[1]; }
+                        return `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+                    }
+                    return null;
+                };
+
+                const activeGangguan = json.filter(item => {
+                    // Cari field tanggal awal secara fleksibel
+                    const startRaw = item.TglAwal || item.Tanggal || item.Tgl_Awal || item['Tgl Awal'] || item.tgl_awal;
+                    const endRaw = item.TglAkhir || item.Tgl_Akhir || item['Tgl Akhir'] || item.tgl_akhir;
+
+                    // INSTRUKSI 3: Jika tanggal akhir sudah terisi (tidak kosong/-), abaikan/hapus
+                    if (endRaw && String(endRaw).trim() !== '' && String(endRaw).trim() !== '-') {
+                        return false;
+                    }
+
+                    const startStd = parseToStandardString(startRaw);
+                    if (!startStd) return false;
+
+                    // INSTRUKSI 1: Cocokkan persis dengan hari ini
+                    return startStd === todayStrStandard;
+                });
+                
+                setGangguanHariIni(activeGangguan);
+            })
+            .catch(err => console.error("Gagal mengambil data gangguan:", err));
+    }, []);
+
     useEffect(() => {
         fetchData();
-        
         const intervalId = setInterval(() => {
             fetchData();
         }, 60000); 
@@ -267,63 +305,112 @@ const SusutHarian = ({ darkMode }) => {
     }, []);
 
     return (
-        <div className={`p-6 min-h-screen ${darkMode ? 'text-white bg-slate-900' : 'text-slate-900 bg-slate-50'}`}>
-            <div className="flex justify-between items-center mb-6">
-                {/* Perubahan Judul Dashboard Disini */}
-                <h2 className="text-2xl font-bold">Susut 30 Menit - {todayDateStr}</h2>
+        <div className={`w-full flex flex-col transition-colors duration-300 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+                <h2 className={`text-2xl font-bold transition-colors ${darkMode ? 'text-white' : 'text-slate-800'}`}>
+                    Susut 30 Menit - {todayDateStr}
+                </h2>
                 <div className="flex items-center gap-4">
-                    {isLoading && <span className="text-sm font-semibold text-blue-500 animate-pulse">Menyelaraskan Data 30 Menit...</span>}
-                    <span className={`text-sm px-3 py-1 rounded-md font-medium ${darkMode ? 'text-gray-400 bg-slate-800' : 'text-gray-600 bg-slate-200'}`}>
+                    {isLoading && <span className="text-sm font-semibold text-blue-500 animate-pulse">Menyelaraskan Data...</span>}
+                    <span className={`text-sm px-3 py-1.5 rounded-md font-medium border transition-colors ${darkMode ? 'text-slate-300 bg-slate-800 border-slate-700' : 'text-slate-700 bg-white border-slate-300 shadow-sm'}`}>
                         Update Terakhir: {lastUpdate}
                     </span>
                 </div>
             </div>
             
-            <div className={`p-6 rounded-xl shadow-xl border ${darkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'}`} style={{ height: '450px' }}>
+            <div className={`p-6 rounded-xl border shadow-sm transition-colors duration-300 ${darkMode ? 'bg-slate-900 border-slate-800 shadow-xl' : 'bg-white border-slate-200 shadow-slate-200/50'}`} style={{ height: '450px' }}>
                 <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                        <CartesianGrid strokeDasharray="3 3" stroke={darkMode ? "#334155" : "#e2e8f0"} />
+                        <CartesianGrid strokeDasharray="3 3" stroke={darkMode ? "#334155" : "#cbd5e1"} />
                         
                         <XAxis 
                             dataKey="time" 
                             stroke={darkMode ? "#94a3b8" : "#64748b"} 
-                            tick={{ fill: darkMode ? '#94a3b8' : '#64748b' }}
+                            tick={{ fill: darkMode ? '#94a3b8' : '#475569', fontWeight: 500 }}
                             tickMargin={10}
                         />
                         
                         <YAxis 
                             stroke={darkMode ? "#94a3b8" : "#64748b"} 
-                            tick={{ fill: darkMode ? '#94a3b8' : '#64748b' }}
+                            tick={{ fill: darkMode ? '#94a3b8' : '#475569', fontWeight: 500 }}
                             tickFormatter={(value) => `${value}%`} 
                             domain={['auto', 'auto']} 
                         />
                         
-                        <Tooltip content={<CustomTooltip />} />
+                        <Tooltip content={<CustomTooltip darkMode={darkMode} />} cursor={{ stroke: darkMode ? '#64748b' : '#64748b', strokeWidth: 1, strokeDasharray: '3 3' }} />
                         
-                        {/* Garis Susut 30 Menit */}
                         <Line 
                             type="monotone" 
                             dataKey="susut" 
                             name="Susut 30 Menit"
                             stroke="#10b981" 
-                            strokeWidth={2.5}
-                            dot={{ r: 3, fill: '#10b981', strokeWidth: 0 }}
-                            activeDot={{ r: 6, strokeWidth: 0, fill: '#10b981' }} 
+                            strokeWidth={3}
+                            dot={{ r: 4, fill: '#10b981', strokeWidth: 0 }}
+                            activeDot={{ r: 7, strokeWidth: 0, fill: '#10b981' }} 
                         />
 
-                        {/* Garis Susut Kumulatif */}
                         <Line 
                             type="monotone" 
                             dataKey="susutKumulatif" 
                             name="Susut Kumulatif"
                             stroke="#f59e0b" 
-                            strokeWidth={2.5}
-                            dot={{ r: 3, fill: '#f59e0b', strokeWidth: 0 }}
-                            activeDot={{ r: 6, strokeWidth: 0, fill: '#f59e0b' }} 
+                            strokeWidth={3}
+                            dot={{ r: 4, fill: '#f59e0b', strokeWidth: 0 }}
+                            activeDot={{ r: 7, strokeWidth: 0, fill: '#f59e0b' }} 
                         />
                     </LineChart>
                 </ResponsiveContainer>
             </div>
+
+            {/* TABEL GANGGUAN PEMBANGKIT HARI INI */}
+            <div className={`mt-8 p-6 rounded-xl border transition-colors duration-300 ${darkMode ? 'bg-slate-900 border-slate-800 shadow-xl' : 'bg-white border-slate-200 shadow-sm'}`}>
+                <h3 className={`text-xl font-bold mb-4 border-b pb-3 ${darkMode ? 'text-blue-400 border-slate-800' : 'text-blue-600 border-slate-100'}`}>
+                    Gangguan Pembangkit ({todayDateStr})
+                </h3>
+                
+                <div className={`border rounded-lg overflow-hidden ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>
+                    <table className="w-full text-left border-collapse table-fixed">
+                        <thead className={`${darkMode ? 'bg-slate-800 text-slate-300' : 'bg-slate-100 text-slate-700'}`}>
+                            <tr>
+                                <th className={`p-4 border-b w-[15%] font-semibold ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>Jam Gangguan</th>
+                                <th className={`p-4 border-b w-[25%] font-semibold ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>Pembangkit</th>
+                                <th className={`p-4 border-b w-[15%] font-semibold ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>DMP</th>
+                                <th className={`p-4 border-b w-[15%] font-semibold ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>Status</th>
+                                <th className={`p-4 border-b w-[30%] font-semibold ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody className="text-sm">
+                            {gangguanHariIni.length > 0 ? (
+                                gangguanHariIni.map((item, idx) => {
+                                    // INSTRUKSI 2: Tarik Jam Gangguan secara fleksibel dari berbagai variasi key Excel (Kolom H)
+                                    const jamDisplay = item['Jam Gangguan'] || item.JamAwal || item.Jam_Gangguan || item.Jam || item.Waktu || item['Jam'] || '-';
+                                    
+                                    // INSTRUKSI 4: Tarik DMP secara fleksibel dan tambahkan "MW" di belakangnya (Kolom O)
+                                    const dmpVal = item.DMP || item.Daya || item['DMP (MW)'] || item.MW || item.dmp;
+                                    const dmpDisplay = (dmpVal !== undefined && dmpVal !== null && String(dmpVal).trim() !== '') ? `${dmpVal} MW` : '-';
+
+                                    return (
+                                        <tr key={idx} className={`border-b transition-colors ${darkMode ? 'border-slate-800 hover:bg-slate-800/60' : 'border-slate-100 hover:bg-slate-50'}`}>
+                                            <td className={`p-4 font-mono font-medium ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>{jamDisplay}</td>
+                                            <td className={`p-4 break-words font-medium ${darkMode ? 'text-slate-200' : 'text-slate-800'}`}>{item.Pembangkit || item.Mesin || '-'}</td>
+                                            <td className={`p-4 font-mono font-bold ${darkMode ? 'text-emerald-400' : 'text-emerald-600'}`}>{dmpDisplay}</td>
+                                            <td className={`p-4 break-words ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>{item.Status || item.Klasifikasi || item.OMC || '-'}</td>
+                                            <td className={`p-4 break-words ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>{item.Keterangan || item.Uraian || '-'}</td>
+                                        </tr>
+                                    );
+                                })
+                            ) : (
+                                <tr>
+                                    <td colSpan="5" className={`p-6 text-center font-medium ${darkMode ? 'text-slate-500' : 'text-slate-500'}`}>
+                                        Tidak ada gangguan pembangkit tercatat hari ini.
+                                    </td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
     );
 };

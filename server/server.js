@@ -35,6 +35,15 @@ const db = new sqlite3.Database(path.join(__dirname, 'database.sqlite'), (err) =
   }
 });
 
+// --- KONEKSI DATABASE AUTH (Khusus untuk Login) ---
+const authDb = new sqlite3.Database(path.join(__dirname, 'user_auth.sqlite'), (err) => {
+  if (err) {
+    console.error('Gagal terhubung ke user_auth.sqlite:', err.message);
+  } else {
+    console.log('Berhasil terhubung ke database Autentikasi (user_auth.sqlite).');
+  }
+});
+
 // --- API ENDPOINTS ---
 
 // 1. API Autentikasi (Login)
@@ -42,7 +51,8 @@ app.post('/api/login', (req, res) => {
   const { email, password } = req.body;
   const query = `SELECT * FROM users WHERE email = ? AND password = ?`;
 
-  db.get(query, [email, password], (err, row) => {
+  // Eksekusi query menggunakan authDb
+  authDb.get(query, [email, password], (err, row) => {
     if (err) return res.status(500).json({ success: false, message: 'Database error' });
     if (row) res.json({ success: true, user: { name: row.name, role: row.role } });
     else res.json({ success: false, message: 'Username atau Password salah!' });

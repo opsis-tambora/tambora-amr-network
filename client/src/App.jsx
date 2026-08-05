@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import axios from 'axios';
-import { Activity, Zap, Cpu, Settings, Clock, ArrowRight, Menu, ChevronLeft, Search, Sun, Moon, ChevronDown, Lock, Mail, LogOut, List, BarChart3, ArrowUpDown, ArrowUp, ArrowDown, CalendarDays, Receipt, FileText } from 'lucide-react';
+import { Activity, Zap, Cpu, Settings, ChevronLeft, Sun, Moon, ChevronDown, Lock, Mail, LogOut, List, BarChart3, CalendarDays, Receipt, FileText, Menu } from 'lucide-react';
 
 // IMPORT KOMPONEN
 import SusutTambora from './components/SusutTambora';
@@ -12,7 +12,7 @@ import SusutSubSistem from './components/SusutSubSistem';
 import SusutBulanan from './components/SusutBulanan';
 import BillingKwh from './components/BillingKwh';
 import AnalisaSusutHarian from './components/AnalisaSusutHarian'; 
-import SusutHarian from './components/SusutHarian'; // <-- TAMBAHAN IMPORT SUSUT HARIAN
+import SusutHarian from './components/SusutHarian'; 
 
 function MainApp() {
   const navigate = useNavigate();
@@ -24,28 +24,35 @@ function MainApp() {
   const [loginError, setLoginError] = useState('');
   const [currentUser, setCurrentUser] = useState({ name: 'Guest', role: 'User' });
 
+  // STATE DATA GLOBAL
   const [devices, setDevices] = useState([]);
   const [logs, setLogs] = useState([]);
+  
+  // STATE UI GLOBAL
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [darkMode, setDarkMode] = useState(true);
+  
+  // Search query state dipertahankan agar tidak merusak filter (meskipun input visualnya dihapus)
+  const [searchQuery] = useState(''); 
+  
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+
+  // STATE TEMA PERSISTEN
+  const [darkMode, setDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme !== null) {
+      return savedTheme === 'dark';
+    }
+    return true; 
+  });
 
   // MENU STATES
   const [isSusutMenuOpen, setIsSusutMenuOpen] = useState(true);
   const [isKwhMenuOpen, setIsKwhMenuOpen] = useState(true);
   const [isBillingMenuOpen, setIsBillingMenuOpen] = useState(true);
 
-  // TABLE EVENT HISTORY STATES
-  const [currentPage, setCurrentPage] = useState(1);
-  const [logsPerPage, setLogsPerPage] = useState(10);
-  const [logSearchQuery, setLogSearchQuery] = useState('');
-  const [logSortConfig, setLogSortConfig] = useState({ key: 'raw_timestamp', direction: 'desc' });
-
-  const activeMeters = devices.filter(d => d.status === 'online').length;
-  const totalMeters = devices.length;
-  const offlineMeters = totalMeters - activeMeters;
-  const healthPercentage = totalMeters > 0 ? Math.round((activeMeters / totalMeters) * 100) : 0;
+  useEffect(() => {
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+  }, [darkMode]);
 
   useEffect(() => {
     if (location.pathname.includes('/Susut') || location.pathname.includes('/Analisa') || location.pathname.includes('/Rekapan')) setIsSusutMenuOpen(true);
@@ -137,40 +144,6 @@ function MainApp() {
     d.site.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  let processedLogs = [...logs];
-  if (logSearchQuery) {
-    const q = logSearchQuery.toLowerCase();
-    processedLogs = processedLogs.filter(log =>
-      log.name.toLowerCase().includes(q) ||
-      log.site.toLowerCase().includes(q) ||
-      log.from.toLowerCase().includes(q) ||
-      log.to.toLowerCase().includes(q)
-    );
-  }
-
-  processedLogs.sort((a, b) => {
-    if (a[logSortConfig.key] < b[logSortConfig.key]) return logSortConfig.direction === 'asc' ? -1 : 1;
-    if (a[logSortConfig.key] > b[logSortConfig.key]) return logSortConfig.direction === 'asc' ? 1 : -1;
-    return 0;
-  });
-
-  const handleSort = (key) => {
-    let direction = 'asc';
-    if (logSortConfig.key === key && logSortConfig.direction === 'asc') direction = 'desc';
-    setLogSortConfig({ key, direction });
-  };
-
-  const renderSortIcon = (key) => {
-    if (logSortConfig.key !== key) return <ArrowUpDown className="w-3 h-3 opacity-30" />;
-    return logSortConfig.direction === 'asc' ? <ArrowUp className="w-3 h-3" /> : <ArrowDown className="w-3 h-3" />;
-  };
-
-  const indexOfLastLog = currentPage * logsPerPage;
-  const indexOfFirstLog = indexOfLastLog - logsPerPage;
-  const currentLogs = processedLogs.slice(indexOfFirstLog, indexOfLastLog);
-  const totalLogPages = Math.ceil(processedLogs.length / logsPerPage);
-  const safeCurrentPage = Math.min(currentPage, totalLogPages === 0 ? 1 : totalLogPages);
-
   const checkActiveMenu = (path) => location.pathname === path;
 
   const getSubMenuClass = (path) => {
@@ -219,11 +192,42 @@ function MainApp() {
   }
 
   return (
-    <div className={`min-h-screen w-full font-sans select-none overflow-x-hidden transition-colors duration-200 ${darkMode ? 'bg-slate-950 text-white' : 'bg-slate-50 text-slate-900'}`} style={{ display: 'flex', flexDirection: 'row' }}>
+    // PERBAIKAN: Root dibatasi h-screen dan overflow-hidden agar tidak ada scroll utama
+    <div className={`h-screen w-full font-sans select-none overflow-hidden transition-colors duration-200 flex flex-row ${darkMode ? 'bg-slate-950 text-white dark-mode-wrap' : 'bg-slate-50 text-slate-900 light-mode-wrap'}`}>
       
-      {/* SIDEBAR NAVIGATION */}
-      <div className={`border-r flex flex-col transition-all duration-300 print:hidden ${isSidebarOpen ? 'w-64' : 'w-0 overflow-hidden border-none'} ${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'}`} style={{ minHeight: '100vh', sticky: 'top', position: 'sticky' }}>
-        <div className={`p-5 border-b flex items-center justify-between ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
+      {/* CSS CUSTOM SCROLLBAR HOVER */}
+      <style>
+        {`
+          .custom-scroll {
+            overflow-y: auto;
+          }
+          .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+          }
+          .custom-scroll::-webkit-scrollbar-track {
+            background: transparent;
+          }
+          .custom-scroll::-webkit-scrollbar-thumb {
+            background-color: transparent;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+          }
+          .group:hover .custom-scroll::-webkit-scrollbar-thumb,
+          .custom-scroll:hover::-webkit-scrollbar-thumb {
+            background-color: rgba(148, 163, 184, 0.3); 
+          }
+          .group:hover .custom-scroll::-webkit-scrollbar-thumb:hover,
+          .custom-scroll:hover::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(148, 163, 184, 0.6); 
+          }
+        `}
+      </style>
+
+      {/* SIDEBAR NAVIGATION (h-full mengambil layar penuh) */}
+      <div className={`group border-r flex flex-col transition-all duration-300 print:hidden h-full ${isSidebarOpen ? 'w-64' : 'w-0 overflow-hidden border-none'} ${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'}`}>
+        
+        {/* HEADER SIDEBAR (Dikunci h-[72px] & shrink-0 agar lurus persis dengan Topbar) */}
+        <div className={`h-[72px] shrink-0 box-border px-5 border-b flex items-center justify-between ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
           <div className="flex items-center gap-2.5">
             <Zap className="w-6 h-6 text-emerald-400 fill-emerald-400/20" />
             <span className="font-bold tracking-wider text-xl uppercase">TTL OPS 2</span>
@@ -233,7 +237,8 @@ function MainApp() {
           </button>
         </div>
 
-        <div className="flex-1 p-4 flex flex-col gap-2 overflow-y-auto">
+        {/* CONTAINER MENU */}
+        <div className="flex-1 p-4 flex flex-col gap-2 custom-scroll pb-10">
           <p className="text-[10px] font-bold text-slate-500 px-3 mb-1 uppercase tracking-widest">Main Menu</p>
           
           {/* MENU 1: SUSUT SISTEM */}
@@ -244,9 +249,7 @@ function MainApp() {
             </button>
             <div className={`overflow-hidden transition-all duration-300 flex flex-col gap-1 ${isSusutMenuOpen ? 'max-h-60 opacity-100 mt-1' : 'max-h-0 opacity-0'}`}>
               <div className={`border-l-2 ml-4 flex flex-col gap-1 ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
-                {/* TAMBAHAN: Menu Susut Harian */}
                 <button onClick={() => navigate('/Susut-Harian')} className={getSubMenuClass('/Susut-Harian')}><Activity className="w-4 h-4" /> Susut Harian</button>
-                
                 <button onClick={() => navigate('/Analisa-Susut')} className={getSubMenuClass('/Analisa-Susut')}><FileText className="w-4 h-4" /> Analisa Susut</button>
                 <button onClick={() => navigate('/Susut-Sub-Sistem')} className={getSubMenuClass('/Susut-Sub-Sistem')}><BarChart3 className="w-4 h-4" /> Susut Sub Sistem</button>
                 <button onClick={() => navigate('/Susut-Bulanan')} className={getSubMenuClass('/Susut-Bulanan')}><CalendarDays className="w-4 h-4" /> Susut Bulanan</button>
@@ -290,28 +293,21 @@ function MainApp() {
               <Settings className="w-4 h-4" /> Settings
             </button>
           </div>
-
         </div>
       </div>
 
       {/* DASHBOARD CONTENT CONTAINER */}
-      <div className="flex-1 flex flex-col min-w-0">
+      <div className="flex-1 flex flex-col min-w-0 h-full overflow-hidden">
         
-        {/* Header Dashboard */}
-        <div className={`w-full flex justify-between items-center p-4 md:px-8 border-b sticky top-0 z-30 backdrop-blur-sm print:hidden ${darkMode ? 'border-slate-900 bg-slate-950/80' : 'border-slate-200 bg-white/80'}`}>
+        {/* HEADER TOPBAR (Dikunci h-[72px] & shrink-0 agar lurus dengan Sidebar) */}
+        <div className={`h-[72px] shrink-0 box-border w-full flex justify-between items-center px-4 md:px-8 border-b z-30 print:hidden ${darkMode ? 'border-slate-800 bg-slate-950' : 'border-slate-200 bg-white'}`}>
           <div className="flex items-center gap-6 flex-1">
             {!isSidebarOpen && (
               <button onClick={() => setIsSidebarOpen(true)} className={`p-2 border rounded-lg transition-all ${darkMode ? 'bg-slate-900 border-slate-800 hover:bg-slate-800 text-white' : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-800'}`}>
                 <Menu className="w-4 h-4" />
               </button>
             )}
-            
             {checkActiveMenu('/Settings') && <h1 className="text-lg font-bold tracking-wider uppercase hidden lg:block">Settings</h1>}
-
-            <div className="relative max-w-md w-full flex items-center">
-              <input type="text" placeholder="Search Data..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className={`w-full pl-4 pr-10 py-2 text-sm rounded-lg border focus:outline-none transition-all ${darkMode ? 'bg-slate-900 border-slate-800 text-white focus:border-slate-700' : 'bg-slate-100 border-slate-200 text-slate-900 focus:border-slate-300'}`} />
-              <Search className="w-4 h-4 text-slate-400 absolute right-3 pointer-events-none" />
-            </div>
           </div>
 
           <div className="flex items-center gap-6">
@@ -328,7 +324,7 @@ function MainApp() {
                 <ChevronDown className="w-3 h-3 text-slate-400" />
               </div>
               {isProfileOpen && (
-                <div className={`absolute right-0 mt-3 w-40 rounded-xl border p-1 shadow-2xl flex flex-col ${darkMode ? 'bg-slate-900 border-slate-800 text-white' : 'bg-white border-slate-200 text-slate-900'}`}>
+                <div className={`absolute right-0 mt-3 w-40 rounded-xl border p-1 shadow-2xl flex flex-col z-50 ${darkMode ? 'bg-slate-900 border-slate-800 text-white' : 'bg-white border-slate-200 text-slate-900'}`}>
                   <button onClick={handleLogout} className="flex items-center gap-2.5 px-3 py-2 text-xs font-semibold rounded-lg text-rose-500 hover:bg-rose-500/10 text-left w-full transition-all">
                     <LogOut className="w-3.5 h-3.5" /> Sign Out
                   </button>
@@ -338,23 +334,19 @@ function MainApp() {
           </div>
         </div>
 
-        {/* AREA KONTEN (ROUTER) */}
-        <div className="w-full flex-1 p-4 md:p-8 md:pt-0 pt-0 flex flex-col">
+        {/* AREA KONTEN (ROUTER) dengan Scrollbar Mandiri */}
+        <div className="w-full flex-1 overflow-y-auto p-4 md:p-8 flex flex-col custom-scroll">
           <Routes>
             <Route path="/" element={<Navigate to="/kWh-Meter" replace />} />
             
-            {/* ROUTE DITUKAR AGAR SESUAI DENGAN MENU */}
+            <Route path="/Susut-Harian" element={<div className="w-full"><SusutHarian darkMode={darkMode} /></div>} />
+            <Route path="/Analisa-Susut" element={<div className="w-full"><SusutTambora darkMode={darkMode} /></div>} />
             
-            {/* TAMBAHAN: Route Susut Harian */}
-            <Route path="/Susut-Harian" element={<div className="mt-6 w-full"><SusutHarian darkMode={darkMode} /></div>} />
-            
-            <Route path="/Analisa-Susut" element={<div className="mt-6 w-full"><SusutTambora /></div>} />
             <Route path="/Rekapan-Susut" element={<div className="mt-6 w-full"><AnalisaSusutHarian darkMode={darkMode} /></div>} />
-            
             <Route path="/Susut-Sub-Sistem" element={<div className="mt-6 w-full"><SusutSubSistem darkMode={darkMode} /></div>} />
             <Route path="/Susut-Bulanan" element={<div className="mt-6 w-full"><SusutBulanan darkMode={darkMode} /></div>} />
 
-            <Route path="/Settings" element={<SettingsPage />} />
+            <Route path="/Settings" element={<div className="mt-6 w-full"><SettingsPage darkMode={darkMode} /></div>} />
             <Route path="/Status-kWh" element={<div className="mt-6 w-full"><StatusKwhMeter devices={devices} darkMode={darkMode} /></div>} />
             
             <Route path="/Billing/Harian" element={<div className="mt-6 w-full"><BillingKwh darkMode={darkMode} tanggal="Harian" /></div>} />
@@ -362,128 +354,12 @@ function MainApp() {
             <Route path="/Billing/25" element={<div className="mt-6 w-full"><BillingKwh darkMode={darkMode} tanggal="25" /></div>} />
 
             <Route path="/kWh-Meter" element={
-              <div className="flex flex-col gap-6 h-full w-full mt-6">
-                <div className="grid grid-cols-12 gap-6 h-[460px] min-h-[460px]">
-                  <div className="col-span-9 h-full">
-                    <IpMeterView devices={filteredDevices} />
-                  </div>
-                  <div className={`col-span-3 h-full border rounded-xl p-5 shadow-xl flex flex-col justify-between ${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'}`}>
-                    <div>
-                      <h2 className="text-base font-bold text-center uppercase tracking-wider">STATUS METER</h2>
-                      <div className="relative flex flex-col items-center justify-center my-10">
-                        <svg className="w-44 h-44 transform -rotate-90" viewBox="0 0 100 100">
-                          <circle cx="50" cy="50" r="40" className={darkMode ? 'stroke-slate-800' : 'stroke-slate-200'} strokeWidth="8" fill="transparent" />
-                          <circle cx="50" cy="50" r="40" className="stroke-emerald-500 transition-all duration-500 ease-out" strokeWidth="8" fill="transparent" strokeDasharray={251.2} strokeDashoffset={251.2 - (251.2 * healthPercentage) / 100} strokeLinecap="round" />
-                        </svg>
-                        <div className="absolute text-center">
-                          <span className="text-4xl font-extrabold">{healthPercentage}%</span>
-                          <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">ONLINE</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="space-y-2.5">
-                      <div className={`border rounded-xl px-4 py-2.5 flex justify-between items-center ${darkMode ? 'bg-slate-950 border-slate-800' : 'bg-slate-50 border-slate-200'}`}>
-                        <span className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-slate-400">
-                          <span className="w-2 h-2 rounded-full bg-emerald-500"></span> ONLINE
-                        </span>
-                        <span className="text-xs font-bold">{activeMeters}</span>
-                      </div>
-                      <div className={`border rounded-xl px-4 py-2.5 flex justify-between items-center ${darkMode ? 'bg-slate-950 border-slate-800' : 'bg-slate-50 border-slate-200'}`}>
-                        <span className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-slate-400">
-                          <span className="w-2 h-2 rounded-full bg-rose-500"></span> OFFLINE
-                        </span>
-                        <span className="text-xs font-bold">{offlineMeters}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className={`border rounded-xl p-5 shadow-xl flex flex-col ${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'}`}>
-                  <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-6">
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-5 h-5 text-blue-400" />
-                      <h2 className="text-base font-bold whitespace-nowrap">System Event History</h2>
-                    </div>
-                    <div className="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
-                      <div className={`flex items-center gap-2 text-xs font-medium whitespace-nowrap ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
-                        <span>Show</span>
-                        <select
-                          value={logsPerPage}
-                          onChange={(e) => { setLogsPerPage(Number(e.target.value)); setCurrentPage(1); }}
-                          className={`border rounded-md px-2 py-1.5 focus:outline-none transition-all cursor-pointer ${darkMode ? 'bg-slate-950 border-slate-700 text-white' : 'bg-white border-slate-300 text-slate-900'}`}
-                        >
-                          <option value={5}>5</option><option value={10}>10</option><option value={25}>25</option><option value={50}>50</option><option value={100}>100</option>
-                        </select>
-                        <span>entries</span>
-                      </div>
-                      <div className="relative w-full sm:w-64">
-                        <input
-                          type="text"
-                          placeholder="Search Device, Site, Status..."
-                          value={logSearchQuery}
-                          onChange={(e) => { setLogSearchQuery(e.target.value); setCurrentPage(1); }}
-                          className={`w-full pl-4 pr-10 py-1.5 text-sm rounded-lg border focus:outline-none transition-all ${darkMode ? 'bg-slate-950 border-slate-700 text-white focus:border-blue-500' : 'bg-slate-50 border-slate-300 text-slate-900 focus:border-blue-500'}`}
-                        />
-                        <Search className="w-4 h-4 text-slate-400 absolute right-3 top-2 pointer-events-none" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-left border-collapse">
-                      <thead>
-                        <tr className={`border-b text-[11px] font-bold uppercase tracking-wider ${darkMode ? 'border-slate-800 text-slate-400' : 'border-slate-200 text-slate-500'}`}>
-                          <th className="pb-3 pt-1 cursor-pointer select-none hover:text-blue-500" onClick={() => handleSort('raw_timestamp')}><div className="flex items-center gap-1">Timestamp {renderSortIcon('raw_timestamp')}</div></th>
-                          <th className="pb-3 pt-1 cursor-pointer select-none hover:text-blue-500" onClick={() => handleSort('name')}><div className="flex items-center gap-1">Device {renderSortIcon('name')}</div></th>
-                          <th className="pb-3 pt-1 cursor-pointer select-none hover:text-blue-500" onClick={() => handleSort('site')}><div className="flex items-center gap-1">Site {renderSortIcon('site')}</div></th>
-                          <th className="pb-3 pt-1 cursor-pointer select-none text-center hover:text-blue-500" onClick={() => handleSort('to')}><div className="flex items-center justify-center gap-1">Status Change {renderSortIcon('to')}</div></th>
-                        </tr>
-                      </thead>
-                      <tbody className={`divide-y text-xs ${darkMode ? 'divide-slate-800/50' : 'divide-slate-200'}`}>
-                        {currentLogs.map((log, index) => {
-                          const isRecovery = log.from === 'OFFLINE' && log.to === 'ONLINE';
-                          return (
-                            <tr key={index} className={darkMode ? 'hover:bg-slate-950/40' : 'hover:bg-slate-50'}>
-                              <td className="py-3 font-mono">
-                                {isRecovery ? (
-                                  <div className="flex flex-col gap-1.5">
-                                    <div className="text-rose-400 text-[11px] font-semibold">{log.offline_timestamp ? log.offline_timestamp : 'Menunggu DB...'} (Time Offline)</div>
-                                    <div className="text-emerald-400 text-[11px] font-semibold">{log.timestamp} (Time Online)</div>
-                                    <div className="text-amber-400 font-bold text-[11px] mt-1 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20 w-fit">Duration: {log.duration_text || '00.00.00'}</div>
-                                  </div>
-                                ) : (
-                                  <div className="text-slate-400">{log.timestamp}</div>
-                                )}
-                              </td>
-                              <td className="py-3">
-                                <div className={`font-bold ${darkMode ? 'text-slate-200' : 'text-slate-800'}`}>{log.name}</div>
-                                <div className="text-[10px] text-slate-500 font-mono mt-0.5">{log.ip}</div>
-                              </td>
-                              <td className="py-3 font-medium text-slate-400">{log.site}</td>
-                              <td className="py-3">
-                                <div className="flex items-center justify-center gap-2">
-                                  <span className={`px-2 py-1 rounded text-[10px] font-bold flex items-center gap-1 border ${log.from === 'ONLINE' ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' : 'bg-rose-500/10 border-rose-500/20 text-rose-400'}`}><span className={`w-1 h-1 rounded-full ${log.from === 'ONLINE' ? 'bg-emerald-500' : 'bg-rose-500'}`}></span> {log.from}</span>
-                                  <ArrowRight className="w-3 h-3 text-slate-500" />
-                                  <span className={`px-2 py-1 rounded text-[10px] font-bold flex items-center gap-1 border ${log.to === 'ONLINE' ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' : 'bg-rose-500/10 border-rose-500/20 text-rose-400'}`}><span className={`w-1 h-1 rounded-full ${log.to === 'ONLINE' ? 'bg-emerald-500' : 'bg-rose-500'}`}></span> {log.to}</span>
-                                </div>
-                              </td>
-                            </tr>
-                          );
-                        })}
-                        {currentLogs.length === 0 && (
-                          <tr><td colSpan="4" className="py-6 text-center text-slate-500 font-medium">Tidak ada data ditemukan.</td></tr>
-                        )}
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <div className="flex justify-end items-center gap-1 mt-6 pt-4 border-t border-slate-800/50">
-                    {totalLogPages > 1 && Array.from({ length: totalLogPages }, (_, i) => (
-                      <button key={i} onClick={() => setCurrentPage(i + 1)} className={`px-3 py-1.5 text-[11px] font-semibold border rounded-md transition-all ${safeCurrentPage === i + 1 ? 'bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-500/20' : darkMode ? 'border-slate-800 text-slate-400 hover:bg-slate-800 hover:text-white' : 'border-slate-200 text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`}>{i + 1}</button>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <IpMeterView 
+                devices={devices} 
+                filteredDevices={filteredDevices} 
+                logs={logs} 
+                darkMode={darkMode} 
+              />
             } />
           </Routes>
         </div>

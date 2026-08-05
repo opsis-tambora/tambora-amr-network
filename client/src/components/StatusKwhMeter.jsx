@@ -18,11 +18,13 @@ const StatusKwhMeter = ({ devices, darkMode }) => {
   });
 
   return (
-    <div className={`w-full h-full flex flex-col rounded-xl border shadow-xl ${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'}`}>
+    <div className={`w-full h-full flex flex-col rounded-xl border shadow-xl transition-colors ${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'}`}>
       
       {/* Header, Search, dan Filter */}
-      <div className={`p-5 border-b flex flex-col xl:flex-row justify-between items-start xl:items-center gap-4 ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
-        <h2 className="text-lg font-bold tracking-wider uppercase">Daftar Status KWH</h2>
+      <div className={`p-5 border-b flex flex-col xl:flex-row justify-between items-start xl:items-center gap-4 transition-colors ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
+        <h2 className={`text-lg font-bold tracking-wider uppercase transition-colors ${darkMode ? 'text-white' : 'text-slate-800'}`}>
+          Daftar Status KWH
+        </h2>
         
         <div className="flex flex-col sm:flex-row items-center gap-4 w-full xl:w-auto">
           <div className="relative w-full sm:w-64">
@@ -33,14 +35,14 @@ const StatusKwhMeter = ({ devices, darkMode }) => {
               onChange={(e) => setLocalSearch(e.target.value)}
               className={`w-full pl-9 pr-4 py-2 text-sm rounded-lg border focus:outline-none transition-all ${
                 darkMode
-                  ? 'bg-slate-950 border-slate-700 text-white focus:border-blue-500'
-                  : 'bg-slate-50 border-slate-300 text-slate-900 focus:border-blue-500'
+                  ? 'bg-slate-950 border-slate-700 text-white placeholder-slate-500 focus:border-blue-500'
+                  : 'bg-slate-50 border-slate-300 text-slate-900 placeholder-slate-400 focus:border-blue-500'
               }`}
             />
-            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+            <Search className={`w-4 h-4 absolute left-3 top-2.5 transition-colors ${darkMode ? 'text-slate-400' : 'text-slate-500'}`} />
           </div>
 
-          <div className={`flex rounded-lg border overflow-hidden ${darkMode ? 'border-slate-700' : 'border-slate-300'}`}>
+          <div className={`flex rounded-lg border overflow-hidden transition-colors ${darkMode ? 'border-slate-700' : 'border-slate-300'}`}>
             <button
               onClick={() => setFilter('all')}
               className={`px-4 py-2 text-xs font-bold transition-all ${
@@ -79,7 +81,7 @@ const StatusKwhMeter = ({ devices, darkMode }) => {
       <div className="overflow-x-auto flex-1 p-5">
         <table className="w-full text-left border-collapse whitespace-nowrap">
           <thead>
-            <tr className={`border-b text-[11px] font-bold tracking-wider uppercase ${darkMode ? 'border-slate-700 text-slate-400' : 'border-slate-300 text-slate-500 bg-slate-50'}`}>
+            <tr className={`border-b text-[11px] font-bold tracking-wider uppercase transition-colors ${darkMode ? 'border-slate-700 text-slate-400' : 'border-slate-300 text-slate-600 bg-slate-50'}`}>
               <th className="p-4 rounded-tl-lg">No</th>
               <th className="p-4">Nama KWH</th>
               <th className="p-4">Unit Sistem</th>
@@ -90,24 +92,34 @@ const StatusKwhMeter = ({ devices, darkMode }) => {
               <th className="p-4 text-center rounded-tr-lg">Aksi</th>
             </tr>
           </thead>
-          <tbody className={`divide-y text-sm ${darkMode ? 'divide-slate-800/50 text-slate-300' : 'divide-slate-200 text-slate-700'}`}>
+          <tbody className={`divide-y text-sm transition-colors ${darkMode ? 'divide-slate-800/50 text-slate-300' : 'divide-slate-200 text-slate-700'}`}>
             {filteredDevices.length > 0 ? (
               filteredDevices.map((device, index) => (
                 <tr key={device.id || index} className={`transition-colors ${darkMode ? 'hover:bg-slate-800/50' : 'hover:bg-slate-50'}`}>
                   <td className="p-4 text-xs font-medium">{index + 1}</td>
-                  <td className="p-4 font-bold">{device.name}</td>
+                  
+                  {/* Penyesuaian Warna Nama Device */}
+                  <td className={`p-4 font-bold transition-colors ${darkMode ? 'text-white' : 'text-slate-800'}`}>
+                    {device.name}
+                  </td>
+                  
                   <td className="p-4 text-sm">{device.site}</td>
-                  <td className="p-4 text-rose-500 text-sm font-medium">{device.serial_number}</td>
+                  
+                  {/* Merah Serial Number lebih gelap sedikit di mode light agar terbaca */}
+                  <td className={`p-4 text-sm font-medium transition-colors ${darkMode ? 'text-rose-400' : 'text-rose-600'}`}>
+                    {device.serial_number}
+                  </td>
+                  
                   <td className="p-4 text-sm">{device.ip_address}</td>
-                  <td className="p-4 text-sm text-slate-500">
+                  <td className={`p-4 text-sm transition-colors ${darkMode ? 'text-slate-500' : 'text-slate-500'}`}>
                     2026-07-28 14:55:49
                   </td>
                   <td className="p-4">
                     <div className="flex items-center justify-center">
-                      <span className={`px-3 py-1.5 rounded-full text-[10px] font-bold flex items-center gap-1.5 border ${
+                      <span className={`px-3 py-1.5 rounded-full text-[10px] font-bold flex items-center gap-1.5 border transition-colors ${
                         device.status === 'online' 
-                          ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-500' 
-                          : 'bg-rose-500/10 border-rose-500/20 text-rose-500'
+                          ? (darkMode ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' : 'bg-emerald-100 border-emerald-300 text-emerald-700')
+                          : (darkMode ? 'bg-rose-500/10 border-rose-500/20 text-rose-400' : 'bg-rose-100 border-rose-300 text-rose-700')
                       }`}>
                         <span className={`w-1.5 h-1.5 rounded-full ${device.status === 'online' ? 'bg-emerald-500' : 'bg-rose-500'}`}></span>
                         {device.status === 'online' ? 'ONLINE' : 'OFFLINE / FAULT'}
@@ -118,7 +130,7 @@ const StatusKwhMeter = ({ devices, darkMode }) => {
                     <button className={`px-4 py-1.5 rounded-md border transition-colors flex items-center gap-2 mx-auto text-xs font-bold ${
                       darkMode 
                       ? 'border-cyan-500/50 text-cyan-400 bg-cyan-500/10 hover:bg-cyan-500 hover:text-white' 
-                      : 'border-cyan-500 text-cyan-600 bg-cyan-50 hover:bg-cyan-500 hover:text-white'
+                      : 'border-cyan-500 text-cyan-700 bg-cyan-50 hover:bg-cyan-500 hover:text-white'
                     }`}>
                       <User className="w-3.5 h-3.5" /> Profile
                     </button>
@@ -127,7 +139,7 @@ const StatusKwhMeter = ({ devices, darkMode }) => {
               ))
             ) : (
               <tr>
-                <td colSpan="8" className="p-8 text-center text-slate-500">
+                <td colSpan="8" className={`p-8 text-center transition-colors ${darkMode ? 'text-slate-500' : 'text-slate-600'}`}>
                   Tidak ada data meter yang ditemukan.
                 </td>
               </tr>

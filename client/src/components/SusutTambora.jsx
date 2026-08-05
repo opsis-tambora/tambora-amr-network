@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
-// Fungsi bantuan untuk mendapatkan format YYYY-MM-DD
 const getLocalYYYYMMDD = (date) => {
   const yyyy = date.getFullYear();
   const mm = String(date.getMonth() + 1).padStart(2, '0');
@@ -9,7 +8,7 @@ const getLocalYYYYMMDD = (date) => {
   return `${yyyy}-${mm}-${dd}`;
 };
 
-const SusutTambora = () => {
+const SusutTambora = ({ darkMode = false }) => {
   const [data, setData] = useState([]);
   const [gangguan, setGangguan] = useState([]);
   const [transmisi, setTransmisi] = useState([]);
@@ -17,9 +16,6 @@ const SusutTambora = () => {
   const [groupedHighSusut, setGroupedHighSusut] = useState({});
   const [summary, setSummary] = useState({ totalLosis: '0', maxSusut: '0%', dateMax: '-' });
 
-  // ----------------------------------------
-  // LOGIKA TANGGAL DINAMIS (Tanggal 1 & H-1)
-  // ----------------------------------------
   const [startDate, setStartDate] = useState(() => {
     const today = new Date();
     const yyyy = today.getFullYear();
@@ -49,19 +45,19 @@ const SusutTambora = () => {
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-slate-900 border border-slate-700 p-3 rounded shadow-lg min-w-[200px]">
-          <p className="text-white font-bold mb-2 border-b border-slate-700 pb-1">{label}</p>
-          <p className="flex justify-between" style={{ color: '#ef4444' }}>
-            <span>Losis Sistem:</span> 
-            <span className="font-semibold">{Number(payload[0].value).toLocaleString('id-ID')} kWh</span>
+        <div className={`p-3 rounded-xl shadow-2xl min-w-[200px] border transition-colors ${darkMode ? 'bg-slate-900 border-slate-700 text-white' : 'bg-white border-slate-200 text-slate-800'}`}>
+          <p className={`font-bold mb-2 border-b pb-1 ${darkMode ? 'border-slate-800 text-blue-400' : 'border-slate-100 text-blue-600'}`}>{label}</p>
+          <p className="flex justify-between gap-4">
+            <span className={darkMode ? 'text-slate-400' : 'text-slate-500'}>Losis Sistem:</span> 
+            <span className={`font-semibold ${darkMode ? 'text-rose-400' : 'text-rose-600'}`}>{Number(payload[0].value).toLocaleString('id-ID')} kWh</span>
           </p>
-          <p className="flex justify-between" style={{ color: '#3b82f6' }}>
-            <span>Susut Harian:</span> 
-            <span className="font-semibold">{payload[0].payload['Susut Harian']}%</span>
+          <p className="flex justify-between gap-4 mt-1">
+            <span className={darkMode ? 'text-slate-400' : 'text-slate-500'}>Susut Harian:</span> 
+            <span className={`font-semibold ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>{payload[0].payload['Susut Harian']}%</span>
           </p>
-          <p className="flex justify-between" style={{ color: '#f59e0b' }}>
-            <span>Susut Kumulatif:</span> 
-            <span className="font-semibold">{payload[0].payload['Susut Kumulatif']}%</span>
+          <p className="flex justify-between gap-4 mt-1">
+            <span className={darkMode ? 'text-slate-400' : 'text-slate-500'}>Susut Kumulatif:</span> 
+            <span className={`font-semibold ${darkMode ? 'text-amber-400' : 'text-amber-600'}`}>{payload[0].payload['Susut Kumulatif']}%</span>
           </p>
         </div>
       );
@@ -109,20 +105,16 @@ const SusutTambora = () => {
         const cleanStr = dateStr.trim();
         const parts = cleanStr.split(' ');
         if (parts.length !== 3) return null;
-
         const day = Number(parts[0]);
         const monthStr = parts[1].toLowerCase();
         const year = Number(parts[2]);
-
         const months = {
           'januari': 0, 'februari': 1, 'maret': 2, 'april': 3,
           'mei': 4, 'juni': 5, 'juli': 6, 'agustus': 7,
           'september': 8, 'oktober': 9, 'november': 10, 'desember': 11
         };
-
         const month = months[monthStr];
         if (month === undefined) return null;
-
         const dateObj = new Date(year, month, day);
         dateObj.setHours(0, 0, 0, 0); 
         return dateObj;
@@ -194,71 +186,92 @@ const SusutTambora = () => {
   }, [startDate, endDate, data, gangguan, transmisi]); 
 
   return (
-    <div className="h-auto w-full p-6 bg-slate-900 text-white rounded-xl border border-slate-800 shadow-xl flex flex-col">
+    <div className={`w-full flex flex-col transition-colors duration-300 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
       
+      {/* Date Pickers */}
       <div className="flex gap-4 mb-6">
-        <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="bg-slate-800 border border-slate-700 rounded p-2 text-white focus:outline-none focus:border-blue-500" />
-        <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className="bg-slate-800 border border-slate-700 rounded p-2 text-white focus:outline-none focus:border-blue-500" />
+        <input 
+          type="date" 
+          value={startDate} 
+          onChange={(e) => setStartDate(e.target.value)} 
+          style={{ colorScheme: darkMode ? 'dark' : 'light' }}
+          className={`rounded-lg px-4 py-2 font-medium border focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${darkMode ? 'bg-slate-900 border-slate-700 text-white' : 'bg-white border-slate-300 text-slate-800 shadow-sm'}`} 
+        />
+        <input 
+          type="date" 
+          value={endDate} 
+          onChange={(e) => setEndDate(e.target.value)} 
+          style={{ colorScheme: darkMode ? 'dark' : 'light' }}
+          className={`rounded-lg px-4 py-2 font-medium border focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${darkMode ? 'bg-slate-900 border-slate-700 text-white' : 'bg-white border-slate-300 text-slate-800 shadow-sm'}`} 
+        />
       </div>
 
-      <div className="grid grid-cols-2 gap-4 mb-6">
-        <div className="bg-slate-800 p-4 rounded border border-slate-700">
-          <p className="text-slate-400 text-sm mb-1">Total Losis</p>
-          <p className="text-2xl font-bold">{summary.totalLosis}</p>
+      {/* Summary Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className={`p-6 rounded-xl border transition-colors ${darkMode ? 'bg-slate-900 border-slate-800 shadow-xl' : 'bg-white border-slate-200 shadow-sm'}`}>
+          <p className={`text-sm font-medium mb-1 ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>Total Losis</p>
+          <p className="text-3xl font-bold">{summary.totalLosis}</p>
         </div>
-        <div className="bg-slate-800 p-4 rounded border border-slate-700">
-          <p className="text-slate-400 text-sm mb-1">Susut Harian Max</p>
-          <p className="text-2xl font-bold">{summary.maxSusut}</p>
-          <p className="text-xs text-slate-500 mt-1">Tanggal: {summary.dateMax}</p>
+        <div className={`p-6 rounded-xl border transition-colors ${darkMode ? 'bg-slate-900 border-slate-800 shadow-xl' : 'bg-white border-slate-200 shadow-sm'}`}>
+          <p className={`text-sm font-medium mb-1 ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>Susut Harian Max</p>
+          <p className="text-3xl font-bold">{summary.maxSusut}</p>
+          <p className={`text-xs mt-2 font-medium ${darkMode ? 'text-slate-500' : 'text-slate-400'}`}>Tanggal: {summary.dateMax}</p>
         </div>
       </div>
 
-      <div className="h-80 w-full mb-8">
+      {/* Line Chart */}
+      <div className={`p-6 rounded-xl border mb-8 transition-colors ${darkMode ? 'bg-slate-900 border-slate-800 shadow-xl' : 'bg-white border-slate-200 shadow-sm'}`} style={{ height: '400px' }}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={filteredData} margin={{ top: 10, right: 30, left: 20, bottom: 0 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+            <CartesianGrid strokeDasharray="3 3" stroke={darkMode ? "#334155" : "#cbd5e1"} vertical={true} />
             <XAxis 
               dataKey="Tanggal" 
-              stroke="#94a3b8" 
+              stroke={darkMode ? "#94a3b8" : "#64748b"} 
+              tick={{ fill: darkMode ? '#94a3b8' : '#475569', fontWeight: 500 }}
               tickFormatter={(val) => val.substring(0, 5)} 
               padding={{ left: 30, right: 30 }} 
             />
-            <YAxis stroke="#94a3b8" domain={['auto', 'auto']} />
-            <Tooltip content={<CustomTooltip />} />
+            <YAxis 
+              stroke={darkMode ? "#94a3b8" : "#64748b"} 
+              tick={{ fill: darkMode ? '#94a3b8' : '#475569', fontWeight: 500 }}
+              domain={['auto', 'auto']} 
+            />
+            <Tooltip content={<CustomTooltip />} cursor={{ stroke: darkMode ? '#64748b' : '#94a3b8', strokeWidth: 1, strokeDasharray: '3 3' }} />
             <Line 
               type="monotone" 
               dataKey="Losis Sistem" 
               stroke="#ef4444" 
-              strokeWidth={2}
-              activeDot={{ r: 6, fill: '#ef4444', strokeWidth: 0 }}
+              strokeWidth={3}
+              activeDot={{ r: 7, fill: '#ef4444', strokeWidth: 0 }}
             />
           </LineChart>
         </ResponsiveContainer>
       </div>
 
+      {/* Tabel Detail Susut Tinggi */}
       {Object.keys(groupedHighSusut).length > 0 ? (
         Object.entries(groupedHighSusut).map(([date, groupData]) => (
-          <div key={date} className="mb-6 bg-slate-800/30 p-4 rounded-xl border border-slate-700/50">
-            <h3 className="text-lg font-bold mb-4 text-blue-400 border-b border-slate-700 pb-2">
-              {formatToLongDateID(date)} (Susut: {groupData.susut}%)
+          <div key={date} className={`mb-8 p-6 rounded-xl border transition-colors ${darkMode ? 'bg-slate-900 border-slate-800 shadow-xl' : 'bg-white border-slate-200 shadow-sm'}`}>
+            <h3 className={`text-xl font-bold mb-4 border-b pb-3 ${darkMode ? 'text-blue-400 border-slate-800' : 'text-blue-600 border-slate-100'}`}>
+              {formatToLongDateID(date)} <span className={`text-sm font-semibold ml-2 px-2 py-1 rounded ${darkMode ? 'bg-rose-500/10 text-rose-400' : 'bg-rose-100 text-rose-600'}`}>(Susut: {groupData.susut}%)</span>
             </h3>
             
             {/* TABEL GANGGUAN PEMBANGKIT */}
-            <div className={`border border-slate-700 rounded-lg overflow-hidden shadow-md ${groupData.transmisiItems && groupData.transmisiItems.length > 0 ? 'mb-6' : ''}`}>
+            <div className={`border rounded-lg overflow-hidden ${darkMode ? 'border-slate-700' : 'border-slate-200'} ${groupData.transmisiItems && groupData.transmisiItems.length > 0 ? 'mb-6' : ''}`}>
               <table className="w-full text-left border-collapse table-fixed">
-                <thead className="bg-slate-800 text-slate-300">
+                <thead className={`${darkMode ? 'bg-slate-800 text-slate-300' : 'bg-slate-100 text-slate-700'}`}>
                   <tr>
-                    <th className="p-3 border-b border-slate-700 w-1/3">Pembangkit</th>
-                    <th className="p-3 border-b border-slate-700 w-1/6">Status</th>
-                    <th className="p-3 border-b border-slate-700 w-1/2">Keterangan</th>
+                    <th className={`p-4 border-b w-1/3 font-semibold ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>Pembangkit</th>
+                    <th className={`p-4 border-b w-1/6 font-semibold ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>Status</th>
+                    <th className={`p-4 border-b w-1/2 font-semibold ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>Keterangan</th>
                   </tr>
                 </thead>
                 <tbody className="text-sm">
                   {groupData.items.map((item, idx) => (
-                    <tr key={idx} className="border-b border-slate-700 hover:bg-slate-800">
-                      <td className="p-3 break-words font-medium">{item.Pembangkit || '-'}</td>
-                      <td className="p-3 break-words">{item.Status || '-'}</td>
-                      <td className="p-3 break-words text-slate-300">{item.Keterangan || '-'}</td>
+                    <tr key={idx} className={`border-b transition-colors ${darkMode ? 'border-slate-800 hover:bg-slate-800/60' : 'border-slate-100 hover:bg-slate-50'}`}>
+                      <td className={`p-4 break-words font-medium ${darkMode ? 'text-slate-200' : 'text-slate-800'}`}>{item.Pembangkit || '-'}</td>
+                      <td className={`p-4 break-words ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>{item.Status || '-'}</td>
+                      <td className={`p-4 break-words ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>{item.Keterangan || '-'}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -267,21 +280,21 @@ const SusutTambora = () => {
 
             {/* TABEL PEMELIHARAAN TRANSMISI */}
             {groupData.transmisiItems && groupData.transmisiItems.length > 0 && (
-              <div className="border border-slate-700 rounded-lg overflow-hidden shadow-md">
+              <div className={`border rounded-lg overflow-hidden ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>
                 <table className="w-full text-left border-collapse table-fixed">
-                  <thead className="bg-slate-800 text-slate-300">
+                  <thead className={`${darkMode ? 'bg-slate-800 text-slate-300' : 'bg-slate-100 text-slate-700'}`}>
                     <tr>
-                      <th className="p-3 border-b border-slate-700 w-1/3">Unit</th>
-                      <th className="p-3 border-b border-slate-700 w-1/6">Peralatan</th>
-                      <th className="p-3 border-b border-slate-700 w-1/2">Keterangan</th>
+                      <th className={`p-4 border-b w-1/3 font-semibold ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>Unit</th>
+                      <th className={`p-4 border-b w-1/6 font-semibold ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>Peralatan</th>
+                      <th className={`p-4 border-b w-1/2 font-semibold ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>Keterangan</th>
                     </tr>
                   </thead>
                   <tbody className="text-sm">
                     {groupData.transmisiItems.map((item, idx) => (
-                      <tr key={idx} className="border-b border-slate-700 hover:bg-slate-800">
-                        <td className="p-3 break-words font-medium">{item.Unit || '-'}</td>
-                        <td className="p-3 break-words">{item.Peralatan || '-'}</td>
-                        <td className="p-3 break-words text-slate-300">{item.Keterangan || '-'}</td>
+                      <tr key={idx} className={`border-b transition-colors ${darkMode ? 'border-slate-800 hover:bg-slate-800/60' : 'border-slate-100 hover:bg-slate-50'}`}>
+                        <td className={`p-4 break-words font-medium ${darkMode ? 'text-slate-200' : 'text-slate-800'}`}>{item.Unit || '-'}</td>
+                        <td className={`p-4 break-words ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>{item.Peralatan || '-'}</td>
+                        <td className={`p-4 break-words ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>{item.Keterangan || '-'}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -291,8 +304,8 @@ const SusutTambora = () => {
           </div>
         ))
       ) : (
-        <div className="text-center p-8 border border-slate-800 rounded-xl bg-slate-800/20">
-          <p className="text-slate-500 font-medium">Tidak ada data susut {'>'} 1.5% dalam rentang ini.</p>
+        <div className={`text-center p-8 border rounded-xl ${darkMode ? 'border-slate-800 bg-slate-900 shadow-xl' : 'border-slate-200 bg-white shadow-sm'}`}>
+          <p className={`font-medium ${darkMode ? 'text-slate-500' : 'text-slate-400'}`}>Tidak ada data susut &gt; 1.5% dalam rentang ini.</p>
         </div>
       )}
     </div>
