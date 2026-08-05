@@ -3,7 +3,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import axios from 'axios';
 
 // ==========================================
-// 1. TEMPLATE DEVICE LIST & HELPERS (Persis dengan AnalisaSusutHarian)
+// 1. TEMPLATE DEVICE LIST & HELPERS
 // ==========================================
 const TEMPLATE_DEVICES = [
   { no: 1, site: 'GI KERTASARI', dbName: 'GT PLTU 1 MAIN', label: 'GT PLTU 1 MAIN' },
@@ -38,15 +38,65 @@ const standardizeTime = (timeStr) => {
   return clean.substring(0, 16); 
 };
 
+const formatRibuan = (num) => {
+  if (num === undefined || num === null || num === "") return "0";
+  return new Intl.NumberFormat('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(num);
+};
+
 // ==========================================
-// 2. KOMPONEN DASHBOARD SUSUT HARIAN
+// 2. CUSTOM TOOLTIP COMPONENT
+// ==========================================
+const CustomTooltip = ({ active, payload, label }) => {
+  if (active && payload && payload.length) {
+    const data = payload[0].payload;
+    return (
+      <div className="bg-slate-900 border border-slate-700 p-3 rounded-xl shadow-2xl text-xs text-white space-y-1.5 min-w-[190px]">
+        <p className="font-bold text-sm text-blue-400 border-b border-slate-800 pb-1">{label}</p>
+        
+        {/* Urutan 1: Susut 30 Menit */}
+        <p className="flex justify-between gap-4">
+          <span className="text-slate-400">Susut 30 Menit :</span> 
+          <span className="font-mono font-semibold text-emerald-400">{data.susut}%</span>
+        </p>
+
+        {/* Urutan 2: Losis 30 Menit */}
+        <p className="flex justify-between gap-4">
+          <span className="text-slate-400">Losis 30 Menit :</span> 
+          <span className="font-mono font-semibold text-rose-400">{formatRibuan(data.losis)} kWh</span>
+        </p>
+
+        {/* Urutan 3: Susut Kumulatif */}
+        <p className="flex justify-between gap-4">
+          <span className="text-slate-400">Susut Kumulatif :</span> 
+          <span className="font-mono font-semibold text-amber-400">{data.susutKumulatif}%</span>
+        </p>
+
+        {/* Urutan 4: Losis Kumulatif */}
+        <p className="flex justify-between gap-4">
+          <span className="text-slate-400">Losis Kumulatif :</span> 
+          <span className="font-mono font-semibold text-violet-400">{formatRibuan(data.losisKumulatif)} kWh</span>
+        </p>
+      </div>
+    );
+  }
+  return null;
+};
+
+// ==========================================
+// 3. MAIN COMPONENT
 // ==========================================
 const SusutHarian = ({ darkMode }) => {
     const [data, setData] = useState([]);
     const [lastUpdate, setLastUpdate] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
-    // Format Tanggal untuk parameter API (YYYY-MM-DD HH:mm)
+    // Dapatkan tanggal hari ini dengan format "DD Bulan YYYY" (misal: 05 Agustus 2026)
+    const todayDateStr = new Intl.DateTimeFormat('id-ID', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric'
+    }).format(new Date());
+
     const formatDateTimeLocal = (date) => {
         const yyyy = date.getFullYear();
         const mm = String(date.getMonth() + 1).padStart(2, '0');
@@ -56,7 +106,6 @@ const SusutHarian = ({ darkMode }) => {
         return `${yyyy}-${mm}-${dd} ${hh}:${min}`;
     };
 
-    // Menghasilkan daftar interval 30 menit dari 00:00 hingga jam sekarang
     const generateTodayIntervals = () => {
         const intervals = [];
         const now = new Date();
@@ -77,8 +126,7 @@ const SusutHarian = ({ darkMode }) => {
         return intervals;
     };
 
-    // LOGIKA PERHITUNGAN SUSUT (Persis dengan yang ada di AnalisaSusutHarian)
-    const calculateSusutForInterval = (dataAwal, dataAkhir) => {
+    const calculateMetricsForInterval = (dataAwal, dataAkhir) => {
         let sumLokoColumn = 0;   
         let sumSalurColumn = 0;  
         let sumGtExp = 0;        
@@ -141,7 +189,11 @@ const SusutHarian = ({ darkMode }) => {
         const losis = totalLokoFormula - totalSalurFormula;
         const persentase = totalLokoFormula > 0 ? ((losis / totalLokoFormula) * 100) : 0;
 
-        return parseFloat(persentase.toFixed(2));
+        return {
+            susut: parseFloat(persentase.toFixed(2)),
+            losis: parseFloat(losis.toFixed(2)),
+            totalLoko: totalLokoFormula 
+        };
     };
 
     const fetchData = async () => {
@@ -149,7 +201,6 @@ const SusutHarian = ({ darkMode }) => {
         try {
             const intervals = generateTodayIntervals();
             
-            // Fetch data per 30 menit ke API secara paralel
             const promises = intervals.map(async (interval) => {
                 try {
                     const res = await axios.get('/api/analisa-susut', { 
@@ -160,20 +211,41 @@ const SusutHarian = ({ darkMode }) => {
                     const dataAwal = records.filter(r => standardizeTime(r.DateTime) === interval.startStr);
                     const dataAkhir = records.filter(r => standardizeTime(r.DateTime) === interval.endStr);
 
-                    // Kalkulasi rumusnya
-                    const persentase = calculateSusutForInterval(dataAwal, dataAkhir);
+                    const metrics = calculateMetricsForInterval(dataAwal, dataAkhir);
 
                     return {
                         time: interval.label,
-                        susut: persentase
+                        susut: metrics.susut,
+                        losis: metrics.losis,
+                        totalLoko: metrics.totalLoko 
                     };
                 } catch (error) {
-                    return { time: interval.label, susut: 0 };
+                    return { time: interval.label, susut: 0, losis: 0, totalLoko: 0 };
                 }
             });
 
-            const chartData = await Promise.all(promises);
-            setData(chartData);
+            const rawChartData = await Promise.all(promises);
+
+            let runningLosis = 0;
+            let runningTotalLoko = 0;
+
+            const finalChartData = rawChartData.map((item) => {
+                runningLosis += item.losis;
+                runningTotalLoko += item.totalLoko;
+                
+                let susutKumulatif = 0;
+                if (runningTotalLoko > 0) {
+                    susutKumulatif = (runningLosis / runningTotalLoko) * 100;
+                }
+
+                return {
+                    ...item,
+                    susutKumulatif: parseFloat(susutKumulatif.toFixed(2)),
+                    losisKumulatif: parseFloat(runningLosis.toFixed(2)) 
+                };
+            });
+
+            setData(finalChartData);
             
             const now = new Date();
             setLastUpdate(now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }));
@@ -186,18 +258,21 @@ const SusutHarian = ({ darkMode }) => {
 
     useEffect(() => {
         fetchData();
+        
         const intervalId = setInterval(() => {
             fetchData();
-        }, 1800000); // 30 Menit
+        }, 60000); 
+
         return () => clearInterval(intervalId);
     }, []);
 
     return (
         <div className={`p-6 min-h-screen ${darkMode ? 'text-white bg-slate-900' : 'text-slate-900 bg-slate-50'}`}>
             <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold">Dashboard Susut Harian</h2>
+                {/* Perubahan Judul Dashboard Disini */}
+                <h2 className="text-2xl font-bold">Susut 30 Menit - {todayDateStr}</h2>
                 <div className="flex items-center gap-4">
-                    {isLoading && <span className="text-sm font-semibold text-blue-500 animate-pulse">Menghitung Data 30 Menitan...</span>}
+                    {isLoading && <span className="text-sm font-semibold text-blue-500 animate-pulse">Menyelaraskan Data 30 Menit...</span>}
                     <span className={`text-sm px-3 py-1 rounded-md font-medium ${darkMode ? 'text-gray-400 bg-slate-800' : 'text-gray-600 bg-slate-200'}`}>
                         Update Terakhir: {lastUpdate}
                     </span>
@@ -223,19 +298,28 @@ const SusutHarian = ({ darkMode }) => {
                             domain={['auto', 'auto']} 
                         />
                         
-                        <Tooltip 
-                            formatter={(value) => [`${value}%`, 'Persentase Susut']}
-                            labelStyle={{ color: '#0f172a', fontWeight: 'bold' }}
-                            contentStyle={{ backgroundColor: '#f8fafc', borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                        />
+                        <Tooltip content={<CustomTooltip />} />
                         
+                        {/* Garis Susut 30 Menit */}
                         <Line 
                             type="monotone" 
                             dataKey="susut" 
+                            name="Susut 30 Menit"
                             stroke="#10b981" 
-                            strokeWidth={3}
-                            dot={{ r: 4, fill: '#10b981', strokeWidth: 0 }}
-                            activeDot={{ r: 8, strokeWidth: 0, fill: '#10b981' }} 
+                            strokeWidth={2.5}
+                            dot={{ r: 3, fill: '#10b981', strokeWidth: 0 }}
+                            activeDot={{ r: 6, strokeWidth: 0, fill: '#10b981' }} 
+                        />
+
+                        {/* Garis Susut Kumulatif */}
+                        <Line 
+                            type="monotone" 
+                            dataKey="susutKumulatif" 
+                            name="Susut Kumulatif"
+                            stroke="#f59e0b" 
+                            strokeWidth={2.5}
+                            dot={{ r: 3, fill: '#f59e0b', strokeWidth: 0 }}
+                            activeDot={{ r: 6, strokeWidth: 0, fill: '#f59e0b' }} 
                         />
                     </LineChart>
                 </ResponsiveContainer>

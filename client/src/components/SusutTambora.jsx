@@ -1,15 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
+// Fungsi bantuan untuk mendapatkan format YYYY-MM-DD
+const getLocalYYYYMMDD = (date) => {
+  const yyyy = date.getFullYear();
+  const mm = String(date.getMonth() + 1).padStart(2, '0');
+  const dd = String(date.getDate()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`;
+};
+
 const SusutTambora = () => {
   const [data, setData] = useState([]);
   const [gangguan, setGangguan] = useState([]);
   const [transmisi, setTransmisi] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [groupedHighSusut, setGroupedHighSusut] = useState({});
-  const [startDate, setStartDate] = useState('2026-07-01');
-  const [endDate, setEndDate] = useState('2026-07-31');
   const [summary, setSummary] = useState({ totalLosis: '0', maxSusut: '0%', dateMax: '-' });
+
+  // ----------------------------------------
+  // LOGIKA TANGGAL DINAMIS (Tanggal 1 & H-1)
+  // ----------------------------------------
+  const [startDate, setStartDate] = useState(() => {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    return `${yyyy}-${mm}-01`;
+  });
+
+  const [endDate, setEndDate] = useState(() => {
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() - 1);
+    return getLocalYYYYMMDD(yesterday);
+  });
 
   const formatToLongDateID = (dateStr) => {
     const [d, m, y] = dateStr.split('/');
@@ -26,11 +49,20 @@ const SusutTambora = () => {
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-slate-900 border border-slate-700 p-3 rounded shadow-lg">
-          <p className="text-white font-bold mb-1">{label}</p>
-          <p style={{ color: '#ef4444' }}>Losis Sistem : {payload[0].value}</p>
-          <p style={{ color: '#3b82f6' }}>Susut Harian : {payload[0].payload['Susut Harian']}%</p>
-          <p style={{ color: '#f59e0b' }}>Susut Kumulatif : {payload[0].payload['Susut Kumulatif']}%</p>
+        <div className="bg-slate-900 border border-slate-700 p-3 rounded shadow-lg min-w-[200px]">
+          <p className="text-white font-bold mb-2 border-b border-slate-700 pb-1">{label}</p>
+          <p className="flex justify-between" style={{ color: '#ef4444' }}>
+            <span>Losis Sistem:</span> 
+            <span className="font-semibold">{Number(payload[0].value).toLocaleString('id-ID')} kWh</span>
+          </p>
+          <p className="flex justify-between" style={{ color: '#3b82f6' }}>
+            <span>Susut Harian:</span> 
+            <span className="font-semibold">{payload[0].payload['Susut Harian']}%</span>
+          </p>
+          <p className="flex justify-between" style={{ color: '#f59e0b' }}>
+            <span>Susut Kumulatif:</span> 
+            <span className="font-semibold">{payload[0].payload['Susut Kumulatif']}%</span>
+          </p>
         </div>
       );
     }
@@ -170,8 +202,15 @@ const SusutTambora = () => {
       </div>
 
       <div className="grid grid-cols-2 gap-4 mb-6">
-        <div className="bg-slate-800 p-4 rounded border border-slate-700"><p className="text-slate-400 text-sm">Total Losis</p><p className="text-2xl font-bold">{summary.totalLosis}</p></div>
-        <div className="bg-slate-800 p-4 rounded border border-slate-700"><p className="text-slate-400 text-sm">Susut Harian Max</p><p className="text-2xl font-bold">{summary.maxSusut}</p><p className="text-xs text-slate-500">Tanggal: {summary.dateMax}</p></div>
+        <div className="bg-slate-800 p-4 rounded border border-slate-700">
+          <p className="text-slate-400 text-sm mb-1">Total Losis</p>
+          <p className="text-2xl font-bold">{summary.totalLosis}</p>
+        </div>
+        <div className="bg-slate-800 p-4 rounded border border-slate-700">
+          <p className="text-slate-400 text-sm mb-1">Susut Harian Max</p>
+          <p className="text-2xl font-bold">{summary.maxSusut}</p>
+          <p className="text-xs text-slate-500 mt-1">Tanggal: {summary.dateMax}</p>
+        </div>
       </div>
 
       <div className="h-80 w-full mb-8">
@@ -186,7 +225,13 @@ const SusutTambora = () => {
             />
             <YAxis stroke="#94a3b8" domain={['auto', 'auto']} />
             <Tooltip content={<CustomTooltip />} />
-            <Line type="monotone" dataKey="Losis Sistem" stroke="#ef4444" strokeWidth={2} />
+            <Line 
+              type="monotone" 
+              dataKey="Losis Sistem" 
+              stroke="#ef4444" 
+              strokeWidth={2}
+              activeDot={{ r: 6, fill: '#ef4444', strokeWidth: 0 }}
+            />
           </LineChart>
         </ResponsiveContainer>
       </div>
@@ -203,7 +248,6 @@ const SusutTambora = () => {
               <table className="w-full text-left border-collapse table-fixed">
                 <thead className="bg-slate-800 text-slate-300">
                   <tr>
-                    {/* LEBAR KOLOM DISAMAKAN DENGAN TABEL TRANSMISI */}
                     <th className="p-3 border-b border-slate-700 w-1/3">Pembangkit</th>
                     <th className="p-3 border-b border-slate-700 w-1/6">Status</th>
                     <th className="p-3 border-b border-slate-700 w-1/2">Keterangan</th>
@@ -221,13 +265,12 @@ const SusutTambora = () => {
               </table>
             </div>
 
-            {/* TABEL PEMELIHARAAN TRANSMISI (Hanya Muncul Jika Ada Data) */}
+            {/* TABEL PEMELIHARAAN TRANSMISI */}
             {groupData.transmisiItems && groupData.transmisiItems.length > 0 && (
               <div className="border border-slate-700 rounded-lg overflow-hidden shadow-md">
                 <table className="w-full text-left border-collapse table-fixed">
                   <thead className="bg-slate-800 text-slate-300">
                     <tr>
-                      {/* LEBAR KOLOM DISAMAKAN DENGAN TABEL PEMBANGKIT */}
                       <th className="p-3 border-b border-slate-700 w-1/3">Unit</th>
                       <th className="p-3 border-b border-slate-700 w-1/6">Peralatan</th>
                       <th className="p-3 border-b border-slate-700 w-1/2">Keterangan</th>
